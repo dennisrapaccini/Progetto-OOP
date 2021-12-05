@@ -1,4 +1,4 @@
-<img src="logo.png" width="100%" height="100%">
+<img src="logo.png" width="50%" height="50%">
 
 # MetaStats
 ## _Progetto di Programmazione ad Oggetti 2021-2022_
