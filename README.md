@@ -1,4 +1,4 @@
-<img src="logo2.jpg" width="20%" height="20%">
+<img src="logo2.png" width="20%" height="20%">
 
 # MetaStats - Facebook Statistics
 ## _Progetto di Programmazione ad Oggetti 2021-2022_
