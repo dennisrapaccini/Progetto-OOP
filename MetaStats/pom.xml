@@ -12,7 +12,7 @@
 	<artifactId>MetaStats</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>MetaStats</name>
-	<description> Project for OOP</description>
+	<description> Project for OOP</description>  
 	<properties>
 		<java.version>11</java.version>
 	</properties>
