@@ -1,4 +1,4 @@
-package com.project.main;
+package com.project.MetaStats;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

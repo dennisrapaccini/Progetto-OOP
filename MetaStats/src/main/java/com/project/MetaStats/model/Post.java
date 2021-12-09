@@ -1,10 +1,9 @@
-package com.project.main.model;
+package com.project.MetaStats.model;
 
 /**Questa classe rappresenta i post dell'utente facebbok
  * @author Cheikh
  * @author Dennis
  */
-
 public class Post {
 	
 	/** Attributi relativi ai post dell'utente

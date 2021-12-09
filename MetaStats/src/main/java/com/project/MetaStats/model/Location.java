@@ -1,4 +1,4 @@
-package com.project.main.model;
+package com.project.MetaStats.model;
 
 /**Questa classe rappresenta i luoghi in cui si trova l'utente nei suoi post
  * @author Cheikh

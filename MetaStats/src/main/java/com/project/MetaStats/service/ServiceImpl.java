@@ -1,4 +1,4 @@
-package com.project.main.service;
+package com.project.MetaStats.service;
 
 import org.springframework.web.client.RestTemplate;
 
@@ -10,7 +10,7 @@ public class ServiceImpl implements Service{
 	
 	/**Attributi definiti per implementare i metodi
 	 */
-	private final String token = "EAANA9YBtvWIBAHZBZCr8Smec7zsSUFF5cio8CcvtxtAhgh1bz0w1RkoZBZBOUJKeqshs5XFlbKNAGL1MvtefsgZBNAZAaiok2MNLWOv9IoZBoHHrPEe9JcZC40JOuFWgzjywZBmC5Mg6liLvNOdBf5x8McQSCyaj1ZCYHQ9wDtDAZBOFxRfsCZB8bQQX";
+	private final String token = "EAANA9YBtvWIBAKF6vqQ8pViegZCzFj3FveZBaBwwayBMqrlO0ZAsvds8iDN0A9SipAi1oVm5Rx5Hzqx8MvKXfs9cP8JNIDgBgIb2qZCehPkpHo1rOjUEkuOz5dhaWZABOL6s9dBZCzRNOZAHQj06O64N8xtNYZBDPU3U5tMnpKzHfkywTyScP2ef";
 	private String url = "https://graph.facebook.com/me?fields=posts&access_token="+token;
 	
 	/**Oggetto RestTemplate che gestisce le richieste http

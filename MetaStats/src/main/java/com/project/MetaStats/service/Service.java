@@ -1,4 +1,4 @@
-package com.project.main.service;
+package com.project.MetaStats.service;
 
 /**Interfaccia Service i cui metodi sono implementati in ServiceImpl
  * @author Cheikh
