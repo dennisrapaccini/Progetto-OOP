@@ -12,9 +12,12 @@ import org.springframework.web.client.RestTemplate;
  */
 public class ServiceImpl implements Service{
 	
-	/**token di accesso alle API fornito all'utente da Facebook
+	/**Token di accesso (a lungo termine) alle API fornito all'utente da Facebook.
+	 * 
+	 * Prima di avviare l'applicazione, eliminare dal token la stringa "(***REMOVE THIS***)", 
+	 * questo perché Facebook controlla che non vengano caricati access tokens su GitHub, pena l'invalidazione degli stessi.
 	 */
-	private String token = "EAANA9YBtvWIBABvnd0bathib0YCKjsahKqr00vZCayU30p8rYySnZA7HM5qJY9ZCSRkOPE81xpstaTuCZCoLzhfpFk6D1hjOHcJzZCQjhcZCnY8w7aBN5gTwHlXbXcgULOZAT7bMI1odfMGbO5naRIJs8qHl4m624PLIPtFZAbBj7WzZA58QGbjvN";
+	private String token = "EAANA9YBtvWIBAGv7ZCzBbjKdVBLNXd1CipYksDZC(***REMOVE THIS***)Ogk488ah2zLZAsg1lRo8nWaPfS7XRZBGvZAtHYQ92p5Vt3ZC8dL4tjF0FqCJaG5iMzUw0hlYtHK0oN90mgYFiswcJ5B0VNBoZB2kw4cwOtes51wsxOYJw1wHZB7OtvKAHNWmp4DEWoQ98Q64";
 	
 	private String message;
 	
