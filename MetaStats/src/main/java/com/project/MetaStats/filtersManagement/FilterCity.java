@@ -39,11 +39,12 @@ public class FilterCity extends Filter {
 	/**
 	 * Metodo che restituisce in JSONArray i post che contengono il parametro city.
 	 * 
-	 * @param Città da cercare
-	 * @return true se la città è presente tra i post, false altrimenti.
+	 * @param city Città da cercare
+	 * @return JSONArray contenente tutti i post in cui è contenuta la città
 	 */
-	public JSONArray getPostsfromCity(String city) throws Exception { // TODO Due eccezioni fare: uno se non è presente
-																		// city e un'altra per i JSONObject sotto.
+	public JSONArray getPostsfromCity(String city) throws Exception { 
+		
+		// TODO Due eccezioni fare: uno se non è presente city e un'altra per i JSONObject sotto.
 
 		ServiceImpl serviceImpl = new ServiceImpl();
 		JSONObject object = serviceImpl.getPost_User();
