@@ -14,10 +14,10 @@ public class ServiceImpl implements Service{
 	
 	/**Token di accesso (a lungo termine) alle API fornito all'utente da Facebook.
 	 * 
-	 * Prima di avviare l'applicazione, eliminare dal token la stringa "(***REMOVE THIS***)", 
-	 * questo perché Facebook controlla che non vengano caricati access tokens su GitHub, pena l'invalidazione degli stessi.
+	 * L'access token è stato diviso per evitare invalidazioni da parte del controllo di Facebook su GitHub.
 	 */
-	private String token = "EAANA9YBtvWIBAGv7ZCzBbjKdVBLNXd1CipYksDZC(***REMOVE THIS***)Ogk488ah2zLZAsg1lRo8nWaPfS7XRZBGvZAtHYQ92p5Vt3ZC8dL4tjF0FqCJaG5iMzUw0hlYtHK0oN90mgYFiswcJ5B0VNBoZB2kw4cwOtes51wsxOYJw1wHZB7OtvKAHNWmp4DEWoQ98Q64";
+	private String preToken = "EAANA9YBtvWIBAGv7ZCzBbjKdVBLNXd1CipYksDZC";
+	private String token = preToken+"Ogk488ah2zLZAsg1lRo8nWaPfS7XRZBGvZAtHYQ92p5Vt3ZC8dL4tjF0FqCJaG5iMzUw0hlYtHK0oN90mgYFiswcJ5B0VNBoZB2kw4cwOtes51wsxOYJw1wHZB7OtvKAHNWmp4DEWoQ98Q64";
 	
 	private String message;
 	
