@@ -14,7 +14,7 @@ public class ServiceImpl implements Service{
 	
 	/**token di accesso alle API fornito all'utente da Facebook
 	 */
-	private String token = "EAANA9YBtvWIBAJVOBFZAWLiYDhrWXNafdljZAchkhEmp5IZB3xJZBSfOty8eZBCupZB6OGoDySLRa79PxNZBEH5cyQBVLXEXK3Ql7V3tO5ubYuek3SVhqcD7sVicW6Hz0uir2JJik4ew4cjvmu6deZCFTnXop9sMqgE13U0r9OmV7qXzTAfaJ7RzQDlZAZBkPzsRtwhcZAe2pr6XoBgQV1bmmDvkTGYGRYnY7PmdA9QqkC0QyREcHmoFx7g1pPoTn0XnCMZD";
+	private String token = "EAANA9YBtvWIBABvnd0bathib0YCKjsahKqr00vZCayU30p8rYySnZA7HM5qJY9ZCSRkOPE81xpstaTuCZCoLzhfpFk6D1hjOHcJzZCQjhcZCnY8w7aBN5gTwHlXbXcgULOZAT7bMI1odfMGbO5naRIJs8qHl4m624PLIPtFZAbBj7WzZA58QGbjvN";
 	
 	private String message;
 	

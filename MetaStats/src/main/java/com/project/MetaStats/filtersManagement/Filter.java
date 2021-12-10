@@ -1,4 +1,4 @@
-package com.project.MetaStats.filters;
+package com.project.MetaStats.filtersManagement;
 
 import java.util.*;
 

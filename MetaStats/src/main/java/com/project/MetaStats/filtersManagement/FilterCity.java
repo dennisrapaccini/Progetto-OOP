@@ -1,4 +1,4 @@
-package com.project.MetaStats.filters;
+package com.project.MetaStats.filtersManagement;
 import java.util.ArrayList;
 import com.project.MetaStats.model.Post;
 import com.project.MetaStats.service.ServiceImpl;
