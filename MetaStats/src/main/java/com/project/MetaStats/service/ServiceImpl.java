@@ -1,5 +1,9 @@
 package com.project.MetaStats.service;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 /**Classe che fa l'override dei metodi definiti in Service
@@ -8,22 +12,56 @@ import org.springframework.web.client.RestTemplate;
  */
 public class ServiceImpl implements Service{
 	
-	/**Attributi definiti per implementare i metodi
+	/**token di accesso alle API fornito all'utente da Facebook
 	 */
-	private final String token = "EAANA9YBtvWIBAKF6vqQ8pViegZCzFj3FveZBaBwwayBMqrlO0ZAsvds8iDN0A9SipAi1oVm5Rx5Hzqx8MvKXfs9cP8JNIDgBgIb2qZCehPkpHo1rOjUEkuOz5dhaWZABOL6s9dBZCzRNOZAHQj06O64N8xtNYZBDPU3U5tMnpKzHfkywTyScP2ef";
-	private String url = "https://graph.facebook.com/me?fields=posts&access_token="+token;
+	private String token = "EAANA9YBtvWIBAJVOBFZAWLiYDhrWXNafdljZAchkhEmp5IZB3xJZBSfOty8eZBCupZB6OGoDySLRa79PxNZBEH5cyQBVLXEXK3Ql7V3tO5ubYuek3SVhqcD7sVicW6Hz0uir2JJik4ew4cjvmu6deZCFTnXop9sMqgE13U0r9OmV7qXzTAfaJ7RzQDlZAZBkPzsRtwhcZAe2pr6XoBgQV1bmmDvkTGYGRYnY7PmdA9QqkC0QyREcHmoFx7g1pPoTn0XnCMZD";
 	
-	/**Oggetto RestTemplate che gestisce le richieste http
-	 */
-	RestTemplate rt = new RestTemplate();
+	private String message;
 	
-	/**Metodo che restituisce il contenuto fornito dall'API in formato stringa
-	 */
-	@Override
-	public String method() {
-		String ris = rt.getForObject(url, String.class);
-		System.out.println(ris);
-		return ris;	
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
+	/**Metodo che ritorna le API dell'utente riguardante i post in JSONObject
+	 */
+	@Override
+	public JSONObject getPost_User() {
+		JSONObject object = null;
+		String url = "https://graph.facebook.com/me?fields=posts&access_token="+token;
+		RestTemplate rt = new RestTemplate();
+	    try {
+			object = new JSONObject(rt.getForObject(url, String.class));
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    System.out.println(object);
+		return object;
+	}
+	
+	/**Metodo che restituisce la descrizione dei post da cui si ricava il nome della città
+	 */
+	@Override
+	public String getMessage_Post() {
+		try {
+			JSONObject object = getPost_User();
+			JSONObject object2 = object.getJSONObject("posts");
+			JSONArray array = object2.getJSONArray("data");
+			for (int i = 0; i < array.length(); i++)
+			{
+			    message = array.getJSONObject(i).getString("message");
+			    System.out.println(message);
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return message;
+	}
 }

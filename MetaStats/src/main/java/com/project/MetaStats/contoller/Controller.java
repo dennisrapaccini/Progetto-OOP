@@ -13,14 +13,15 @@ import com.project.MetaStats.service.ServiceImpl;
  */
 @RestController
 public class Controller {
-	 //Indica a Spring che il metodo risponda ad un determinato path ("/")
-	 /*Indica che tutto il contenuto restituito da questo metodo farà parte della pagina
-	   che verrà mostrata all'utente*/
+	
 	ServiceImpl service = new ServiceImpl();
 	
-	@GetMapping(value = "/post")//prova
-	public ResponseEntity<Object> prova(){
-		return new ResponseEntity<>(service.method().toString(), HttpStatus.OK);
+	/**Rotta di tipo get che mostra il risultato delle API riguardo i post dell'utente
+	 * @return tutti i post dell'utente con le informazioni relative
+	 */
+	@GetMapping(value = "/post")
+	public ResponseEntity<Object> getPost(){
+		return new ResponseEntity<>(service.getPost_User().toString(), HttpStatus.OK);
 	}
 
 }
