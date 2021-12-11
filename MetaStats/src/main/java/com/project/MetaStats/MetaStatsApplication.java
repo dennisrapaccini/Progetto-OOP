@@ -20,10 +20,10 @@ public class MetaStatsApplication {
 		ServiceImpl service = new ServiceImpl();
 		service.getPost_User();
 		service.getMessage_Post();
-		JSONArray ciao = new JSONArray();
 		FilterCity filtercity= new FilterCity();
+		FileManagement file= new FileManagement(); 
+		JSONArray ciao = filtercity.getPostsfromCity("Treia"); //Test 
 		
-		ciao = filtercity.getPostsfromCity("Treia");
 	}
-	
+		
 }

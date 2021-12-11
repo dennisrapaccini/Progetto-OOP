@@ -31,7 +31,7 @@ public class ServiceImpl implements Service{
 	/**Metodo che ritorna le API dell'utente riguardante i post in JSONObject
 	 */
 	@Override
-	public JSONObject getPost_User() {
+	public JSONObject getPost_User() { //restituisce JSONObject normale e non JSONOb
 		JSONObject object = null;
 		String url = "https://graph.facebook.com/me?fields=posts&access_token="+token;
 		RestTemplate rt = new RestTemplate();

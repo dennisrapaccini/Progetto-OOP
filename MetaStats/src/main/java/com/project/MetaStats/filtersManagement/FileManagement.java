@@ -16,13 +16,15 @@ import org.json.simple.parser.ParseException;
 
 public class FileManagement {
 	
-	public JSONArray getFile() throws FileNotFoundException, IOException, ParseException{
+	public FileManagement(){}
+	
+	public JSONArray getFile() throws FileNotFoundException, IOException, ParseException{ //restituisce JSONArray JSON Simple
 		JSONParser parser = new JSONParser();
 		Object object = parser.parse(new FileReader("listaSplit (1).json"));
 		JSONObject jsonObject = (JSONObject) object;
 		JSONArray cityList = (JSONArray) jsonObject.get("Location");
 		System.out.println(cityList);
-		return cityList;
+		return (JSONArray)cityList;
 		}
 		
 	}
