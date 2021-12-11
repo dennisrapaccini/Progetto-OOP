@@ -66,7 +66,7 @@ public class FilterCity extends Filter {
 	
 	
 	
-	HashMap<JSONObject, JSONObject> mapPostCity = new HashMap<>(); // lo faccio in JSONObject, però allora i tipi Post e Location a che servono?
+	/*HashMap<JSONObject, JSONObject> mapPostCity = new HashMap<>(); // lo faccio in JSONObject, però allora i tipi Post e Location a che servono?
 	ServiceImpl serviceImpl = new ServiceImpl();
 	FileManagement database = new FileManagement();
 	JSONObject object = serviceImpl.getPost_User();
@@ -79,7 +79,7 @@ public class FilterCity extends Filter {
 			
 		}
 	}
-	}
+	}*/
 	
 	
 }

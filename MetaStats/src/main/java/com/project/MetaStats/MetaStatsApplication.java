@@ -18,12 +18,12 @@ public class MetaStatsApplication {
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(MetaStatsApplication.class, args);
 		ServiceImpl service = new ServiceImpl();
-		service.getPost_User();
-		service.getMessage_Post();
+		//service.getPost_User();
+		//service.getMessage_Post();
 		FilterCity filtercity= new FilterCity();
-		FileManagement file= new FileManagement(); 
-		JSONArray ciao = filtercity.getPostsfromCity("Treia"); //Test 
-		
+		FileManagement file= new FileManagement();
+		//JSONArray ciao = filtercity.getPostsfromCity("Treia"); //Test 
+		file.getFile();
 	}
 		
 }
