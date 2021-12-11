@@ -14,16 +14,10 @@ public class ServiceImpl implements Service{
 	
 	/**token di accesso alle API fornito all'utente da Facebook
 	 */
-	private String token = "EAANA9YBtvWIBABvnd0bathib0YCKjsahKqr00vZCayU30p8rYySnZA7HM5qJY9ZCSRkOPE81xpstaTuCZCoLzhfpFk6D1hjOHcJzZCQjhcZCnY8w7aBN5gTwHlXbXcgULOZAT7bMI1odfMGbO5naRIJs8qHl4m624PLIPtFZAbBj7WzZA58QGbjvN";
+	private String preToken = "EAANA9YBtvWIBAGv7ZCzBbjKdVBLNXd1CipYksDZC";
+	private String token = preToken+"Ogk488ah2zLZAsg1lRo8nWaPfS7XRZBGvZAtHYQ92p5Vt3ZC8dL4tjF0FqCJaG5iMzUw0hlYtHK0oN90mgYFiswcJ5B0VNBoZB2kw4cwOtes51wsxOYJw1wHZB7OtvKAHNWmp4DEWoQ98Q64";
 	
 	private String message;
-	
-	public String getMessage() {
-		return message;
-	}
-	public void setMessage(String message) {
-		this.message = message;
-	}
 
 	/**Metodo che ritorna le API dell'utente riguardante i post in JSONObject
 	 */
