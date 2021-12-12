@@ -21,19 +21,26 @@ public class Controller {
 	ServiceImpl service = new ServiceImpl();
 	FilterCity filter = new FilterCity();
 
-	/**Rotta di tipo GET che mostra tutti i post relativi alla città richiesta se presente
+	/**
+	 * Rotta di tipo GET che mostra tutti i post relativi alla città richiesta se
+	 * presente
 	 * 
 	 * @param city La città da cercare tra i post
-	 * @return Tutti i post se il parametro non è presente, i post relativi al parametro city altrimenti
+	 * @return Tutti i post se il parametro non è presente, i post relativi al
+	 *         parametro city altrimenti
 	 * @throws Exception
 	 */
 	@GetMapping(value = "/post")
-	public ResponseEntity<Object> getPost(@RequestParam(required = false) String city) throws Exception { 
+	public ResponseEntity<Object> getPost(@RequestParam(required = false) String city) throws Exception {
 
-		if (city == null) // Da Fare controllo (non qui) se la parola non è una città (non presente su database)
+		if (city == null) //
 			return new ResponseEntity<>(service.getPost_User().toString(), HttpStatus.OK);
 		else {
-			return new ResponseEntity<>(filter.getPostsfromCity(city).toString(), HttpStatus.OK);
+			if (filter.isCity(city))
+				return new ResponseEntity<>(filter.getPostsfromCity(city).toString(), HttpStatus.OK);
+			else
+				throw new Exception(); // aggiungere eccezione personalizzata (non in questo modo, guardare su codice
+										// di Federica)
 		}
 
 	}

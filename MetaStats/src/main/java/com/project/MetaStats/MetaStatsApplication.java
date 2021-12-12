@@ -23,7 +23,7 @@ public class MetaStatsApplication {
 		FilterCity filtercity= new FilterCity();
 		FileManagement file= new FileManagement();
 		//JSONArray ciao = filtercity.getPostsfromCity("Treia"); //Test 
-		file.getFile();
+		//file.getFile();
 	}
 		
 }
