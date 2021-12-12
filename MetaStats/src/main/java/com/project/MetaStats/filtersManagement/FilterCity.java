@@ -153,6 +153,7 @@ public class FilterCity extends Filter {
 	}
 	
 	
+	
 
 	/*
 	 * HashMap<JSONObject, JSONObject> mapPostCity = new HashMap<>(); // lo faccio

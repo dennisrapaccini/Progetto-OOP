@@ -30,7 +30,7 @@ public class Controller {
 	 *         parametro city altrimenti
 	 * @throws Exception
 	 */
-	@GetMapping(value = "/post")
+	@GetMapping(value = "/posts")
 	public ResponseEntity<Object> getPost(@RequestParam(required = false) String city) throws Exception {
 
 		if (city == null) //
