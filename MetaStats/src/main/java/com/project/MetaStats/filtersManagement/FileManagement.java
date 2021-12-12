@@ -18,7 +18,7 @@ public class FileManagement {
 	
 	public FileManagement(){}
 	
-	/** Metodo che converte il contenuto del file JSON in ArrayList di Location
+	/** Metodo che converte il contenuto del file listaComuni.json in ArrayList di Location
 	 * 
 	 * @return ArrayList<Location> 
 	 * @throws FileNotFoundException

@@ -18,23 +18,21 @@ public class ServiceImpl implements Service{
 	 */
 	private String preToken = "EAANA9YBtvWIBAGv7ZCzBbjKdVBLNXd1CipYksDZC";
 	private String token = preToken+"Ogk488ah2zLZAsg1lRo8nWaPfS7XRZBGvZAtHYQ92p5Vt3ZC8dL4tjF0FqCJaG5iMzUw0hlYtHK0oN90mgYFiswcJ5B0VNBoZB2kw4cwOtes51wsxOYJw1wHZB7OtvKAHNWmp4DEWoQ98Q64";
-	
 	private String message;
 
 	/**Metodo che ritorna le API dell'utente riguardante i post in JSONObject
+	 * @return object
 	 */
 	@Override
-	public JSONObject getPost_User() { //restituisce JSONObject normale e non JSONOb
+	public JSONObject getPost_User() { //restituisce JSONObject normale e non JSONObject simple
 		JSONObject object = null;
 		String url = "https://graph.facebook.com/me?fields=posts&access_token="+token;
 		RestTemplate rt = new RestTemplate();
 	    try {
 			object = new JSONObject(rt.getForObject(url, String.class));
 		} catch (RestClientException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    System.out.println(object);
@@ -42,6 +40,7 @@ public class ServiceImpl implements Service{
 	}
 	
 	/**Metodo che restituisce la descrizione dei post da cui si ricava il nome della città
+	 * @return message
 	 */
 	@Override
 	public String getMessage_Post() {
@@ -55,7 +54,6 @@ public class ServiceImpl implements Service{
 			    System.out.println(message);
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return message;

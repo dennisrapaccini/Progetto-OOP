@@ -6,8 +6,7 @@ package com.project.MetaStats.model;
  */
 public class Location {
 	
-	/**
-	 * Attributi relativi alle location
+	/**Attributi relativi alle location
 	 */
 	private String city;
 	private String province;

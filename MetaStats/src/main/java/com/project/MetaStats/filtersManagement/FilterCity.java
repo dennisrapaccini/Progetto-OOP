@@ -16,26 +16,36 @@ import org.json.simple.*;
 import org.json.simple.parser.ParseException;
 
 public class FilterCity extends Filter {
+	
+	/**Attributi relativi alla classe FilterCity
+	 */
+	private String city;
 
 	ServiceImpl service = new ServiceImpl();
 	String prova = service.getMessage_Post();
 	FileManagement database = new FileManagement();
-
-	public FilterCity() {
-
-	}
-
-	private String city;
-
+	
+	/**Costruttore della sottoclasse FilterCity estensione della superclasse Filter
+	 * @param city
+	 */
 	public FilterCity(String city) {
 		super();
 		this.city = city;
 	}
+	
+	public FilterCity() {
+	}
 
+	/**Metodo che restituisce l'attributo city(getter)
+	 * @return city
+	 */
 	public String getCity() {
 		return city;
 	}
-
+	
+	/**Metodo che setta l'attributo city(setter)
+	 * @param city
+	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
@@ -45,8 +55,6 @@ public class FilterCity extends Filter {
 		return city;
 	}
 
-	
-	
 	/**
 	 * Metodo che controlla se la città da parametro è presente nel database (ignorando il letter case)
 	 * 
