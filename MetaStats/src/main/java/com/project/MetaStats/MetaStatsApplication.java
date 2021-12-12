@@ -20,10 +20,10 @@ public class MetaStatsApplication {
 		ServiceImpl service = new ServiceImpl();
 		//service.getPost_User();
 		//service.getMessage_Post();
-		FilterCity filtercity= new FilterCity("Ancona");
+		FilterCity filtercity= new FilterCity();
 		FileManagement file= new FileManagement();
 		//JSONArray ciao = filtercity.getPostsfromCity("Treia"); //Test 
-		file.getFile();
+		//file.getFile();
 	}
 		
 }

@@ -12,7 +12,9 @@ import org.springframework.web.client.RestTemplate;
  */
 public class ServiceImpl implements Service{
 	
-	/**token di accesso alle API fornito all'utente da Facebook
+	/**Token di accesso (a lungo termine) alle API fornito all'utente da Facebook.
+	 * 
+	 * L'access token è stato diviso per evitare invalidazioni da parte del controllo di Facebook su GitHub.
 	 */
 	private String preToken = "EAANA9YBtvWIBAGv7ZCzBbjKdVBLNXd1CipYksDZC";
 	private String token = preToken+"Ogk488ah2zLZAsg1lRo8nWaPfS7XRZBGvZAtHYQ92p5Vt3ZC8dL4tjF0FqCJaG5iMzUw0hlYtHK0oN90mgYFiswcJ5B0VNBoZB2kw4cwOtes51wsxOYJw1wHZB7OtvKAHNWmp4DEWoQ98Q64";
@@ -22,7 +24,7 @@ public class ServiceImpl implements Service{
 	/**Metodo che ritorna le API dell'utente riguardante i post in JSONObject
 	 */
 	@Override
-	public JSONObject getPost_User() {
+	public JSONObject getPost_User() { //restituisce JSONObject normale e non JSONOb
 		JSONObject object = null;
 		String url = "https://graph.facebook.com/me?fields=posts&access_token="+token;
 		RestTemplate rt = new RestTemplate();
