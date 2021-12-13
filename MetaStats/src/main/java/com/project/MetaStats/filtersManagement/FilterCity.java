@@ -69,7 +69,7 @@ public class FilterCity extends Filter {
 		boolean isCity = false;
 		database.getFile();
 		for (int i = 0; i < database.getCityList().size(); i++) {
-			if (database.getCityList().get(i).getCity().toLowerCase().contains(city.toLowerCase())) { 
+			if (database.getCityList().get(i).getCity().toLowerCase().equals(city.toLowerCase())) { 
 				isCity = true;
 			}
 		}

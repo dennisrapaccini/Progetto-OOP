@@ -164,4 +164,10 @@ public class ServiceImpl implements Service {
 		    System.out.println(key + " " + value);
 		}
 	}
+	
+	//public JSONArray getPostsFromProvince(String city){
+		
+		
+		
+	//}
 }

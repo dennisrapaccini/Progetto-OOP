@@ -34,6 +34,7 @@ public class FilterRegion extends Filter{
 		return isRegion;
 	}
 	
+	
 	@Override
 	public String filter() {
 		// TODO Auto-generated method stub
