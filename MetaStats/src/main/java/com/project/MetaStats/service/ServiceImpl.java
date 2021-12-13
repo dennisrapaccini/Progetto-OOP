@@ -110,25 +110,26 @@ public class ServiceImpl implements Service {
 	 * @param city Città da cercare
 	 * @return JSONArray contenente tutti i post in cui è contenuta la città
 	 */
-	public JSONArray getPostsfromCity(String city) throws Exception { // restituisce JSONArray normale NON JSON Array simple
-
+	public JSONObject getPostsfromCity(String city) throws Exception { // restituisce JSONArray normale NON JSON Array simple
+		// TODO Fare controllo che non è una città qua dentro!! non nel controller
 		// TODO Due eccezioni fare: uno se non è presente city e un'altra per i
 		// JSONObject sotto.
-		
+		JSONObject objectPostsFromCity = new JSONObject();
 		ServiceImpl serviceImpl = new ServiceImpl();
 		JSONObject object = serviceImpl.getPost_User();
 		JSONObject object2 = object.getJSONObject("posts");
 		JSONArray array = object2.getJSONArray("data");
-		JSONArray ArrayPostsfromCity = new JSONArray();
+		JSONArray arrayPostsfromCity = new JSONArray();
 
 		for (int i = 0; i < array.length(); i++) {
 			String message = array.getJSONObject(i).getString("message").toLowerCase();
 			if (message.contains(city.toLowerCase())) {
-				ArrayPostsfromCity.put(array.getJSONObject(i));
+				arrayPostsfromCity.put(array.getJSONObject(i));
 			}
 		}
-		System.out.println(ArrayPostsfromCity);
-		return ArrayPostsfromCity;
+		objectPostsFromCity.put("Posts in "+city, arrayPostsfromCity);
+		System.out.println(arrayPostsfromCity);
+		return  objectPostsFromCity;
 	}
 
 	/** Questo metodo mappa ogni post ad ogni location, salvandolo su HashMap

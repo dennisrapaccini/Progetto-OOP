@@ -16,6 +16,6 @@ public interface Service {
 	
 	public abstract JSONObject getPost_User();
 	public abstract void allPosts() throws JSONException;
-	public JSONArray getPostsfromCity(String city) throws Exception;
+	public JSONObject getPostsfromCity(String city) throws Exception;
 	public void PostLocationMap() throws JSONException, FileNotFoundException, IOException, ParseException;
 }
