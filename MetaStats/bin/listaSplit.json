@@ -1,0 +1,451 @@
+{"Location": [
+  {
+    "City": "Agliè",
+<<<<<<< HEAD
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Airasca",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Ala di Stura",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Albiano d'Ivrea",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Almese",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Alpette",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Alpignano",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Andezeno",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Andrate",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Angrogna",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Arignano",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Avigliana",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Azeglio",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bairo",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Balangero",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Baldissero Canavese",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Baldissero Torinese",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Balme",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Banchette",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Barbania",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bardonecchia",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Barone Canavese",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Beinasco",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bibiana",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bobbio Pellice",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bollengo",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Borgaro Torinese",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Borgiallo",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Borgofranco d'Ivrea",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Borgomasino",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Borgone Susa",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bosconero",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Brandizzo",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bricherasio",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Brosso",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Brozolo",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bruino",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Brusasco",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bruzolo",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Buriasco",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Burolo",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Busano",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bussoleno",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Buttigliera Alta",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Cafasse",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Caluso",
+    "Province": "Torino",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Cambiano",
+    "Province": "Torino",
+=======
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Airasca",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Ala di Stura",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Albiano d'Ivrea",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Almese",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Alpette",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Alpignano",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Andezeno",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Andrate",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Angrogna",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Arignano",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Avigliana",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Azeglio",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bairo",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Balangero",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Baldissero Canavese",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Baldissero Torinese",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Balme",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Banchette",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Barbania",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bardonecchia",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Barone Canavese",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Beinasco",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bibiana",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bobbio Pellice",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bollengo",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Borgaro Torinese",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Borgiallo",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Borgofranco d'Ivrea",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Borgomasino",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Borgone Susa",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bosconero",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Brandizzo",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bricherasio",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Brosso",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Brozolo",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bruino",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Brusasco",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bruzolo",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Buriasco",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Burolo",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Busano",
+    "Province": "TO",
+    "Region": "Piemonte"
+  },
+  {
+    "City": "Bussoleno",
+    "Province": "TO",
+>>>>>>> branch 'main' of https://github.com/dennisrapaccini/Progetto-OOP.git
+    "Region": "Piemonte"
+  }
+]}

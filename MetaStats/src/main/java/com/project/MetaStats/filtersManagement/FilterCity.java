@@ -76,8 +76,8 @@ public class FilterCity extends Filter {
 		// SOLUZIONE: Si potrebbe controllare solo una parola della stringa in ingresso
 		boolean isCity = false;
 		database.getFile();
-		for (int i = 0; i < database.cityList.size(); i++) {
-			if (database.cityList.get(i).getCity().toLowerCase().contains(city.toLowerCase())) { 
+		for (int i = 0; i < database.getCityList().size(); i++) {
+			if (database.getCityList().get(i).getCity().toLowerCase().contains(city.toLowerCase())) { 
 				isCity = true;
 			}
 		}
@@ -98,8 +98,8 @@ public class FilterCity extends Filter {
 	public boolean isProvince(String province) throws FileNotFoundException, IOException, ParseException, JSONException {
 		boolean isProvince = false;
 		database.getFile();
-		for (int i = 0; i < database.cityList.size(); i++) {
-			if (database.cityList.get(i).getProvince().equalsIgnoreCase(province)) { 
+		for (int i = 0; i < database.getCityList().size(); i++) {
+			if (database.getCityList().get(i).getProvince().equalsIgnoreCase(province)) { 
 				isProvince = true;
 			}
 		}
@@ -121,8 +121,8 @@ public class FilterCity extends Filter {
 		// conviene controllare la prima parola in equals e basta. DA FARE.
 		boolean isRegion = false;
 		database.getFile();
-		for (int i = 0; i < database.cityList.size(); i++) {//Molta ridondanza nelle regioni. Possibile ottimizzazione
-			if (database.cityList.get(i).getRegion().equalsIgnoreCase(region)) { 
+		for (int i = 0; i < database.getCityList().size(); i++) {//Molta ridondanza nelle regioni. Possibile ottimizzazione
+			if (database.getCityList().get(i).getRegion().equalsIgnoreCase(region)) { 
 				isRegion = true;
 			}
 		}

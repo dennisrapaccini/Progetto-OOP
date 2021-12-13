@@ -4,9 +4,10 @@ package com.project.MetaStats.model;
  * @author Cheikh
  * @author Dennis
  */
-public class Location {
+public class Location extends SuperPost{
 	
-	/**Attributi relativi alle location
+	/**
+	 * Attributi relativi alle location
 	 */
 	private String city;
 	private String province;
