@@ -37,7 +37,7 @@ public class Controller {
 			return new ResponseEntity<>(service.getPost_User().toString(), HttpStatus.OK);
 		else {
 			if (filter.isCity(city))
-				return new ResponseEntity<>(filter.getPostsfromCity(city).toString(), HttpStatus.OK);
+				return new ResponseEntity<>(service.getPostsfromCity(city).toString(), HttpStatus.OK);
 			else
 				throw new Exception(); // aggiungere eccezione personalizzata (non in questo modo, guardare su codice
 										// di Federica)
