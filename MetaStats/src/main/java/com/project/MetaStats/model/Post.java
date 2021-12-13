@@ -53,7 +53,7 @@ public class Post {
 	 */
 	@Override
 	public String toString() {
-		return "Created time: "+createdTime+"/nDescription: "+message;
+		return "created time: "+createdTime+"/nmessage: "+message;
 	}
 	
 }

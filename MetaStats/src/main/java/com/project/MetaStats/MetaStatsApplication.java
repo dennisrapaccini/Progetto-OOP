@@ -2,6 +2,7 @@ package com.project.MetaStats;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.simple.parser.ParseException;
@@ -10,12 +11,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.project.MetaStats.filtersManagement.FileManagement;
 import com.project.MetaStats.filtersManagement.FilterCity;
+import com.project.MetaStats.model.Post;
 import com.project.MetaStats.service.ServiceImpl;
+import com.project.MetaStats.service.ToJSON;
 
 @SpringBootApplication
 public class MetaStatsApplication {
 
 	public static void main(String[] args) throws Exception {
+		
+		//ArrayList<Post> p = new ArrayList<Post>();
 		SpringApplication.run(MetaStatsApplication.class, args);
 		ServiceImpl service = new ServiceImpl();
 		//service.getPost_User();
@@ -25,6 +30,8 @@ public class MetaStatsApplication {
 		//JSONArray ciao = filtercity.getPostsfromCity("Treia"); //Test 
 		//file.getFile();
 		//service.PostLocationMap();
+		//ToJSON tj = new ToJSON();//test
+		//tj.toJSONArray(p);//test
 	}
 		
 }
