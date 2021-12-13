@@ -23770,11 +23770,6 @@
     "Region": "Marche"
   },
   {
-    "City": "Cagli",
-    "Province": "PU",
-    "Region": "Marche"
-  },
-  {
     "City": "Cantiano",
     "Province": "PU",
     "Region": "Marche"
@@ -33851,11 +33846,6 @@
   },
   {
     "City": "Cetraro",
-    "Province": "CS",
-    "Region": "Calabria"
-  },
-  {
-    "City": "Civita",
     "Province": "CS",
     "Region": "Calabria"
   },

@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 import com.project.MetaStats.filtersManagement.FileManagement;
 import com.project.MetaStats.model.Location;
 import com.project.MetaStats.model.Post;
+import com.project.MetaStats.model.SuperPost;
 
 /**
  * Classe che fa l'override dei metodi definiti in Service
@@ -27,6 +29,7 @@ public class ServiceImpl implements Service {
 
 	ArrayList<Post> posts = new ArrayList<Post>();
 	ArrayList<Location> postLocations = new ArrayList<Location>();
+	HashMap<Post, Location> map = new HashMap<Post, Location>();
 
 	/**
 	 * Token di accesso (a lungo termine) alle API fornito all'utente da Facebook.
@@ -115,7 +118,7 @@ public class ServiceImpl implements Service {
 	 * @throws IOException
 	 * @throws FileNotFoundException
 	 */
-	public void allPostLocations() throws JSONException, FileNotFoundException, IOException, ParseException {
+	public void PostLocationMap() throws JSONException, FileNotFoundException, IOException, ParseException {
 		allPosts();
 		FileManagement database = new FileManagement();
 		database.getFile();
@@ -127,16 +130,19 @@ public class ServiceImpl implements Service {
 			// ci andrebbe anche il toLowerCase, ma in questo modo trova anche città che non
 			// si intedendavo tali: ad esempio se sul post c'è scritto : "tasti" lui prende
 			// "asti"
-			//Altro problema: esempio: Ha preso sia Cagli che Cagliari
+			// Altro problema: esempio: Ha preso sia Cagli che Cagliari
 			for (int j = 0; j < posts.size(); j++) {
 				if (posts.get(j).getMessage().contains(city)) {
-					postLocations.add(database.getCityList().get(i));
+					map.put(posts.get(j), database.getCityList().get(i));
 				}
-
 			}
-
 		}
-		System.out.println(postLocations);
+		
+		for (Post name: map.keySet()) {
+		    String key = name.toString();
+		    String value = map.get(name).toString();
+		    System.out.println(key + " " + value);
+		}
 	}
 
 }

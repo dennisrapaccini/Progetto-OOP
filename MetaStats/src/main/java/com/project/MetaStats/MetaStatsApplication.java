@@ -24,7 +24,7 @@ public class MetaStatsApplication {
 		FileManagement file= new FileManagement();
 		//JSONArray ciao = filtercity.getPostsfromCity("Treia"); //Test 
 		//file.getFile();
-		service.allPostLocations();
+		service.PostLocationMap();
 	}
 		
 }
