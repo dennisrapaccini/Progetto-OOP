@@ -1,5 +1,10 @@
 package com.project.MetaStats.contoller;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.json.JSONException;
+import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,19 +36,17 @@ public class Controller {
 	 * @throws Exception
 	 */
 	@GetMapping(value = "/posts")
-	public ResponseEntity<Object> getPost(@RequestParam(required = false) String city) throws Exception {
-
-		if (city == null) //
-			return new ResponseEntity<>(service.getPost_User().toString(), HttpStatus.OK);
-		else {
-			if (filter.isCity(city))
-				return new ResponseEntity<>(service.getPostsfromCity(city).toString(), HttpStatus.OK);
-			else
-				throw new Exception(); // aggiungere eccezione personalizzata (non in questo modo, guardare su codice
-										// di Federica)
-		}
-
+	public ResponseEntity<Object> getPost() {
+		return new ResponseEntity<>(service.getPost_User().toString(), HttpStatus.OK);
+	}
+	
+	@GetMapping (value="/posts/location")
+	public ResponseEntity<Object> getPostsFromLocation(@RequestParam(required = true) String city) throws FileNotFoundException, IOException, ParseException, JSONException, Exception{
+	if (filter.isCity(city) && city!="")
+		return new ResponseEntity<>(service.getPostsfromCity(city).toString(), HttpStatus.OK);
+	else
+		throw new Exception(); // aggiungere eccezione personalizzata (non in questo modo, guardare su codice
+								// di Federica)
 	}
 
 }
-
