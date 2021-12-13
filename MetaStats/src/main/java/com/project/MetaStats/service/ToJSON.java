@@ -20,7 +20,7 @@ public class ToJSON {
 	 * @return JSONArray array di ritorno
 	 * @throws JSONException
 	 */
-	public JSONArray toJSONArray(ArrayList<Post> p) throws JSONException {
+	public JSONArray ArrayListToJSONArray(ArrayList<Post> p) throws JSONException {
 		JSONObject obj = new JSONObject();
 		JSONArray arr = new JSONArray();
 		for(int i = 0; i < p.size(); i++) {
@@ -31,5 +31,12 @@ public class ToJSON {
 		}
 		System.out.println(p);
 		return arr;
+	}
+	
+	/**Metodo che converte un HashMap in JSONObject o JSONArray
+	 * 
+	 */
+	public JSONArray HashMapToJSONArray() {
+		//poi passare a JSONObject su serviceImpl
 	}
 }

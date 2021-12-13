@@ -2,11 +2,13 @@ package com.project.MetaStats.service;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
-import org.json.JSONArray;
+import java.util.ArrayList;
+import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.simple.parser.ParseException;
+import com.project.MetaStats.model.Location;
+import com.project.MetaStats.model.Post;
 
 /**Interfaccia Service i cui metodi sono implementati in ServiceImpl
  * @author Cheikh
@@ -15,7 +17,7 @@ import org.json.simple.parser.ParseException;
 public interface Service {
 	
 	public abstract JSONObject getPost_User();
-	public abstract void allPosts() throws JSONException;
-	public JSONObject getPostsfromCity(String city) throws Exception;
-	public void PostLocationMap() throws JSONException, FileNotFoundException, IOException, ParseException;
+	public abstract ArrayList<Post> allPosts() throws JSONException;
+	public abstract JSONObject getPostsfromCity(String city) throws Exception;
+	public abstract HashMap<Post, Location> PostLocationMapping() throws JSONException, FileNotFoundException, IOException, ParseException;
 }

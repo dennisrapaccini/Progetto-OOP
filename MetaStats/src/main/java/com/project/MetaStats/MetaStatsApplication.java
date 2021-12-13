@@ -14,6 +14,7 @@ import com.project.MetaStats.filtersManagement.FilterCity;
 import com.project.MetaStats.model.Post;
 import com.project.MetaStats.service.ServiceImpl;
 import com.project.MetaStats.service.ToJSON;
+import com.project.MetaStats.statistics.Statistics;
 
 @SpringBootApplication
 public class MetaStatsApplication {
@@ -29,9 +30,11 @@ public class MetaStatsApplication {
 		FileManagement file= new FileManagement();
 		//JSONArray ciao = filtercity.getPostsfromCity("Treia"); //Test 
 		//file.getFile();
-		//service.PostLocationMap();
+		service.PostLocationMapping();
 		//ToJSON tj = new ToJSON();//test
 		//tj.toJSONArray(p);//test
+		Statistics stats = new Statistics();
+		stats.rankingCity();
 	}
 		
 }

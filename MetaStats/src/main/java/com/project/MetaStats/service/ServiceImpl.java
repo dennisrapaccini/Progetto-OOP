@@ -1,7 +1,6 @@
 package com.project.MetaStats.service;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +8,6 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -17,7 +15,6 @@ import org.springframework.web.client.RestTemplate;
 import com.project.MetaStats.filtersManagement.FileManagement;
 import com.project.MetaStats.model.Location;
 import com.project.MetaStats.model.Post;
-import com.project.MetaStats.model.SuperPost;
 
 /**Classe che fa l'override dei metodi definiti in Service
  * 
@@ -26,9 +23,7 @@ import com.project.MetaStats.model.SuperPost;
  */
 public class ServiceImpl implements Service {
 
-	ArrayList<Post> posts = new ArrayList<Post>();
 	ArrayList<Location> postLocations = new ArrayList<Location>();
-	HashMap<Post, Location> map = new HashMap<Post, Location>();
 
 	/**Token di accesso (a lungo termine) alle API fornito all'utente da Facebook.
 	 * 
@@ -91,10 +86,12 @@ public class ServiceImpl implements Service {
 	}*/
 
 	/**Questo metodo salva su ArrayList tutti i post
+	 * @return 
 	 * 
 	 * @throws JSONException
 	 */
-	public void allPosts() throws JSONException {
+	public  ArrayList<Post> allPosts() throws JSONException {
+		ArrayList<Post> posts = new ArrayList<Post>();
 		JSONObject object = getPost_User();
 		JSONObject object2 = object.getJSONObject("posts");
 		JSONArray data = object2.getJSONArray("data");
@@ -103,6 +100,7 @@ public class ServiceImpl implements Service {
 			String message = data.getJSONObject(i).getString("message");
 			posts.add(new Post(createdTime, message));
 		}
+		return posts;
 	}
 	
 	/**Metodo che restituisce in JSONArray i post che contengono il parametro city (ignorando il letter case)
@@ -139,13 +137,12 @@ public class ServiceImpl implements Service {
 	 * @throws IOException
 	 * @throws FileNotFoundException
 	 */
-	public void PostLocationMap() throws JSONException, FileNotFoundException, IOException, ParseException {
-		allPosts();
+	public HashMap<Post, Location> PostLocationMapping() throws JSONException, FileNotFoundException, IOException, ParseException {
+		HashMap<Post, Location> map = new HashMap<Post, Location>();
+		ArrayList<Post> posts = new ArrayList<Post>();
+		posts = allPosts();
 		FileManagement database = new FileManagement();
 		database.getFile();
-		JSONObject object = getPost_User();
-		JSONObject object2 = object.getJSONObject("posts");
-		JSONArray data = object2.getJSONArray("data");
 		for (int i = 0; i < database.getCityList().size(); i++) {
 			String city = database.getCityList().get(i).getCity();// i-esima città del database
 			// ci andrebbe anche il toLowerCase, ma in questo modo trova anche città che non
@@ -158,12 +155,8 @@ public class ServiceImpl implements Service {
 				}
 			}
 		}
-		
-		for (Post name: map.keySet()) {
-		    String key = name.toString();
-		    String value = map.get(name).toString();
-		    System.out.println(key + " " + value);
-		}
+		System.out.println(map);
+		return map;
 	}
 	
 	//public JSONArray getPostsFromProvince(String city){
