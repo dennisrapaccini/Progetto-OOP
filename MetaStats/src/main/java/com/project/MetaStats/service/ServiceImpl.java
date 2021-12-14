@@ -123,7 +123,7 @@ public class ServiceImpl implements Service {
 			String message = array.getJSONObject(i).getString("message").toLowerCase();
 			if (message.contains(city.toLowerCase())) {
 				arrayPostsfromCity.put(array.getJSONObject(i));
-			}
+			} 
 		}
 		objectPostsFromCity.put("Posts in "+city, arrayPostsfromCity);
 		System.out.println(arrayPostsfromCity);
@@ -148,7 +148,7 @@ public class ServiceImpl implements Service {
 			// ci andrebbe anche il toLowerCase, ma in questo modo trova anche città che non
 			// si intedendavo tali: ad esempio se sul post c'è scritto : "tasti" lui prende
 			// "asti"
-			// Altro problema: esempio: Ha preso sia Cagli che Cagliari
+			// Altro problema: esempio: Ha preso sia Cagli che Cagliari 
 			for (int j = 0; j < posts.size(); j++) {
 				if (posts.get(j).getMessage().contains(city)) {
 					map.put(posts.get(j), database.getCityList().get(i));
@@ -159,9 +159,24 @@ public class ServiceImpl implements Service {
 		return map;
 	}
 	
-	//public JSONArray getPostsFromProvince(String city){
+	public ArrayList<Post> getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException{
+		HashMap<Post,Location> map = new HashMap<Post,Location>();
+		ArrayList<Post> provincePosts = new ArrayList<Post>();
+		map = PostLocationMapping();
+		for (int i=0; i < map.size(); i++) {
+			if((map.get(allPosts().get(i))).getProvince().equalsIgnoreCase(province)) {
+				provincePosts.add(allPosts().get(i));
+			}
+		}
+		System.out.println(provincePosts);
+		return provincePosts;
+		
+	
 		
 		
 		
-	//}
+		
+		
+		
+	}
 }

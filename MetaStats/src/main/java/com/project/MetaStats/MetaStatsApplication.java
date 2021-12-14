@@ -34,7 +34,8 @@ public class MetaStatsApplication {
 		//ToJSON tj = new ToJSON();//test
 		//tj.toJSONArray(p);//test
 		Statistics stats = new Statistics();
-		stats.rankingCity();
+		//stats.rankingCity();
+		service.getPostsFromProvince("mc");
 	}
 		
 }

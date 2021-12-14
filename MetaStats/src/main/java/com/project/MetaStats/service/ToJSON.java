@@ -36,7 +36,7 @@ public class ToJSON {
 	/**Metodo che converte un HashMap in JSONObject o JSONArray
 	 * 
 	 */
-	public JSONArray HashMapToJSONArray() {
+	/*public JSONArray HashMapToJSONArray() {
 		//poi passare a JSONObject su serviceImpl
-	}
+	}*/
 }
