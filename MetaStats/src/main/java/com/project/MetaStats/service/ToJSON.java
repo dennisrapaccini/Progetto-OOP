@@ -1,6 +1,8 @@
 package com.project.MetaStats.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,26 +19,34 @@ public class ToJSON {
 	
 	/**Metodo che converte l'ArrayList in JSONArray
 	 * @param p
-	 * @return JSONArray array di ritorno
+	 * @return JSONArray
 	 * @throws JSONException
 	 */
-	public JSONArray ArrayListToJSONArray(ArrayList<Post> p) throws JSONException {
-		JSONObject obj = new JSONObject();
+	public static JSONArray ArrayListToJSONArray(ArrayList<Post> p) throws JSONException {
 		JSONArray arr = new JSONArray();
 		for(int i = 0; i < p.size(); i++) {
-			obj.put("Created_time", p.get(i).getCreatedTime());
+			JSONObject obj = new JSONObject();
+			obj.put("Created Time", p.get(i).getCreatedTime());
 			obj.put("Message", p.get(i).getMessage());
+			System.out.println();
 			arr.put(obj);
-			
 		}
-		System.out.println(p);
 		return arr;
 	}
 	
 	/**Metodo che converte un HashMap in JSONObject o JSONArray
+	 * @throws JSONException
 	 * 
 	 */
-	/*public JSONArray HashMapToJSONArray() {
+	public static JSONArray HashMapToJSONArray(HashMap<String, Integer> hm) throws JSONException {
 		//poi passare a JSONObject su serviceImpl
-	}*/
+		JSONArray arr = new JSONArray();
+		for(Entry<String, Integer> set : hm.entrySet()) {
+			JSONObject object = new JSONObject();
+			object.put("Occurences", set.getValue());
+			object.put("City", set.getKey());
+			arr.put(object);
+		}
+		return arr;
+	}
 }

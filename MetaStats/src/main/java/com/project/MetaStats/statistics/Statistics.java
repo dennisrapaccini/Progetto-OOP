@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
 import com.project.MetaStats.model.*;
@@ -32,7 +34,6 @@ public class Statistics {
 		ServiceImpl service = new ServiceImpl();
 		hm = service.PostLocationMapping();
 		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
-		System.out.println(loc);
 		for(int i = 0; i < loc.size(); i++) {
 			int counter = 0;
 			for(int j = 0; j < loc.size(); j++) {
