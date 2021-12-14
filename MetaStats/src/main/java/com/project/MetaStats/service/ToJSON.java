@@ -24,7 +24,7 @@ public class ToJSON {
 	 */
 	public static JSONArray ArrayListToJSONArray(ArrayList<Post> p) throws JSONException {
 		JSONArray arr = new JSONArray();
-		for(int i = 0; i < p.size(); i++) {
+		for(int i = 0; i < p.size(); i++) {  
 			JSONObject obj = new JSONObject();
 			obj.put("Created Time", p.get(i).getCreatedTime());
 			obj.put("Message", p.get(i).getMessage());
