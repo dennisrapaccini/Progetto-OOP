@@ -43,10 +43,11 @@ public class Controller {
 	@GetMapping (value="/posts/location")
 	public ResponseEntity<Object> getPostsFromLocation(@RequestParam(required = true) String city) throws FileNotFoundException, IOException, ParseException, JSONException, Exception{
 	if (filter.isCity(city) && city!="")
-		return new ResponseEntity<>(service.getPostsfromCity(city).toString(), HttpStatus.OK);
+		return new ResponseEntity<>(service.getPostsFromCity(city).toString(), HttpStatus.OK);
 	else
 		throw new Exception(); // aggiungere eccezione personalizzata (non in questo modo, guardare su codice
 								// di Federica)
 	}
+	
 
 }
