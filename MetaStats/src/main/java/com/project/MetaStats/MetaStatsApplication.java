@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.project.MetaStats.filtersManagement.FileManagement;
 import com.project.MetaStats.filtersManagement.FilterCity;
+import com.project.MetaStats.model.Location;
 import com.project.MetaStats.model.Post;
 import com.project.MetaStats.service.ServiceImpl;
 import com.project.MetaStats.service.ToJSON;
@@ -22,20 +23,22 @@ public class MetaStatsApplication {
 	public static void main(String[] args) throws Exception {
 		
 		//ArrayList<Post> p = new ArrayList<Post>();
+		ArrayList<Location> p = new ArrayList<Location>();
 		SpringApplication.run(MetaStatsApplication.class, args);
 		ServiceImpl service = new ServiceImpl();
 		//service.getPost_User();
 		//service.getMessage_Post();
 		FilterCity filtercity= new FilterCity();
+		filtercity.filter();
 		FileManagement file= new FileManagement();
 		//JSONArray ciao = filtercity.getPostsfromCity("Treia"); //Test 
 		//file.getFile();
-		service.PostLocationMapping();
+		//service.PostLocationMapping();
 		//ToJSON tj = new ToJSON();//test
 		//tj.toJSONArray(p);//test
 		Statistics stats = new Statistics();
-		//stats.rankingCity();
-		service.getPostsFromProvince("MT");
+		//stats.rankingCity("region");
+		//service.getPostsFromProvince("MT");
 		//System.out.println(service.allPosts());
 		
 	}

@@ -49,7 +49,7 @@ public class FileManagement {
 			   } 
 			} 
 		
-		//System.out.println(getCityList());
+		System.out.println(getCityList());
 		}
 
 	public ArrayList<Location> getCityList() {

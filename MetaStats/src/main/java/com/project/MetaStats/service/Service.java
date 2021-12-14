@@ -15,7 +15,7 @@ import com.project.MetaStats.model.Post;
  * @author Dennis
  */
 public interface Service {
-	
+	public String getMessage_Post();
 	public abstract JSONObject getPost_User();
 	public abstract ArrayList<Post> allPosts() throws JSONException;
 	public abstract JSONObject getPostsFromCity(String city) throws Exception;

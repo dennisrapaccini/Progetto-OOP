@@ -28,12 +28,15 @@ public class Statistics {
 	 * @throws IOException
 	 * @throws ParseException
 	 */
-	public HashMap<String, Integer> rankingCity() throws FileNotFoundException, JSONException, IOException, ParseException {
+	public HashMap<String, Integer> rankingCity(String type) throws FileNotFoundException, JSONException, IOException, ParseException {
 		HashMap<String, Integer> occurences = new HashMap<String, Integer>();
 		HashMap<Post, Location> hm = new HashMap<Post, Location>();
 		ServiceImpl service = new ServiceImpl();
 		hm = service.PostLocationMapping();
 		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
+		//try catch con eccezione per il type non riconosciuto ovvero diverso da city province o region
+		switch(type) {
+		case "city" :
 		for(int i = 0; i < loc.size(); i++) {
 			int counter = 0;
 			for(int j = 0; j < loc.size(); j++) {
@@ -43,7 +46,31 @@ public class Statistics {
 			}
 			occurences.put(loc.get(i).getCity(), counter);
 		}
-		return Sort.hmSort(occurences);
+		break;
+		case "province" : 
+			for(int i = 0; i < loc.size(); i++) {
+				int counter = 0;
+				for(int j = 0; j < loc.size(); j++) {
+					if (loc.get(i).getProvince().equals(loc.get(j).getProvince())) {
+						counter++;
+					}
+				}
+				occurences.put(loc.get(i).getProvince(), counter);
+			}
+			break;
+		case "region" :
+			for(int i = 0; i < loc.size(); i++) {
+				int counter = 0;
+				for(int j = 0; j < loc.size(); j++) {
+					if (loc.get(i).getRegion().equals(loc.get(j).getRegion())) {
+						counter++;
+					}
+				}
+				occurences.put(loc.get(i).getRegion(), counter);
+			}
+			break;
+		}
+		System.out.println(Sort.hmSort(occurences));
+	return Sort.hmSort(occurences);
 	}
-		
 }

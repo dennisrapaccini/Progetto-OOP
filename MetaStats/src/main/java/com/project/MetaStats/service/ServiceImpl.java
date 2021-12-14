@@ -70,7 +70,7 @@ public class ServiceImpl implements Service {
 	 *
 	 */
 	@Override
-	/*public String getMessage_Post() {
+	public String getMessage_Post() {
 		try {
 			JSONObject object = getPost_User();
 			JSONObject object2 = object.getJSONObject("posts");
@@ -84,7 +84,7 @@ public class ServiceImpl implements Service {
 			e.printStackTrace();
 		}
 		return message;
-	}*/
+	}
 
 	/**Questo metodo salva su ArrayList tutti i post
 	 * @return 
