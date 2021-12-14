@@ -8,18 +8,18 @@ package com.project.MetaStats.exception;
  * @author Cheikh Cisse
  *
  */
-public class WrongParameterException extends Throwable {
+public class WrongParameterException extends Exception {
 
-	
 	private static final long serialVersionUID = 1L;
-	String e;
+	String error;
 
-	public WrongParameterException(String e) {
-		this.e = e;
+	public WrongParameterException(String error) {
+		super();
+		this.error = error;
 	}
 
-	public String getE() {
-		return e;
+	public String getError() {
+		return error;
 	}
 	
 
