@@ -18,6 +18,6 @@ public interface Service {
 	
 	public abstract JSONObject getPost_User();
 	public abstract ArrayList<Post> allPosts() throws JSONException;
-	public abstract JSONObject getPostsfromCity(String city) throws Exception;
+	public abstract JSONObject getPostsFromCity(String city) throws Exception;
 	public abstract HashMap<Post, Location> PostLocationMapping() throws JSONException, FileNotFoundException, IOException, ParseException;
 }

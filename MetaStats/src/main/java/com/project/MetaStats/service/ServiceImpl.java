@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -108,7 +109,7 @@ public class ServiceImpl implements Service {
 	 * @param city Città da cercare
 	 * @return JSONArray contenente tutti i post in cui è contenuta la città
 	 */
-	public JSONObject getPostsfromCity(String city) throws Exception { // restituisce JSONArray normale NON JSON Array simple
+	public JSONObject getPostsFromCity(String city) throws Exception { // restituisce JSONArray normale NON JSON Array simple
 		// TODO Fare controllo che non è una città qua dentro!! non nel controller
 		// TODO Due eccezioni fare: uno se non è presente city e un'altra per i
 		// JSONObject sotto.
@@ -126,7 +127,7 @@ public class ServiceImpl implements Service {
 			} 
 		}
 		objectPostsFromCity.put("Posts in "+city, arrayPostsfromCity);
-		System.out.println(arrayPostsfromCity);
+		//System.out.println(arrayPostsfromCity);
 		return  objectPostsFromCity;
 	}
 
@@ -155,7 +156,7 @@ public class ServiceImpl implements Service {
 				}
 			}
 		}
-		System.out.println(map);
+		//System.out.println(map);
 		return map;
 	}
 	
@@ -163,14 +164,17 @@ public class ServiceImpl implements Service {
 		HashMap<Post,Location> map = new HashMap<Post,Location>();
 		ArrayList<Post> provincePosts = new ArrayList<Post>();
 		map = PostLocationMapping();
-		for (int i=0; i < map.size(); i++) {
-			if((map.get(allPosts().get(i))).getProvince().equalsIgnoreCase(province)) {
-				provincePosts.add(allPosts().get(i));
+		for (Entry<Post, Location> me : map.entrySet()) {
+			if((me.getValue().getProvince().equalsIgnoreCase(province))){
+				provincePosts.add(me.getKey());
 			}
-		}
+			
+	        }
+		
 		System.out.println(provincePosts);
 		return provincePosts;
 		
+	}
 	
 		
 		
@@ -179,4 +183,4 @@ public class ServiceImpl implements Service {
 		
 		
 	}
-}
+

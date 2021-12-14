@@ -35,7 +35,9 @@ public class MetaStatsApplication {
 		//tj.toJSONArray(p);//test
 		Statistics stats = new Statistics();
 		//stats.rankingCity();
-		service.getPostsFromProvince("mc");
+		service.getPostsFromProvince("MT");
+		//System.out.println(service.allPosts());
+		
 	}
 		
 }
