@@ -26,8 +26,7 @@ public class Controller {
 	ServiceImpl service = new ServiceImpl();
 	FilterCity filter = new FilterCity();
 
-	/**
-	 * Rotta di tipo GET che mostra tutti i post relativi alla città richiesta se
+	/**Rotta di tipo GET che mostra tutti i post relativi alla città richiesta se
 	 * presente
 	 * 
 	 * @param city La città da cercare tra i post
@@ -40,7 +39,17 @@ public class Controller {
 		return new ResponseEntity<>(service.getPost_User().toString(), HttpStatus.OK);
 	}
 	
-	@GetMapping (value="/posts/location")
+	/**Rotta di tipo GET che mostra i post che sono filtrati tramite location
+	 * 
+	 * @param city
+	 * @return ResponseEntity
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 * @throws JSONException
+	 * @throws Exception
+	 */
+	@GetMapping (value = "/posts/location")
 	public ResponseEntity<Object> getPostsFromLocation(@RequestParam(required = true) String city) throws FileNotFoundException, IOException, ParseException, JSONException, Exception{
 	if (filter.isCity(city) && city!="")
 		return new ResponseEntity<>(service.getPostsFromCity(city).toString(), HttpStatus.OK);
@@ -49,5 +58,19 @@ public class Controller {
 								// di Federica)
 	}
 	
-
+	/**Rotta di tipo GET che mostra il ranking delle città, province o regioni più visitate dall'utente a 
+	 * seconda del parametro immesso dall'utente
+	 * 
+	 * @param type
+	 * @return ResponseEntity
+	 * @throws FileNotFoundException
+	 * @throws JSONException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	@GetMapping (value = "/stats/ranking")
+	public ResponseEntity<Object> ranking(@RequestParam(required = true) String type) throws FileNotFoundException, JSONException, IOException, ParseException{
+		return new ResponseEntity<>(service.ranking(type).toString(), HttpStatus.OK);
+	}
+	
 }

@@ -38,13 +38,13 @@ public class ToJSON {
 	 * @throws JSONException
 	 * 
 	 */
-	public static JSONArray HashMapToJSONArray(HashMap<String, Integer> hm) throws JSONException {
+	public static JSONArray HashMapToJSONArray(HashMap<String, Integer> hm, String type) throws JSONException {
 		//poi passare a JSONObject su serviceImpl
 		JSONArray arr = new JSONArray();
 		for(Entry<String, Integer> set : hm.entrySet()) {
 			JSONObject object = new JSONObject();
 			object.put("Occurences", set.getValue());
-			object.put("City", set.getKey());
+			object.put(type, set.getKey());
 			arr.put(object);
 		}
 		return arr;

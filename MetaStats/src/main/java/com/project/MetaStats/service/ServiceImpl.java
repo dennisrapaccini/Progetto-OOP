@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 import com.project.MetaStats.filtersManagement.FileManagement;
 import com.project.MetaStats.model.Location;
 import com.project.MetaStats.model.Post;
+import com.project.MetaStats.statistics.Statistics;
 
 /**Classe che fa l'override dei metodi definiti in Service
  * 
@@ -36,7 +37,7 @@ public class ServiceImpl implements Service {
 			+ "Ogk488ah2zLZAsg1lRo8nWaPfS7XRZBGvZAtHYQ92p5Vt3ZC8dL4tjF0FqCJaG5iMzUw0hlYtHK0oN90mgYFiswcJ5B0VNBoZB2kw4cwOtes51wsxOYJw1wHZB7OtvKAHNWmp4DEWoQ98Q64";
 
 	private String message;
-
+	private Statistics stats = new Statistics();
 	public String getMessage() {
 		return message;
 	}
@@ -91,6 +92,7 @@ public class ServiceImpl implements Service {
 	 * 
 	 * @throws JSONException
 	 */
+	@Override
 	public  ArrayList<Post> allPosts() throws JSONException {
 		ArrayList<Post> posts = new ArrayList<Post>();
 		JSONObject object = getPost_User();
@@ -109,6 +111,7 @@ public class ServiceImpl implements Service {
 	 * @param city Città da cercare
 	 * @return JSONArray contenente tutti i post in cui è contenuta la città
 	 */
+	@Override
 	public JSONObject getPostsFromCity(String city) throws Exception { // restituisce JSONArray normale NON JSON Array simple
 		// TODO Fare controllo che non è una città qua dentro!! non nel controller
 		// TODO Due eccezioni fare: uno se non è presente city e un'altra per i
@@ -138,6 +141,7 @@ public class ServiceImpl implements Service {
 	 * @throws IOException
 	 * @throws FileNotFoundException
 	 */
+	@Override
 	public HashMap<Post, Location> PostLocationMapping() throws JSONException, FileNotFoundException, IOException, ParseException {
 		HashMap<Post, Location> map = new HashMap<Post, Location>();
 		ArrayList<Post> posts = new ArrayList<Post>();
@@ -160,6 +164,11 @@ public class ServiceImpl implements Service {
 		return map;
 	}
 	
+	/**Metodo restituisce un ArraList dei post relativi alla provincia immessa dall'utente
+	 * @param province 
+	 * @return ArrayList provincePosts
+	 */
+	@Override
 	public ArrayList<Post> getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException{
 		HashMap<Post,Location> map = new HashMap<Post,Location>();
 		ArrayList<Post> provincePosts = new ArrayList<Post>();
@@ -174,6 +183,21 @@ public class ServiceImpl implements Service {
 		System.out.println(provincePosts);
 		return provincePosts;
 		
+	}
+	
+	/**Metodo che mostra il ranking in JSONObject delle città, province o regioni visitate dall' utente
+	 * @param type parametro che indica il tipo di ranking che si vuole visualizzare
+	 * @return obj jsonObject
+	 */
+	@Override
+	public JSONObject ranking(String type) throws FileNotFoundException, JSONException, IOException, ParseException {
+		HashMap<String,Integer> hm = new HashMap<String,Integer>();
+		JSONArray array = new JSONArray();
+		hm = stats.ranking(type);
+		array = ToJSON.HashMapToJSONArray(hm, type.substring(0, 1).toUpperCase() + type.substring(1));
+		JSONObject obj = new JSONObject();
+		obj.put("Ranking " +type, array);
+		return obj;
 	}
 	
 		

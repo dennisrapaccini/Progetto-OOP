@@ -28,7 +28,7 @@ public class Statistics {
 	 * @throws IOException
 	 * @throws ParseException
 	 */
-	public HashMap<String, Integer> rankingCity(String type) throws FileNotFoundException, JSONException, IOException, ParseException {
+	public HashMap<String, Integer> ranking(String type) throws FileNotFoundException, JSONException, IOException, ParseException {
 		HashMap<String, Integer> occurences = new HashMap<String, Integer>();
 		HashMap<Post, Location> hm = new HashMap<Post, Location>();
 		ServiceImpl service = new ServiceImpl();

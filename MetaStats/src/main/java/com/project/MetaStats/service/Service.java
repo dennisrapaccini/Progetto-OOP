@@ -1,6 +1,7 @@
 package com.project.MetaStats.service;
 
 import java.io.FileNotFoundException;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,4 +21,6 @@ public interface Service {
 	public abstract ArrayList<Post> allPosts() throws JSONException;
 	public abstract JSONObject getPostsFromCity(String city) throws Exception;
 	public abstract HashMap<Post, Location> PostLocationMapping() throws JSONException, FileNotFoundException, IOException, ParseException;
+	public abstract JSONObject ranking(String type) throws FileNotFoundException, JSONException, IOException, ParseException;
+	public ArrayList<Post> getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException;
 }
