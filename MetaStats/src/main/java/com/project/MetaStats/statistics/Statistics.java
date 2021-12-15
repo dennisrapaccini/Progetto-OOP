@@ -1,15 +1,13 @@
 package com.project.MetaStats.statistics;
 
 import java.io.FileNotFoundException;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
 import com.project.MetaStats.model.*;
-
 import com.project.MetaStats.service.*;
 
 /**Classe che implementa i metodi per effettuare statistiche sui post

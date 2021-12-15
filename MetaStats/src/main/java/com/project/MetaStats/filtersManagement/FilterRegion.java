@@ -11,6 +11,15 @@ public class FilterRegion extends Filter{
 	FileManagement database = new FileManagement();
 	private String region;
 	
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
+
+
 	/**
 	 * Metodo che controlla se la regione da parametro è presente nel database (ignorando il letter case)
 	 * 
@@ -38,7 +47,7 @@ public class FilterRegion extends Filter{
 	@Override
 	public String filter() {
 		// TODO Auto-generated method stub
-		return null;
+		return region;
 	}
 
 }

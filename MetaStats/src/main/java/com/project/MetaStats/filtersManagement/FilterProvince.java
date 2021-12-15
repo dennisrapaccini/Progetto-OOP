@@ -11,6 +11,14 @@ public class FilterProvince extends Filter{
 	FileManagement database = new FileManagement();
 	private String province;
 	
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
 	/**
 	 * Metodo che controlla se la provincia (in sigla) da parametro è presente nel database (ignorando il letter case)
 	 * 
@@ -36,7 +44,7 @@ public class FilterProvince extends Filter{
 	@Override
 	public String filter() {
 		// TODO Auto-generated method stub
-		return null;
+		return province;
 	}
 
 }

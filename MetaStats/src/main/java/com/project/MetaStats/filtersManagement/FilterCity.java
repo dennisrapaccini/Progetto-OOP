@@ -2,17 +2,7 @@ package com.project.MetaStats.filtersManagement;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.HashMap;
-import org.json.JSONObject;
-import org.json.JSONArray;
 import org.json.JSONException;
-import com.project.MetaStats.model.Post;
-import com.project.MetaStats.service.ServiceImpl;
-import com.project.MetaStats.model.Location;
-import org.json.simple.*;
 import org.json.simple.parser.ParseException;
 
 public class FilterCity extends Filter {

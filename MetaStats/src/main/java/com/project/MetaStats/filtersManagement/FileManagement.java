@@ -1,18 +1,11 @@
 package com.project.MetaStats.filtersManagement;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Vector;
-
 import org.json.simple.JSONArray;
-
 import org.json.JSONException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
