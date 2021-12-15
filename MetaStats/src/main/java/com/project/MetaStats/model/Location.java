@@ -4,7 +4,7 @@ package com.project.MetaStats.model;
  * @author Cheikh
  * @author Dennis
  */
-public class Location extends SuperPost{
+public class Location {
 	
 	/**
 	 * Attributi relativi alle location

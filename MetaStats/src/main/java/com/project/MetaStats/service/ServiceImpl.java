@@ -35,7 +35,7 @@ public class ServiceImpl implements Service {
 	private String preToken = "EAANA9YBtvWIBAGv7ZCzBbjKdVBLNXd1CipYksDZC";
 	private String token = preToken
 			+ "Ogk488ah2zLZAsg1lRo8nWaPfS7XRZBGvZAtHYQ92p5Vt3ZC8dL4tjF0FqCJaG5iMzUw0hlYtHK0oN90mgYFiswcJ5B0VNBoZB2kw4cwOtes51wsxOYJw1wHZB7OtvKAHNWmp4DEWoQ98Q64";
-
+	private String Id="107864155075941";
 	private String message;
 	private Statistics stats = new Statistics();
 	public String getMessage() {
@@ -63,7 +63,7 @@ public class ServiceImpl implements Service {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(object);
+		//System.out.println(object);
 		return object;
 	}
 
@@ -78,7 +78,7 @@ public class ServiceImpl implements Service {
 			JSONArray array = object2.getJSONArray("data");
 			for (int i = 0; i < array.length(); i++) { // si usa un for normale perchè get() richiede il parametro
 				message = array.getJSONObject(i).getString("message");
-				System.out.println(message);
+				//System.out.println(message);
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -101,8 +101,11 @@ public class ServiceImpl implements Service {
 		for (int i = 0; i < data.length(); i++) {
 			String createdTime = data.getJSONObject(i).getString("created_time");
 			String message = data.getJSONObject(i).getString("message");
-			posts.add(new Post(createdTime, message));
+			String id = data.getJSONObject(i).getString("id");
+			posts.add(new Post(Id, message, createdTime, id));
 		}
+
+		//System.out.println(posts);
 		return posts;
 	}
 	
@@ -180,7 +183,7 @@ public class ServiceImpl implements Service {
 			
 	        }
 		
-		System.out.println(provincePosts);
+		//System.out.println(provincePosts);
 		return provincePosts;
 		
 	}

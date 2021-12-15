@@ -4,36 +4,26 @@ package com.project.MetaStats.model;
  * @author Cheikh
  * @author Dennis
  */
-public class Post {
-	
+public class Post extends User {
+
 	/** Attributi relativi ai post dell'utente
 	 */
-	private String createdTime;
 	private String message;
+	private String CreatedTime;
+	private String idPost;
+	private String ID = getId()+"_"+idPost;
 	
 	/**Costruttore dell'oggetto post
 	 * @param createdTime
 	 * @param message
 	 */
-	public Post(String createdTime, String message) {
-		super();
-		this.createdTime = createdTime;
+	public Post(String id, String message, String CreatedTime, String ID) {
+		super(id);
 		this.message = message;
+		this.CreatedTime = CreatedTime;
+		this.ID = ID;
 	}
 	
-	/**Metodo che restituisce il momento della creazione del post(getter)
-	 * @return createdTime
-	 */
-	public String getCreatedTime() {
-		return createdTime;
-	}
-	
-	/**Metodo che setta il momento della creazione del post(setter)
-	 * @param createdTime
-	 */
-	public void setCreatedTime(String createdTime) {
-		this.createdTime = createdTime;
-	}
 	
 	/**Metodo che restituisce la descrizione del post(getter)
 	 * @return message
@@ -49,11 +39,28 @@ public class Post {
 		this.message = message;
 	}
 	
+	public String getCreatedTime() {
+		return CreatedTime;
+	}
+
+	public void setCreatedTime(String createdTime) {
+		CreatedTime = createdTime;
+	}
+	
+	public String getIdPost() {
+		return idPost;
+	}
+	
+	public void setIdPost(String idPost) {
+		this.idPost = idPost;
+	}
+
+
 	/**Override del metodo toString che restituisce l'oggetto Post in stringa
 	 */
 	@Override
 	public String toString() {
-		return "created time: "+createdTime+"/nmessage: "+message;
+		return "/nmessage: "+message+"createdTime: "+CreatedTime+"Id: "+ID;
 	}
 	
 }

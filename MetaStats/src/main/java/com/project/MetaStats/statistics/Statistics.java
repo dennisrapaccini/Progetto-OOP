@@ -68,7 +68,43 @@ public class Statistics {
 			}
 			break;
 		}
-		System.out.println(Sort.hmSort(occurences));
+		//System.out.println(Sort.hmSort(occurences));
 	return Sort.hmSort(occurences);
 	}
+	
+	public HashMap<String, Integer> rankingByPeriod(String type, String initialDate, String finalDate) throws FileNotFoundException, JSONException, IOException, ParseException {
+		HashMap<String, Integer> rank = new HashMap<String, Integer>();
+		HashMap<Post, Location> hm = new HashMap<Post, Location>();
+		ServiceImpl service = new ServiceImpl();
+		hm = service.PostLocationMapping();
+		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
+		
+		
+		
+		
+		return rank;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

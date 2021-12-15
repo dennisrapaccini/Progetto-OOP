@@ -23,15 +23,16 @@ public class MetaStatsApplication {
 		//ArrayList<Post> p = new ArrayList<Post>();
 		//ArrayList<Location> p = new ArrayList<Location>();
 		SpringApplication.run(MetaStatsApplication.class, args);
-		//ServiceImpl service = new ServiceImpl();
+		ServiceImpl service = new ServiceImpl();
 		//service.getPost_User();
 		//service.getMessage_Post();
 		FilterCity filtercity= new FilterCity();
-		filtercity.filter();
+		//filtercity.filter();
 		//FileManagement file= new FileManagement();
 		//JSONArray ciao = filtercity.getPostsfromCity("Treia"); //Test 
 		//file.getFile();
 		//service.PostLocationMapping();
+		//service.allPosts();
 		//ToJSON tj = new ToJSON();//test
 		//tj.toJSONArray(p);//test
 		//Statistics stats = new Statistics();
