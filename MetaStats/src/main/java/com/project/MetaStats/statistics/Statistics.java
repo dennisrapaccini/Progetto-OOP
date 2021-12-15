@@ -79,14 +79,17 @@ public class Statistics {
 		ServiceImpl service = new ServiceImpl();
 		hm = service.PostLocationMapping();
 		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
-		ArrayList<Location> loc2 = new ArrayList<Location>();
-		switch(type) {
-		case "city" : 
-			for(int i = 0; i < loc.size(); i++) {
-				
-			}
-		}
 		
+		ArrayList<Location> date = new ArrayList<Location>();
+		for(int i = 0; i < loc.size(); i++) {
+			int counter = 0;
+			for(int j = 0; j < loc.size(); j++) {
+				if (loc.get(i).getCity().equals(loc.get(j).getCity())) {
+					counter++;
+				}
+			}
+			rank.put(loc.get(i).getCity(), counter);
+		}
 		
 		
 		return rank;

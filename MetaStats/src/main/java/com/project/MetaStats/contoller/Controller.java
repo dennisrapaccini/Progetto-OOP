@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.MetaStats.filtersManagement.FilterCity;
+import com.project.MetaStats.filtersManagement.FilterProvince;
+import com.project.MetaStats.filtersManagement.FilterRegion;
 import com.project.MetaStats.service.ServiceImpl;
 
 /**
@@ -25,7 +27,8 @@ public class Controller {
 	
 	ServiceImpl service = new ServiceImpl();
 	FilterCity filter = new FilterCity();
-
+	FilterProvince filter2 = new FilterProvince();
+	FilterRegion filter3 = new FilterRegion();
 	/**Rotta di tipo GET che mostra tutti i post relativi alla città richiesta se
 	 * presente
 	 * 
@@ -58,6 +61,34 @@ public class Controller {
 								// di Federica)
 	}
 	
+	/**Rotta di tipo GET che mostra i post filtrati dalle province visitate dall'utente
+	 * 
+	 * @param province
+	 * @return ResponseEntity
+	 * @throws Exception 
+	 */
+	@GetMapping (value = "/posts/province")
+	public ResponseEntity<Object> getPostsFromProvince(@RequestParam(required = true) String province) throws Exception, FileNotFoundException, JSONException, IOException, ParseException{
+		if(filter2.isProvince(province) && province != "")
+			return new ResponseEntity<>(service.getPostsFromProvince(province).toString(), HttpStatus.OK);
+		else
+			throw new Exception();
+	}
+	
+	/**Rotta di tipo GET che mostra i post filtrati secondo le regioni visitate dall'utente
+	 * 
+	 * @param region
+	 * @return ResponseEntity
+	 * @throws Exception
+	 */
+	@GetMapping (value = "/posts/region")
+	public ResponseEntity<Object> getPostsFromRegion(@RequestParam(required = true) String region) throws Exception {
+		if(filter3.isRegion(region) && region != "")
+			return new ResponseEntity<>(service.getPostsFromRegion(region).toString(), HttpStatus.OK);
+		else
+			throw new Exception();
+	}
+	
 	/**Rotta di tipo GET che mostra il ranking delle città, province o regioni più visitate dall'utente a 
 	 * seconda del parametro immesso dall'utente
 	 * 
@@ -72,43 +103,4 @@ public class Controller {
 	public ResponseEntity<Object> ranking(@RequestParam(required = true) String type) throws FileNotFoundException, JSONException, IOException, ParseException{
 		return new ResponseEntity<>(service.ranking(type).toString(), HttpStatus.OK);
 	}
-	
-	/**Rotta di tipo GET che mostra i post filtrati dalle province visitate dall'utente
-	 * 
-	 * @param province
-	 * @return ResponseEntity
-	 * @throws FileNotFoundException
-	 * @throws JSONException
-	 * @throws IOException
-	 * @throws ParseException
-	 */
-	@GetMapping (value = "/posts/province")
-	public ResponseEntity<Object> getPostsFromProvince(@RequestParam(required = true) String province) throws FileNotFoundException, JSONException, IOException, ParseException {
-		return new ResponseEntity<>(service.getPostsFromProvince(province).toString(), HttpStatus.OK);
-	}
-	
-	/**Rotta di tipo GET che mostra i post filtrati secondo le regioni visitate dall'utente
-	 * 
-	 * @param region
-	 * @return ResponseEntity
-	 * @throws FileNotFoundException
-	 * @throws JSONException
-	 * @throws IOException
-	 * @throws ParseException
-	 */
-	@GetMapping (value = "/posts/region")
-	public ResponseEntity<Object> getPostsFromRegion(@RequestParam(required = true) String region) throws FileNotFoundException, JSONException, IOException, ParseException {
-		return new ResponseEntity<>(service.getPostsFromRegion(region).toString(), HttpStatus.OK);
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

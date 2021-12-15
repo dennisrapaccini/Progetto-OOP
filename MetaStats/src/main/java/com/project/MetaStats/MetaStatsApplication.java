@@ -37,7 +37,7 @@ public class MetaStatsApplication {
 		//tj.toJSONArray(p);//test
 		Statistics stats = new Statistics();
 		//stats.rankingCity("region");
-		//stats.rankingByPeriod(null, null, null);
+		stats.rankingByPeriod(null, null, null);
 		//service.getPostsFromProvince("MT");
 		//System.out.println(service.allPosts());
 		
