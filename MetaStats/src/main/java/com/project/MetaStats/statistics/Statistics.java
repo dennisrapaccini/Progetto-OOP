@@ -79,7 +79,6 @@ public class Statistics {
 		ServiceImpl service = new ServiceImpl();
 		hm = service.PostLocationMapping();
 		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
-		
 		ArrayList<Location> date = new ArrayList<Location>();
 		for(int i = 0; i < loc.size(); i++) {
 			int counter = 0;
