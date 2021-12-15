@@ -34,7 +34,9 @@ public class ServiceImpl implements Service {
 	 */
 	private String preToken = "EAANA9YBtvWIBAGv7ZCzBbjKdVBLNXd1CipYksDZC";
 	private String token = preToken
-			+ "Ogk488ah2zLZAsg1lRo8nWaPfS7XRZBGvZAtHYQ92p5Vt3ZC8dL4tjF0FqCJaG5iMzUw0hlYtHK0oN90mgYFiswcJ5B0VNBoZB2kw4cwOtes51wsxOYJw1wHZB7OtvKAHNWmp4DEWoQ98Q64";
+							+ "Ogk488ah2zLZAsg1lRo8nWaPfS7XRZBGvZAtHYQ92p5Vt3ZC8dL4tjF0FqCJaG5iMzUw0hlYtH"
+							+ "K0oN90mgYFiswcJ5B0VNBoZB2kw4cwOtes51wsxOYJw1wHZB7OtvKAHNWmp4DEWoQ98Q64";
+	
 	private String Id="107864155075941";
 	private String message;
 	private Statistics stats = new Statistics();
@@ -76,7 +78,7 @@ public class ServiceImpl implements Service {
 			JSONObject object = getPost_User();
 			JSONObject object2 = object.getJSONObject("posts");
 			JSONArray array = object2.getJSONArray("data");
-			for (int i = 0; i < array.length(); i++) { // si usa un for normale perchè get() richiede il parametro
+			for (int i = 0; i < array.length(); i++) {
 				message = array.getJSONObject(i).getString("message");
 				//System.out.println(message);
 			}
@@ -88,7 +90,7 @@ public class ServiceImpl implements Service {
 	}
 
 	/**Questo metodo salva su ArrayList tutti i post
-	 * @return 
+	 * @return Arraylist che contiene al suo interno la lista di tutti i post dell'utente
 	 * 
 	 * @throws JSONException
 	 */
@@ -125,7 +127,6 @@ public class ServiceImpl implements Service {
 		JSONObject object2 = object.getJSONObject("posts");
 		JSONArray array = object2.getJSONArray("data");
 		JSONArray arrayPostsfromCity = new JSONArray();
-
 		for (int i = 0; i < array.length(); i++) {
 			String message = array.getJSONObject(i).getString("message").toLowerCase();
 			if (message.contains(city.toLowerCase())) {
@@ -137,8 +138,9 @@ public class ServiceImpl implements Service {
 		return  objectPostsFromCity;
 	}
 
-	/** Questo metodo mappa ogni post ad ogni location, salvandolo su HashMap
+	/** Questo metodo mappa ogni post ad ogni location
 	 * 
+	 * @return HashMap in cui sono mappati i post alla relativa location
 	 * @throws JSONException
 	 * @throws ParseException
 	 * @throws IOException
@@ -172,7 +174,7 @@ public class ServiceImpl implements Service {
 	 * @return ArrayList provincePosts
 	 */
 	@Override
-	public ArrayList<Post> getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException{
+	public JSONArray getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException{
 		HashMap<Post,Location> map = new HashMap<Post,Location>();
 		ArrayList<Post> provincePosts = new ArrayList<Post>();
 		map = PostLocationMapping();
@@ -180,17 +182,32 @@ public class ServiceImpl implements Service {
 			if((me.getValue().getProvince().equalsIgnoreCase(province))){
 				provincePosts.add(me.getKey());
 			}
-			
-	        }
-		
+        }
 		//System.out.println(provincePosts);
-		return provincePosts;
-		
+		return ToJSON.ArrayListToJSONArray(provincePosts);
+	}
+	
+	/**Metodo restituisce un ArraList dei post relativi alla regione immessa dall'utente
+	 * @param region 
+	 * @return ArrayList regionPosts
+	 */
+	@Override
+	public JSONArray getPostsFromRegion(String region) throws FileNotFoundException, JSONException, IOException, ParseException{
+		HashMap<Post,Location> map = new HashMap<Post,Location>();
+		ArrayList<Post> regionPosts = new ArrayList<Post>();
+		map = PostLocationMapping();
+		for (Entry<Post, Location> me : map.entrySet()) {
+			if((me.getValue().getRegion().equalsIgnoreCase(region))){
+				regionPosts.add(me.getKey());
+			}
+    	}
+		//System.out.println(provincePosts);
+		return ToJSON.ArrayListToJSONArray(regionPosts);
 	}
 	
 	/**Metodo che mostra il ranking in JSONObject delle città, province o regioni visitate dall' utente
 	 * @param type parametro che indica il tipo di ranking che si vuole visualizzare
-	 * @return obj jsonObject
+	 * @return  JSONObject che mostra il ranking
 	 */
 	@Override
 	public JSONObject ranking(String type) throws FileNotFoundException, JSONException, IOException, ParseException {
@@ -209,5 +226,5 @@ public class ServiceImpl implements Service {
 		
 		
 		
-	}
+}
 

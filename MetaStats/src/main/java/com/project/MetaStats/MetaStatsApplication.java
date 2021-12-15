@@ -35,8 +35,9 @@ public class MetaStatsApplication {
 		//service.allPosts();
 		//ToJSON tj = new ToJSON();//test
 		//tj.toJSONArray(p);//test
-		//Statistics stats = new Statistics();
+		Statistics stats = new Statistics();
 		//stats.rankingCity("region");
+		//stats.rankingByPeriod(null, null, null);
 		//service.getPostsFromProvince("MT");
 		//System.out.println(service.allPosts());
 		

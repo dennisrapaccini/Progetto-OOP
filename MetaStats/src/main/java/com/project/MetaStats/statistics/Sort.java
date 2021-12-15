@@ -23,15 +23,12 @@ public class Sort {
 	public static HashMap<String, Integer> hmSort(HashMap<String, Integer> hm){
 		List<Map.Entry<String, Integer>> list = 
 				new LinkedList<Map.Entry<String, Integer>>(hm.entrySet());
-		
 		Collections.sort(list, new Comparator<Map.Entry<String, Integer>>(){
 				public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
 			return (o1.getValue()).compareTo(o2.getValue());
 		}
 	});
-		
 		HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
-		
 		for(int i = list.size()-1; i >= 0; i--) {
 			temp.put(list.get(i).getKey(), list.get(i).getValue());
 		}

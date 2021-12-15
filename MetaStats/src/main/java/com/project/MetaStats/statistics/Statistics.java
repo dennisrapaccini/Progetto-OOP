@@ -18,9 +18,10 @@ import com.project.MetaStats.service.*;
  */
 public class Statistics {
 	
-	/**Metodo che ritorna il ranking delle città più occorrenti nei post dell'utente
+	/**Metodo che ritorna il ranking delle città, province o regioni visitate dall'utente
 	 * 
-	 * @return HashMap
+	 * @return HashMap che ha al suo interno un mapping delle città, 
+	 * province o regioni più visitate dall'utente.
 	 * @throws FileNotFoundException
 	 * @throws JSONException
 	 * @throws IOException
@@ -78,7 +79,13 @@ public class Statistics {
 		ServiceImpl service = new ServiceImpl();
 		hm = service.PostLocationMapping();
 		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
-		
+		ArrayList<Location> loc2 = new ArrayList<Location>();
+		switch(type) {
+		case "city" : 
+			for(int i = 0; i < loc.size(); i++) {
+				
+			}
+		}
 		
 		
 		

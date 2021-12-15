@@ -35,8 +35,11 @@ public class ToJSON {
 	}
 	
 	/**Metodo che converte un HashMap in JSONObject o JSONArray
-	 * @throws JSONException
 	 * 
+	 * @param HashMap<String, Integer> hm
+	 * @param String type
+	 * @throws JSONException
+	 * @return JSONArray
 	 */
 	public static JSONArray HashMapToJSONArray(HashMap<String, Integer> hm, String type) throws JSONException {
 		//poi passare a JSONObject su serviceImpl

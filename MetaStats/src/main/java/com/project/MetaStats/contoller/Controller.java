@@ -22,7 +22,7 @@ import com.project.MetaStats.service.ServiceImpl;
  */
 @RestController
 public class Controller {
-
+	
 	ServiceImpl service = new ServiceImpl();
 	FilterCity filter = new FilterCity();
 
@@ -41,7 +41,7 @@ public class Controller {
 	
 	/**Rotta di tipo GET che mostra i post che sono filtrati tramite location
 	 * 
-	 * @param city
+	 * @param city città di cui si vogliono visualizzare i post
 	 * @return ResponseEntity
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -61,7 +61,7 @@ public class Controller {
 	/**Rotta di tipo GET che mostra il ranking delle città, province o regioni più visitate dall'utente a 
 	 * seconda del parametro immesso dall'utente
 	 * 
-	 * @param type
+	 * @param type tipo di ranking che si vuole fare 
 	 * @return ResponseEntity
 	 * @throws FileNotFoundException
 	 * @throws JSONException
@@ -72,5 +72,43 @@ public class Controller {
 	public ResponseEntity<Object> ranking(@RequestParam(required = true) String type) throws FileNotFoundException, JSONException, IOException, ParseException{
 		return new ResponseEntity<>(service.ranking(type).toString(), HttpStatus.OK);
 	}
+	
+	/**Rotta di tipo GET che mostra i post filtrati dalle province visitate dall'utente
+	 * 
+	 * @param province
+	 * @return ResponseEntity
+	 * @throws FileNotFoundException
+	 * @throws JSONException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	@GetMapping (value = "/posts/province")
+	public ResponseEntity<Object> getPostsFromProvince(@RequestParam(required = true) String province) throws FileNotFoundException, JSONException, IOException, ParseException {
+		return new ResponseEntity<>(service.getPostsFromProvince(province).toString(), HttpStatus.OK);
+	}
+	
+	/**Rotta di tipo GET che mostra i post filtrati secondo le regioni visitate dall'utente
+	 * 
+	 * @param region
+	 * @return ResponseEntity
+	 * @throws FileNotFoundException
+	 * @throws JSONException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	@GetMapping (value = "/posts/region")
+	public ResponseEntity<Object> getPostsFromRegion(@RequestParam(required = true) String region) throws FileNotFoundException, JSONException, IOException, ParseException {
+		return new ResponseEntity<>(service.getPostsFromRegion(region).toString(), HttpStatus.OK);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
