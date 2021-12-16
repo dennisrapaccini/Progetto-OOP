@@ -75,7 +75,7 @@ public class FilterCity extends Filter {
 		ServiceImpl service = new ServiceImpl();
 		hm = service.PostLocationMapping();
 		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
-		for(int i = 0; i < loc.size(); i++) {
+		for(int i = 1; i < loc.size(); i++) {
 			city += loc.get(i).getCity() + " ";
 		}
 		System.out.println(city);

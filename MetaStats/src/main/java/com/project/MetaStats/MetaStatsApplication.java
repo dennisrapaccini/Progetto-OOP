@@ -27,7 +27,7 @@ public class MetaStatsApplication {
 		//service.getPost_User();
 		//service.getMessage_Post();
 		FilterCity filtercity= new FilterCity();
-		//filtercity.filter();
+		filtercity.filter();
 		//FileManagement file= new FileManagement();
 		//JSONArray ciao = filtercity.getPostsfromCity("Treia"); //Test 
 		//file.getFile();
@@ -37,7 +37,7 @@ public class MetaStatsApplication {
 		//tj.toJSONArray(p);//test
 		Statistics stats = new Statistics();
 		//stats.rankingCity("region");
-		stats.rankingByPeriod(null, "10-10-2021", "15-10-2021");
+		//stats.rankingByPeriod("city", null, null);
 		//service.getPostsFromProvince("MT");
 		//System.out.println(service.allPosts());
 		

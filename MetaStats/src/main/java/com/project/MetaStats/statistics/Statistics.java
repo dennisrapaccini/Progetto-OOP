@@ -4,11 +4,13 @@ import java.io.FileNotFoundException;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.json.JSONException;
@@ -112,9 +114,12 @@ public class Statistics {
 		ServiceImpl service = new ServiceImpl();
 		hm = service.PostLocationMapping();
 		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
+		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ");
 		LocalDate date1;
 		LocalDate date2;
+		//METTERE CONDIZIONE CHE SE è NULL USARE compareTo
 		try {
 			 date1 = LocalDate.parse(initialDate, formatter);
 			 date2 = LocalDate.parse(finalDate, formatter);
@@ -124,46 +129,78 @@ public class Statistics {
 			}
 		List<LocalDate> allDatesBetween= new ArrayList<LocalDate>();
 		allDatesBetween = date1.datesUntil(date2).collect(Collectors.toList());
+		
+		
 		switch(type) {
 		case "city" :
-		for(int i = 0; i < loc.size(); i++) {
+		for(int i = 0; i < loc.size(); i++) { //scorre l'ArrayList di Location
 			int counter = 0;
-			for(int j = 0; j < loc.size(); j++) {
-				if (loc.get(i).getCity().equals(loc.get(j).getCity()) && ) {
+			int j=0;
+			for(Entry<Post, Location> set : hm.entrySet()) {
+				LocalDate createdTime = (ZonedDateTime.parse(set.getKey().getCreatedTime(), formatter2)).toLocalDate();
+				if (loc.get(i).getCity().equals(loc.get(j).getCity()) && false) {
 					counter++;
 				}
+				j++;
 			}
 			occurences.put(loc.get(i).getCity(), counter);
 		}
 		
+		break;
 		
+	case "province" :
+		for(int i = 0; i < loc.size(); i++) { //scorre l'ArrayList di Location
+			int counter = 0;
+			int j=0;
+			for(Entry<Post, Location> set : hm.entrySet()) {
+				LocalDate createdTime = (ZonedDateTime.parse(set.getKey().getCreatedTime(), formatter2)).toLocalDate();
+				if (loc.get(i).getProvince().equals(loc.get(j).getProvince()) && allDatesBetween.contains(createdTime) ) {
+					counter++;
+				}
+				j++;
+			}
+			occurences.put(loc.get(i).getProvince(), counter);
+		}
 		
-		System.out.println(allDatesBetween);
+		break;
 		
+	case "region" :
+		for(int i = 0; i < loc.size(); i++) { //scorre l'ArrayList di Location
+			int counter = 0;
+			int j=0;
+			for(Entry<Post, Location> set : hm.entrySet()) {
+				LocalDate createdTime = (ZonedDateTime.parse(set.getKey().getCreatedTime(), formatter2)).toLocalDate();
+				if (loc.get(i).getRegion().equals(loc.get(j).getRegion()) && allDatesBetween.contains(createdTime) ) {
+					counter++;
+				}
+				j++;
+			}
+			occurences.put(loc.get(i).getRegion(), counter);
+		}
 		
-		return null;
+		break;
+		} 
 		
-		
+		System.out.println(Sort.hmSort(occurences));
+		return Sort.hmSort(occurences);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }
