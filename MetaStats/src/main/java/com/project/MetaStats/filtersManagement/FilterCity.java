@@ -2,8 +2,15 @@ package com.project.MetaStats.filtersManagement;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
+
+import com.project.MetaStats.model.Location;
+import com.project.MetaStats.model.Post;
+import com.project.MetaStats.service.ServiceImpl;
 
 public class FilterCity extends Filter {
 	
@@ -15,12 +22,8 @@ public class FilterCity extends Filter {
 	/**Costruttore della sottoclasse FilterCity estensione della superclasse Filter
 	 * @param city
 	 */
-	public FilterCity(String city) {
-		super();
-		this.city = city;
-	}
-	
 	public FilterCity() {
+		super();
 	}
 
 	/**Metodo che restituisce l'attributo city(getter)
@@ -65,11 +68,20 @@ public class FilterCity extends Filter {
 		}
 		return isCity;
 	}
-	
+
 	@Override
-	public String filter() {
+	public String filter() throws FileNotFoundException, JSONException, IOException, ParseException {
+		HashMap<Post, Location> hm;
+		ServiceImpl service = new ServiceImpl();
+		hm = service.PostLocationMapping();
+		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
+		for(int i = 0; i < loc.size(); i++) {
+			city += loc.get(i).getCity() + " ";
+		}
+		System.out.println(city);
 		return city;
 	}
+	
 	
 
 }

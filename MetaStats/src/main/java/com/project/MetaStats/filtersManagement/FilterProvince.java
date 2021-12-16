@@ -2,9 +2,15 @@ package com.project.MetaStats.filtersManagement;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
+
+import com.project.MetaStats.model.Location;
+import com.project.MetaStats.model.Post;
+import com.project.MetaStats.service.ServiceImpl;
 
 public class FilterProvince extends Filter{
 	
@@ -42,8 +48,15 @@ public class FilterProvince extends Filter{
 	}
 	
 	@Override
-	public String filter() {
-		// TODO Auto-generated method stub
+	public String filter() throws FileNotFoundException, JSONException, IOException, ParseException {
+		HashMap<Post, Location> hm;
+		ServiceImpl service = new ServiceImpl();
+		hm = service.PostLocationMapping();
+		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
+		for(int i = 0; i < loc.size(); i++) {
+			province += loc.get(i).getProvince() + " ";
+		}
+		System.out.println(province);
 		return province;
 	}
 
