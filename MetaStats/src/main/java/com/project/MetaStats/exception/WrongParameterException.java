@@ -13,9 +13,8 @@ public class WrongParameterException extends Exception {
 	private static final long serialVersionUID = 1L;
 	String error;
 
-	public WrongParameterException(String error) {
-		super();
-		this.error = error;
+	public WrongParameterException(String error, Throwable err) {
+		super(error, err);
 	}
 
 	public String getError() {
