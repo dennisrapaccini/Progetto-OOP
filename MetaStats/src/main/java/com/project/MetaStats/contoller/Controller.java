@@ -2,6 +2,8 @@ package com.project.MetaStats.contoller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
@@ -52,12 +54,12 @@ public class Controller {
 	 * @throws JSONException
 	 * @throws Exception
 	 */
-	@GetMapping (value = "/posts/location")
-	public ResponseEntity<Object> getPostsFromLocation(@RequestParam(required = true) String city) throws FileNotFoundException, IOException, ParseException, JSONException, Exception{
-	if (filter.isCity(city) && city!="")
-		return new ResponseEntity<>(service.getPostsFromCity(city).toString(), HttpStatus.OK);
-	else
-		throw new Exception(); // aggiungere eccezione personalizzata (non in questo modo, guardare su codice
+	@GetMapping (value = "/posts/city")
+	public ResponseEntity<Object> getPostsFromLocation(@RequestParam(required = true) List<String> city) throws FileNotFoundException, IOException, ParseException, JSONException, Exception{
+	//if (filter.isCity(city) && city!="")
+		return new ResponseEntity<>(service.getPostFromParameters("city",city).toString(), HttpStatus.OK);
+	//else
+		//throw new Exception(); // aggiungere eccezione personalizzata (non in questo modo, guardare su codice
 								// di Federica)
 	}
 	
@@ -88,6 +90,8 @@ public class Controller {
 		else
 			throw new Exception();
 	}
+	
+	//@GetMapping (value = "")
 	
 	/**Rotta di tipo GET che mostra il ranking delle città, province o regioni più visitate dall'utente a 
 	 * seconda del parametro immesso dall'utente

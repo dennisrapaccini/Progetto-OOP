@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map.Entry;
 
 import org.json.JSONArray;
@@ -174,17 +175,18 @@ public class ServiceImpl implements Service {
 	 * @return ArrayList provincePosts
 	 */
 	@Override
-	public JSONArray getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException{
+	public JSONObject getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException{
 		HashMap<Post,Location> map = new HashMap<Post,Location>();
 		ArrayList<Post> provincePosts = new ArrayList<Post>();
+		JSONObject obj = new JSONObject();
 		map = PostLocationMapping();
 		for (Entry<Post, Location> me : map.entrySet()) {
 			if((me.getValue().getProvince().equalsIgnoreCase(province))){
 				provincePosts.add(me.getKey());
 			}
         }
-		//System.out.println(provincePosts);
-		return ToJSON.ArrayListToJSONArray(provincePosts);
+		obj.put("Posts in: "+province,ToJSON.ArrayListToJSONArray(provincePosts));
+		return obj;
 	}
 	
 	/**Metodo restituisce un ArraList dei post relativi alla regione immessa dall'utente
@@ -192,17 +194,18 @@ public class ServiceImpl implements Service {
 	 * @return ArrayList regionPosts
 	 */
 	@Override
-	public JSONArray getPostsFromRegion(String region) throws FileNotFoundException, JSONException, IOException, ParseException{
+	public JSONObject getPostsFromRegion(String region) throws FileNotFoundException, JSONException, IOException, ParseException{
 		HashMap<Post,Location> map = new HashMap<Post,Location>();
 		ArrayList<Post> regionPosts = new ArrayList<Post>();
+		JSONObject obj = new JSONObject();
 		map = PostLocationMapping();
 		for (Entry<Post, Location> me : map.entrySet()) {
 			if((me.getValue().getRegion().equalsIgnoreCase(region))){
 				regionPosts.add(me.getKey());
 			}
     	}
-		//System.out.println(provincePosts);
-		return ToJSON.ArrayListToJSONArray(regionPosts);
+		obj.put("Posts in: "+region,ToJSON.ArrayListToJSONArray(regionPosts));
+		return obj;
 	}
 	
 	/**Metodo che mostra il ranking in JSONObject delle città, province o regioni visitate dall' utente
@@ -220,6 +223,29 @@ public class ServiceImpl implements Service {
 		return obj;
 	}
 	
+	public JSONObject getPostFromParameters(String type, List<String> locations ) throws Exception {
+		JSONArray arr = new JSONArray();
+		switch(type.toLowerCase()) {
+		case "city" : 
+			for(String city : locations) {
+				arr.put(getPostsFromCity(city));  // String...locations == String[] locations
+			}
+			break;
+		case "province" : 
+			for(String province : locations) {
+				arr.put(getPostsFromProvince(province));
+			}
+			break;
+		case "region" : 
+			for(String region : locations) {
+				arr.put(getPostsFromRegion(region));
+			}
+			break;
+		}
+		JSONObject obj = new JSONObject();
+		obj.put(type,arr);
+		return obj;
+	}
 		
 		
 		

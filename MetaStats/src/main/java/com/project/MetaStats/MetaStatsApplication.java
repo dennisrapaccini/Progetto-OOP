@@ -24,10 +24,11 @@ public class MetaStatsApplication {
 		//ArrayList<Location> p = new ArrayList<Location>();
 		SpringApplication.run(MetaStatsApplication.class, args);
 		ServiceImpl service = new ServiceImpl();
+		//service.getPostFromParameters("Province","MC","mt","mi");
 		//service.getPost_User();
 		//service.getMessage_Post();
 		FilterCity filtercity= new FilterCity();
-		filtercity.filter();
+		//filtercity.filter();
 		//FileManagement file= new FileManagement();
 		//JSONArray ciao = filtercity.getPostsfromCity("Treia"); //Test 
 		//file.getFile();
@@ -38,7 +39,7 @@ public class MetaStatsApplication {
 		Statistics stats = new Statistics();
 		//stats.rankingCity("region");
 		//stats.rankingByPeriod("city", null, null);
-		//service.getPostsFromProvince("MT");
+		//service.getPostsFromRegion("marche");
 		//System.out.println(service.allPosts());
 		
 	}
