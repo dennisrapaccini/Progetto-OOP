@@ -6,14 +6,15 @@ package com.project.MetaStats.model;
  */
 public class Location {
 	
-	/**
-	 * Attributi relativi alle location
+	/**Attributi relativi alle location
+	 * 
 	 */
 	private String city;
 	private String province;
 	private String region;
 	
 	/**Costruttore dell'oggetto location
+	 * 
 	 * @param city
 	 * @param province
 	 * @param region
@@ -26,6 +27,7 @@ public class Location {
 	}
 	
 	/**Metodo che restituisce il nome della città in cui si trova(getter)
+	 * 
 	 * @return city
 	 */
 	public String getCity() {
@@ -33,6 +35,7 @@ public class Location {
 	}
 	
 	/**Metodo che setta il nome della città(setter)
+	 * 
 	 * @param city
 	 */
 	public void setCity(String city) {
@@ -40,6 +43,7 @@ public class Location {
 	}
 	
 	/**Metodo che restituisce la provincia della città(getter)
+	 * 
 	 * @return province
 	 */
 	public String getProvince() {
@@ -47,6 +51,7 @@ public class Location {
 	}
 	
 	/**Metodo che setta la provincia della città
+	 * 
 	 * @param province
 	 */
 	public void setProvince(String province) {
@@ -54,6 +59,7 @@ public class Location {
 	}
 	
 	/**Metodo che restituisce la regione della città
+	 * 
 	 * @return region
 	 */
 	public String getRegion() {
@@ -61,6 +67,7 @@ public class Location {
 	}
 	
 	/**Metodo che setta la regione della città
+	 * 
 	 * @param region
 	 */
 	public void setRegion(String region) {

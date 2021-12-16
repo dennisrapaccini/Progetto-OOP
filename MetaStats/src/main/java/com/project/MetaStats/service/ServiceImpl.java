@@ -104,7 +104,7 @@ public class ServiceImpl implements Service {
 			String createdTime = data.getJSONObject(i).getString("created_time");
 			String message = data.getJSONObject(i).getString("message");
 			String id = data.getJSONObject(i).getString("id");
-			posts.add(new Post(Id, message, createdTime, id));
+			posts.add(new Post(null,null,Id, message, createdTime, id));
 		}
 
 		//System.out.println(posts);

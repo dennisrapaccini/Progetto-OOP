@@ -1,40 +1,57 @@
 package com.project.MetaStats.model;
 
+/**Questa classe rappresenta uno utente generale di un qualsiasi social
+ * 
+ * @author Cheikh
+ * @author Dennis
+ */
 public class User {
 	
+	/**Attributi relativi all'utente
+	 */
 	private String name;
 	private String surname;
-	private String id;
 	
-	public User(String id) {
+	/**Costruttore della classe User
+	 * 
+	 * @param name
+	 * @param surname
+	 */
+	public User(String name, String surname) {
 		super();
-		this.id = id;
+		this.name = name;
+		this.surname = surname;
 	}
 	
+	/**Metodo che restituisce il nome dell'utente(getter)
+	 * 
+	 * @return name
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**Metodo che setta il nome dell'utente(setter)
+	 * 
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	
+	/**Metodo che restituisce il cognome dell'utente(getter)
+	 * 
+	 * @return surname
+	 */
 	public String getSurname() {
 		return surname;
 	}
 	
+	/**Metodo che setta il cognome dell'utente(setter)
+	 * 
+	 * @param surname
+	 */
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	
-	public String getId() {
-		return id;
-	}
-	
-	public void setId(String id) {
-		this.id = id;
-	}
-	
-	
-	
 }
