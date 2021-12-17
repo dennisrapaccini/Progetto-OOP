@@ -45,6 +45,27 @@ git clone https://github.com/dennisrapaccini/Progetto-OOP.git
 ```
 E' possibile clonare la repository anche attraverso [GitHub Desktop](https://desktop.github.com/).
 
+<a name="configurazione"></a>
+## Configurazione
+
+Per poter usufruire della nostra applicazione è necessario lanciarlo da Terminale oppure essere in possesso di un IDE, ad esempio Eclipse, che permetta di avviare il progetto come Spring boot application. Il client Postman permettrà l' utilizzo dell' applicazione che sarà in ascolto su una porta locale, nel nostro caso la seguente porta: 
+```
+http://localhost:8081
+```
+Ovviamente la porta che si troverà in ascolto potrà essere modificata a piacere andando a modificare il seguente pezzo di codice:
+```
+https://github.com/dennisrapaccini/Progetto-OOP/blob/main/MetaStats/src/main/resources/application.properties
+```
+se si va al link si vedrà: server.port=${port:8081}.
+
+Visualizzando il progetto (su eclipse) è possibile modificare il token di accesso, fornito da facebook per accedere alle API, che abbiamo utilizzato per testare le funzionalità della nostra applicazione; inserendo, quindi, il token dell' account di cui si vogliono fare le statistiche relative ai post.
+
+
+
+
+
+
+
 
 
 
