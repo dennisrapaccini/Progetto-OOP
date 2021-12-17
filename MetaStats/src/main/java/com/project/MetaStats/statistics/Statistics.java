@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
+import org.springframework.lang.Nullable;
 
 import com.project.MetaStats.exception.WrongParameterException;
 import com.project.MetaStats.model.*;
@@ -113,22 +114,29 @@ public class Statistics {
 		HashMap<Post, Location> hm = new HashMap<Post, Location>();
 		ServiceImpl service = new ServiceImpl();
 		hm = service.PostLocationMapping();
-		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
-		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ");
 		LocalDate date1;
 		LocalDate date2;
-		//METTERE CONDIZIONE CHE SE è NULL USARE compareTo
+		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
+		DateTimeFormatter userFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		DateTimeFormatter FacebookFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ");
+		
+		if(initialDate == null) initialDate = "04-02-2004";  //Data creazione Facebook
+		if (finalDate == null) finalDate = LocalDate.now().toString();
+		
+	
+		
+		
+		
 		try {
-			 date1 = LocalDate.parse(initialDate, formatter);
-			 date2 = LocalDate.parse(finalDate, formatter);
+			 date1 = LocalDate.parse(initialDate, userFormatter);
+			 date2 = LocalDate.parse(finalDate, userFormatter);
 			 }
 		catch(DateTimeParseException e) {
-			throw new WrongParameterException("ERRORE! Inserisci data in formato dd-MM-yyy", e);
+			throw new WrongParameterException("ERRORE! Inserisci data in formato dd-MM-yyyy", e);
 			}
-		List<LocalDate> allDatesBetween= new ArrayList<LocalDate>();
-		allDatesBetween = date1.datesUntil(date2).collect(Collectors.toList());
+		
+		
+		
 		
 		
 		switch(type) {
@@ -137,8 +145,8 @@ public class Statistics {
 			int counter = 0;
 			int j=0;
 			for(Entry<Post, Location> set : hm.entrySet()) {
-				LocalDate createdTime = (ZonedDateTime.parse(set.getKey().getCreatedTime(), formatter2)).toLocalDate();
-				if (loc.get(i).getCity().equals(loc.get(j).getCity()) && false) {
+				LocalDate createdTime = (ZonedDateTime.parse(set.getKey().getCreatedTime(), FacebookFormatter)).toLocalDate();
+				if (loc.get(i).getCity().equals(loc.get(j).getCity()) && createdTime.isAfter(date1) && createdTime.isBefore(date2)) {
 					counter++;
 				}
 				j++;
@@ -153,8 +161,8 @@ public class Statistics {
 			int counter = 0;
 			int j=0;
 			for(Entry<Post, Location> set : hm.entrySet()) {
-				LocalDate createdTime = (ZonedDateTime.parse(set.getKey().getCreatedTime(), formatter2)).toLocalDate();
-				if (loc.get(i).getProvince().equals(loc.get(j).getProvince()) && allDatesBetween.contains(createdTime) ) {
+				LocalDate createdTime = (ZonedDateTime.parse(set.getKey().getCreatedTime(), FacebookFormatter)).toLocalDate();
+				if (loc.get(i).getProvince().equals(loc.get(j).getProvince()) && createdTime.isBefore(date2))  {
 					counter++;
 				}
 				j++;
@@ -169,8 +177,8 @@ public class Statistics {
 			int counter = 0;
 			int j=0;
 			for(Entry<Post, Location> set : hm.entrySet()) {
-				LocalDate createdTime = (ZonedDateTime.parse(set.getKey().getCreatedTime(), formatter2)).toLocalDate();
-				if (loc.get(i).getRegion().equals(loc.get(j).getRegion()) && allDatesBetween.contains(createdTime) ) {
+				LocalDate createdTime = (ZonedDateTime.parse(set.getKey().getCreatedTime(), FacebookFormatter)).toLocalDate();
+				if (loc.get(i).getRegion().equals(loc.get(j).getRegion()) && createdTime.isBefore(date2)) {
 					counter++;
 				}
 				j++;
