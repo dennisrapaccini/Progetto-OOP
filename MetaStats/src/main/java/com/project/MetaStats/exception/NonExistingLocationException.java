@@ -5,13 +5,13 @@ package com.project.MetaStats.exception;
  * @author Cheikh Cisse
  * @author Dennis Rapaccini
  */
-public class NonExistingCityException extends Exception {
+public class NonExistingLocationException extends Exception {
 
 	
 	private static final long serialVersionUID = 1L;
 	String error;
 
-	public NonExistingCityException(String error) {
+	public NonExistingLocationException(String error) {
 		super();
 		this.error = error;
 	}

@@ -50,7 +50,7 @@ public class FilterProvince extends Filter{
 	
 	/**Metodo che fa l'override della classe astratta filter
 	 * 
-	 * @return province provincie filtrate
+	 * @return province province filtrate
 	 */
 	@Override
 	public String filter() throws FileNotFoundException, JSONException, IOException, ParseException {

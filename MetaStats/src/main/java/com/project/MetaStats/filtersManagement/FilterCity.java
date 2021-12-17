@@ -63,7 +63,7 @@ public class FilterCity extends Filter {
 		return isCity;
 	}
 	
-	/**Metdodo che fa l'override del metodo astratto filter
+	/**Metodo che fa l'override del metodo astratto filter
 	 * 
 	 * @return city stringa con le città filtrate
 	 */

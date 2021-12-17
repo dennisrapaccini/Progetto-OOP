@@ -12,7 +12,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.simple.parser.ParseException;
 
-import com.project.MetaStats.exception.NonExistingCityException;
+import com.project.MetaStats.exception.NonExistingLocationException;
+import com.project.MetaStats.exception.WrongFieldException;
+import com.project.MetaStats.exception.WrongParameterException;
 import com.project.MetaStats.model.Location;
 import com.project.MetaStats.model.Post;
 
@@ -21,13 +23,12 @@ import com.project.MetaStats.model.Post;
  * @author Dennis
  */
 public interface Service {
-	public abstract String getMessage_Post();
 	public abstract JSONObject getPost_User();
 	public abstract ArrayList<Post> allPosts() throws JSONException;
-	public abstract JSONObject getPostsFromCity(String city) throws Exception;
+	public abstract JSONObject getPostsFromCity(String city) throws NonExistingLocationException, FileNotFoundException, IOException, ParseException, JSONException;
 	public abstract HashMap<Post, Location> PostLocationMapping() throws JSONException, FileNotFoundException, IOException, ParseException;
-	public abstract JSONObject ranking(String type) throws FileNotFoundException, JSONException, IOException, ParseException;
-	public abstract JSONObject getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingCityException;
-	public abstract JSONObject getPostsFromRegion(String region) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingCityException;
+	public abstract JSONObject ranking(String type, String initialDate, String finalDate) throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, WrongFieldException;
+	public abstract JSONObject getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingLocationException;
+	public abstract JSONObject getPostsFromRegion(String region) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingLocationException;
 	public abstract JSONObject getPostsFromParameters(String type, List<String> locations) throws Exception ;
 }

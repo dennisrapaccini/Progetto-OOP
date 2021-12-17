@@ -14,7 +14,9 @@ import org.json.simple.parser.ParseException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import com.project.MetaStats.exception.NonExistingCityException;
+import com.project.MetaStats.exception.NonExistingLocationException;
+import com.project.MetaStats.exception.WrongFieldException;
+import com.project.MetaStats.exception.WrongParameterException;
 import com.project.MetaStats.filtersManagement.FileManagement;
 import com.project.MetaStats.filtersManagement.FilterCity;
 import com.project.MetaStats.filtersManagement.FilterProvince;
@@ -23,16 +25,16 @@ import com.project.MetaStats.model.Location;
 import com.project.MetaStats.model.Post;
 import com.project.MetaStats.statistics.Statistics;
 
-/**Classe che fa l'override dei metodi definiti in Service
+/**Classe che esegue l'override dei metodi definiti in Service
  * 
- * @author Cheikh
- * @author Dennis
+ * @author Cheikh Cisse
+ * @author Dennis Rapaccini
  */
 public class ServiceImpl implements Service {
 
 	ArrayList<Location> postLocations = new ArrayList<Location>();
 
-	/**Token di accesso (a lungo termine) alle API fornito all'utente da Facebook.
+	/**Token di accesso (a lungo termine) alla API di Facebook fornito all'utente dallo stesso.
 	 * 
 	 * L'access token è stato diviso per evitare invalidazioni da parte del
 	 * controllo di Facebook su GitHub.
@@ -53,11 +55,12 @@ public class ServiceImpl implements Service {
 		this.message = message;
 	}
 
-	/** Metodo che ritorna le API dell'utente riguardante i post in JSONObject
-	 * 
+	/**
+	 * Metodo che ritorna tutti i post dell'utente in JSONObject
+	 * @return JSONObject contenente tutti i post dell'utente Facebook
 	 */
 	@Override
-	public JSONObject getPost_User() { // restituisce JSONObject normale e non JSONOb
+	public JSONObject getPost_User() { 
 		JSONObject object = null;
 		String url = "https://graph.facebook.com/me?fields=posts&access_token=" + token;
 		RestTemplate rt = new RestTemplate();
@@ -74,28 +77,10 @@ public class ServiceImpl implements Service {
 		return object;
 	}
 
-	/**Metodo che restituisce la descrizione dei post da cui si ricava il nome della città
-	 *
-	 */
-	@Override
-	public String getMessage_Post() {
-		try {
-			JSONObject object = getPost_User();
-			JSONObject object2 = object.getJSONObject("posts");
-			JSONArray array = object2.getJSONArray("data");
-			for (int i = 0; i < array.length(); i++) {
-				message = array.getJSONObject(i).getString("message");
-				//System.out.println(message);
-			}
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return message;
-	}
 
-	/**Questo metodo salva su ArrayList tutti i post
-	 * @return Arraylist che contiene al suo interno la lista di tutti i post dell'utente
+	/**
+	 * Metodo che salva su ArrayList tutti i post
+	 * @return Arraylist che contiene la lista di tutti i post dell'utente
 	 * 
 	 * @throws JSONException
 	 */
@@ -116,18 +101,21 @@ public class ServiceImpl implements Service {
 		return posts;
 	}
 	
-	/**Metodo che restituisce in JSONArray i post che contengono il parametro city (ignorando il letter case)
+	/**
+	 * Metodo che restituisce un JSONObject contenente i post relativi alla città in argomento (ignorando il letter case)
 	 * 
-	 * @param city Città da cercare
-	 * @return JSONArray contenente tutti i post in cui è contenuta la città
+	 * @param city Città da filtrare
+	 * @return JSONObject contenente tutti i post in cui è contenuta la città
+	 * @throws JSONException 
+	 * @throws ParseException 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
+	 * @throws NonExistingLocationException
 	 */
 	@Override
-	public JSONObject getPostsFromCity(String city) throws Exception { // restituisce JSONArray normale NON JSON Array simple
-		// TODO Fare controllo che non è una città qua dentro!! non nel controller
-		// TODO Due eccezioni fare: uno se non è presente city e un'altra per i
-		// JSONObject sotto.
+	public JSONObject getPostsFromCity(String city) throws NonExistingLocationException, FileNotFoundException, IOException, ParseException, JSONException {
 		FilterCity filter = new FilterCity();
-		if(!filter.isCity(city)) throw new NonExistingCityException("Errore! "+city+ " non è una città valida.\nInserisci una città italiana esistente!");
+		if(!filter.isCity(city)) throw new NonExistingLocationException("Errore! "+city+ " non è una città valida.\nInserisci una città italiana esistente!");
 		JSONObject objectPostsFromCity = new JSONObject();
 		ServiceImpl serviceImpl = new ServiceImpl();
 		JSONObject object = serviceImpl.getPost_User();
@@ -145,15 +133,20 @@ public class ServiceImpl implements Service {
 		return  objectPostsFromCity;
 	}
 	
-	/**Metodo restituisce un ArraList dei post relativi alla provincia immessa dall'utente
-	 * @param province 
-	 * @return ArrayList provincePosts
-	 * @throws NonExistingCityException 
+	/**
+	 * Metodo che restituisce un JSONObject contenente i post relativi alla provincia in argomento (ignorando il letter case)
+	 * @param province Province da filtrare 
+	 * @return JSONObject contenente tutti i post in cui è contenuta la provincia
+	 * @throws FileNotFoundExceptio
+	 * @throws JSONException
+	 * @throws IOException
+	 * @throws ParseException
+	 * @throws NonExistingLocationException
 	 */
 	@Override
-	public JSONObject getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingCityException{
+	public JSONObject getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingLocationException{
 		FilterProvince filter = new FilterProvince();
-		if(!filter.isProvince(province)) throw new NonExistingCityException("Errore! "+province+ " non è una provincia valida.\nInserisci una provincia italiana esistente!");
+		if(!filter.isProvince(province)) throw new NonExistingLocationException("Errore! "+province+ " non è una provincia valida.\nInserisci una provincia italiana esistente!");
 		HashMap<Post,Location> map = new HashMap<Post,Location>();
 		ArrayList<Post> provincePosts = new ArrayList<Post>();
 		JSONObject obj = new JSONObject();
@@ -167,15 +160,19 @@ public class ServiceImpl implements Service {
 		return obj;
 	}
 	
-	/**Metodo restituisce un ArraList dei post relativi alla regione immessa dall'utente
-	 * @param region 
-	 * @return ArrayList regionPosts
-	 * @throws NonExistingCityException 
+	/**
+	 * Metodo che restituisce un JSONObject contenente i post relativi alla regione in argomento (ignorando il letter case)
+	 * @param region Regione da filtrare
+	 * @return JSONObject contenente tutti i post in cui è contenuta la regione
+	 * @throws NonExistingLocationException 
+	 * @throws JSONException
+	 * @throws IOException
+	 * @throws ParseException
 	 */
 	@Override
-	public JSONObject getPostsFromRegion(String region) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingCityException{
+	public JSONObject getPostsFromRegion(String region) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingLocationException{
 		FilterRegion filter = new FilterRegion();
-		if(!filter.isRegion(region)) throw new NonExistingCityException("Errore! "+region+ " non è una regione valida.\nInserisci una regione italiana esistente!");
+		if(!filter.isRegion(region)) throw new NonExistingLocationException("Errore! "+region+ " non è una regione valida.\nInserisci una regione italiana esistente!");
 		HashMap<Post,Location> map = new HashMap<Post,Location>();
 		ArrayList<Post> regionPosts = new ArrayList<Post>();
 		JSONObject obj = new JSONObject();
@@ -189,7 +186,8 @@ public class ServiceImpl implements Service {
 		return obj;
 	}
 
-	/** Questo metodo mappa ogni post ad ogni location
+	/** 
+	 * Metodo che mappa ogni post ad ogni location
 	 * 
 	 * @return HashMap in cui sono mappati i post alla relativa location
 	 * @throws JSONException
@@ -205,42 +203,45 @@ public class ServiceImpl implements Service {
 		FileManagement database = new FileManagement();
 		database.getFile();
 		for (int i = 0; i < database.getCityList().size(); i++) {
-			String city = database.getCityList().get(i).getCity();// i-esima città del database
-			// ci andrebbe anche il toLowerCase, ma in questo modo trova anche città che non
-			// si intedendavo tali: ad esempio se sul post c'è scritto : "tasti" lui prende
-			// "asti"
-			// Altro problema: esempio: Ha preso sia Cagli che Cagliari 
+			String city = database.getCityList().get(i).getCity();
 			for (int j = 0; j < posts.size(); j++) {
 				if (posts.get(j).getMessage().contains(city)) {
 					map.put(posts.get(j), database.getCityList().get(i));
 				}
 			}
 		}
-		//System.out.println(map);
 		return map;
 	}
 	
-	/**Metodo che mostra il ranking in JSONObject delle città, province o regioni visitate dall' utente
-	 * @param type parametro che indica il tipo di ranking che si vuole visualizzare
-	 * @return  JSONObject che mostra il ranking
+	/**
+	 * Override del metodo ranking()
+	 * @param type Parametro che indica il tipo di ranking che si vuole visualizzare (city, province o region)
+	 * @return JSONObject che mostra il ranking
+	 * @throws WrongParameterException 
+	 * @throws WrongFieldException 
+	 * @throws FileNotFoundException
+	 * @throws JSONException
+	 * @throws IOException
+	 * @throws ParseException
 	 */
 	@Override
-	public JSONObject ranking(String type) throws FileNotFoundException, JSONException, IOException, ParseException {
+	public JSONObject ranking(String type, String initialDate, String finalDate) throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, WrongFieldException {
 		HashMap<String,Integer> hm = new HashMap<String,Integer>();
 		JSONArray array = new JSONArray();
-		hm = stats.ranking(type);
+		hm = stats.ranking(type, initialDate, finalDate);
 		array = ToJSON.HashMapToJSONArray(hm, type.substring(0, 1).toUpperCase() + type.substring(1));
 		JSONObject obj = new JSONObject();
 		obj.put("Ranking " +type, array);
 		return obj;
 	}
 	
+	
 	public JSONObject getPostsFromParameters(String type, List<String> locations ) throws Exception {
 		JSONArray arr = new JSONArray();
 		switch(type.toLowerCase()) {
 		case "city" : 
 			for(String city : locations) {
-				arr.put(getPostsFromCity(city));  // String...locations == String[] locations
+				arr.put(getPostsFromCity(city));  
 			}
 			break;
 		case "province" : 
@@ -258,7 +259,8 @@ public class ServiceImpl implements Service {
 		obj.put(type,arr);
 		return obj;
 	}
-		
+
+
 		
 		
 		
