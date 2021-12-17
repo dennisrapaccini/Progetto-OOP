@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
@@ -37,19 +38,20 @@ public class FilterRegion extends Filter{
 	 * @throws FileNotFoundException
 	 */
 	public boolean isRegion(String region) throws FileNotFoundException, IOException, ParseException, JSONException {
-		// Stesso problema di isCity, stavolta equals forse è la soluzione migliore (anche se ad esempio c'è Trentino-Alto Adige/Südtirol)
-		// conviene controllare la prima parola in equals e basta. DA FARE.
 		boolean isRegion = false;
 		database.getFile();
-		for (int i = 0; i < database.getCityList().size(); i++) {//Molta ridondanza nelle regioni. Possibile ottimizzazione
+		for (int i = 0; i < database.getCityList().size(); i++) {
 			if (database.getCityList().get(i).getRegion().equalsIgnoreCase(region)) { 
-				isRegion = true;
+					isRegion = true;
 			}
 		}
 		return isRegion;
 	}
 	
-	
+	/**Metodo che fa l'override del metodo astratto filter
+	 * 
+	 * @return region regioni filtrate
+	 */
 	@Override
 	public String filter() throws FileNotFoundException, JSONException, IOException, ParseException {
 		HashMap<Post, Location> hm;

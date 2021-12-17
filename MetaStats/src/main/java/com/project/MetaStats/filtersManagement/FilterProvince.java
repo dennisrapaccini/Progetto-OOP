@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
@@ -41,12 +42,16 @@ public class FilterProvince extends Filter{
 		database.getFile();
 		for (int i = 0; i < database.getCityList().size(); i++) {
 			if (database.getCityList().get(i).getProvince().equalsIgnoreCase(province)) { 
-				isProvince = true;
+					isProvince = true;
 			}
 		}
 		return isProvince;
 	}
 	
+	/**Metodo che fa l'override della classe astratta filter
+	 * 
+	 * @return province provincie filtrate
+	 */
 	@Override
 	public String filter() throws FileNotFoundException, JSONException, IOException, ParseException {
 		HashMap<Post, Location> hm;

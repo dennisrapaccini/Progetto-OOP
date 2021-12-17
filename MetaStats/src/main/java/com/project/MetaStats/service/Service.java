@@ -11,6 +11,8 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.simple.parser.ParseException;
+
+import com.project.MetaStats.exception.NonExistingCityException;
 import com.project.MetaStats.model.Location;
 import com.project.MetaStats.model.Post;
 
@@ -25,7 +27,7 @@ public interface Service {
 	public abstract JSONObject getPostsFromCity(String city) throws Exception;
 	public abstract HashMap<Post, Location> PostLocationMapping() throws JSONException, FileNotFoundException, IOException, ParseException;
 	public abstract JSONObject ranking(String type) throws FileNotFoundException, JSONException, IOException, ParseException;
-	public abstract JSONObject getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException;
-	public abstract JSONObject getPostsFromRegion(String region) throws FileNotFoundException, JSONException, IOException, ParseException;
-	public abstract JSONObject getPostFromParameters(String type, List<String> locations) throws Exception ;
+	public abstract JSONObject getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingCityException;
+	public abstract JSONObject getPostsFromRegion(String region) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingCityException;
+	public abstract JSONObject getPostsFromParameters(String type, List<String> locations) throws Exception ;
 }

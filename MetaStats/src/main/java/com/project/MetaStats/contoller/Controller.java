@@ -1,8 +1,8 @@
 package com.project.MetaStats.contoller;
 
 import java.io.FileNotFoundException;
+
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONException;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.MetaStats.exception.NonExistingCityException;
 import com.project.MetaStats.filtersManagement.FilterCity;
 import com.project.MetaStats.filtersManagement.FilterProvince;
 import com.project.MetaStats.filtersManagement.FilterRegion;
@@ -56,11 +57,12 @@ public class Controller {
 	 */
 	@GetMapping (value = "/posts/city")
 	public ResponseEntity<Object> getPostsFromLocation(@RequestParam(required = true) List<String> city) throws FileNotFoundException, IOException, ParseException, JSONException, Exception{
-	//if (filter.isCity(city) && city!="")
-		return new ResponseEntity<>(service.getPostFromParameters("city",city).toString(), HttpStatus.OK);
-	//else
-		//throw new Exception(); // aggiungere eccezione personalizzata (non in questo modo, guardare su codice
-								// di Federica)
+		try {
+			return new ResponseEntity<>(service.getPostsFromParameters("city", city).toString(), HttpStatus.OK);
+		}
+		catch(NonExistingCityException e) {
+			return new ResponseEntity<>(e.getError(),HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	/**Rotta di tipo GET che mostra i post filtrati dalle province visitate dall'utente
@@ -70,11 +72,13 @@ public class Controller {
 	 * @throws Exception 
 	 */
 	@GetMapping (value = "/posts/province")
-	public ResponseEntity<Object> getPostsFromProvince(@RequestParam(required = true) String province) throws Exception, FileNotFoundException, JSONException, IOException, ParseException{
-		if(filter2.isProvince(province) && province != "")
-			return new ResponseEntity<>(service.getPostsFromProvince(province).toString(), HttpStatus.OK);
-		else
-			throw new Exception();
+	public ResponseEntity<Object> getPostsFromProvince(@RequestParam(required = true) List<String> province) throws Exception, FileNotFoundException, JSONException, IOException, ParseException{
+		try {
+			return new ResponseEntity<>(service.getPostsFromParameters("province", province).toString(), HttpStatus.OK);
+		}
+		catch(NonExistingCityException e) {
+			return new ResponseEntity<>(e.getError(),HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	/**Rotta di tipo GET che mostra i post filtrati secondo le regioni visitate dall'utente
@@ -84,11 +88,13 @@ public class Controller {
 	 * @throws Exception
 	 */
 	@GetMapping (value = "/posts/region")
-	public ResponseEntity<Object> getPostsFromRegion(@RequestParam(required = true) String region) throws Exception {
-		if(filter3.isRegion(region) && region != "")
-			return new ResponseEntity<>(service.getPostsFromRegion(region).toString(), HttpStatus.OK);
-		else
-			throw new Exception();
+	public ResponseEntity<Object> getPostsFromRegion(@RequestParam(required = true) List<String> region) throws Exception {
+		try {
+			return new ResponseEntity<>(service.getPostsFromParameters("region", region).toString(), HttpStatus.OK);
+		}
+		catch(NonExistingCityException e) {
+			return new ResponseEntity<>(e.getError(),HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	//@GetMapping (value = "")

@@ -19,7 +19,14 @@ public abstract class Filter {
 	public Filter() {
 		super();
 	}
-	
+	/**Metodo astratto che verrà implementato  dalle sottoclassi
+	 * 
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws JSONException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public abstract String filter() throws FileNotFoundException, JSONException, IOException, ParseException;
 	
 }

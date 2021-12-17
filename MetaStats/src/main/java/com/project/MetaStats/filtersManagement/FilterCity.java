@@ -53,12 +53,6 @@ public class FilterCity extends Filter {
 	 * @throws FileNotFoundException
 	 */
 	public boolean isCity(String city) throws FileNotFoundException, IOException, ParseException, JSONException {
-		// Bisogna scegliere se contains o equals: se si
-		// sceglie contains, il metodo rileva anche singole
-		// lettere come città. Se si sceglie il secondo, se
-		// una città ha due parole (es. Civitanova Marche) e
-		// l'utente scrive solo Civitanova, non la prende
-		// SOLUZIONE: Si potrebbe controllare solo una parola della stringa in ingresso
 		boolean isCity = false;
 		database.getFile();
 		for (int i = 0; i < database.getCityList().size(); i++) {
@@ -68,7 +62,11 @@ public class FilterCity extends Filter {
 		}
 		return isCity;
 	}
-
+	
+	/**Metdodo che fa l'override del metodo astratto filter
+	 * 
+	 * @return city stringa con le città filtrate
+	 */
 	@Override
 	public String filter() throws FileNotFoundException, JSONException, IOException, ParseException {
 		HashMap<Post, Location> hm;
