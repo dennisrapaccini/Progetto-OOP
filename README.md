@@ -23,5 +23,28 @@
 </div>
 
 <a name="introduzione"></a>
-# Introduzione
-**MetaStats** ha lo scopo di effettuare le statistiche, di un utente **Facebook**, relative ai post. Le statistiche riguardano le location in cui l'utente è stato (come riferimento si prendono i post dell'utente); tali informazioni riguardo il luogo sono estrapolate dalle API fornite da facebook che ci permettono di conoscere l'ora in cui è stato pubblicato un determinato post, la descrizione relativa al post e l'id associato al post. I post dell'utente sono disponibili in formato JSON attraverso una rotta GET definita nel nostro controller, a seconda del tipo di statistica che si vuole eseguire ci saranno diverse rotte.
+## Introduzione
+
+**MetaStats** ha lo scopo di effettuare statistiche e filtri, di un utente **Facebook**, relative ai post. Le statistiche riguardano le location in cui l'utente è stato (come riferimento si prendono i post dell'utente); tali informazioni riguardo il luogo sono estrapolate dalle API fornite da facebook che ci permettono di conoscere l' ora in cui è stato pubblicato un determinato post, la descrizione relativa al post e l'id associato al post. I post dell' utente sono disponibili in formato JSON attraverso una rotta GET definita nel nostro controller, a seconda del tipo di statistica o di filtro che si vuole eseguire ci saranno diverse rotte.
+
+* **Filtri**
+   * Città: Restituisce tutti i post che l' utente ha fatto in una o più città.
+   * Province: Restituisce tutti i post che l' utente ha fatto in una o più province.
+   * Regioni: Restituisce tutti i post che l' utente ha fatto in una o più regioni.
+* **Statistiche**
+   * Ranking: viene stilata una classifica delle città più visitate dall' utente.
+   * Ranking: viene stilata una classifica delle province più visitate dall' utente.
+   * Ranking: viene stilata una classifica delle regioni più visitate dall' utente.
+
+<a name="installazione"></a>
+## Installazione
+
+Per l'installazione bisogna clonare la repository dal terminale: 
+```
+git clone https://github.com/dennisrapaccini/Progetto-OOP.git
+```
+E' possibile clonare la repository anche attraverso [GitHub Desktop](https://desktop.github.com/).
+
+
+
+
