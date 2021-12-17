@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.project.MetaStats.exception.EmptyListException;
 import com.project.MetaStats.exception.NonExistingLocationException;
 import com.project.MetaStats.exception.WrongFieldException;
 import com.project.MetaStats.exception.WrongParameterException;
@@ -23,8 +25,8 @@ import com.project.MetaStats.service.ServiceImpl;
 /**
  * Classe che gestisce le rotte che si possono fare
  * 
- * @author Cheikh
- * @author Dennis
+ * @author Cheikh Cisse
+ * @author Dennis Rapaccini
  */
 @RestController
 public class Controller {
@@ -70,10 +72,9 @@ public class Controller {
 	}
 
 	/**
-	 * Rotta di tipo GET che mostra i post filtrati dalle province visitate
-	 * dall'utente
+	 * Rotta di tipo GET che filtra i post per provincia. E' possibile immettere più di una provincia.
 	 * 
-	 * @param province
+	 * @param province in sigla (es. AN)
 	 * @return ResponseEntity
 	 * @throws Exception
 	 */
@@ -88,10 +89,9 @@ public class Controller {
 	}
 
 	/**
-	 * Rotta di tipo GET che mostra i post filtrati secondo le regioni visitate
-	 * dall'utente
+	 * Rotta di tipo GET che filtra i post per regione. E' possibile immettere più di una regione.
 	 * 
-	 * @param region
+	 * @param region 
 	 * @return ResponseEntity
 	 * @throws Exception
 	 */
@@ -107,10 +107,12 @@ public class Controller {
 
 	
 	/**
-	 * Rotta di tipo GET che mostra il ranking delle città, province o regioni più
-	 * visitate dall'utente a seconda del parametro immesso dall'utente
+	 * Rotta di tipo GET che mostra la classifica per numero di occorrenze di città, province o regioni.
+	 * E' possibile limitare ulteriormente la classifica per intervallo temporale inserendo i parametri initialDate e finalDate.
 	 * 
-	 * @param type tipo di ranking che si vuole fare
+	 * @param type Tipo di location. Sono ammessi solo "city", "province" e "region"
+	 * @param initialDate (Opzionale) Data iniziale per il filtraggio in formato "dd-MM-yyyy". Se non presente è impostata di default a "04-02-2021", ossia la data di creazione di Facebook
+	 * @param finalDate (Opzionale) Data finale per il filtraggio in formato "dd-MM-yyyy". Se non presente è impostata di default alla data attuale
 	 * @return ResponseEntity
 	 * @throws FileNotFoundException
 	 * @throws JSONException
@@ -131,9 +133,15 @@ public class Controller {
 		catch(WrongParameterException e) {
 			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
 		}
-		
-
-		
-		//FilterCity,Region,Province NON USATI!!!!!! FARE ROTTE!!!!!
+		catch (EmptyListException e) {
+			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
+		}
 	}
+	//FilterCity,Region,Province NON USATI!!!!!! FARE ROTTE!!!!!
+	
+	/*Bisogna fare le cose uniformate, quindi o mettiamo per ogni tipo (city, province o region) una rotta (vedi posts/city ecc...) 
+	 oppure prendere type come parametro.
+	 Nel primo caso in totale verebbero 10 rotte e bisognerebbe cambiare qualcosina, nel secondo caso verrebbero 4 rotte.
+	 */
+	
 }

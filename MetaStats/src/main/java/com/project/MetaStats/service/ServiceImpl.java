@@ -14,6 +14,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import com.project.MetaStats.exception.EmptyListException;
 import com.project.MetaStats.exception.NonExistingLocationException;
 import com.project.MetaStats.exception.WrongFieldException;
 import com.project.MetaStats.exception.WrongParameterException;
@@ -128,7 +129,7 @@ public class ServiceImpl implements Service {
 				arrayPostsfromCity.put(array.getJSONObject(i));
 			} 
 		}
-		objectPostsFromCity.put("Posts in "+city, arrayPostsfromCity);
+		objectPostsFromCity.put("Posts in "+city.substring(0, 1).toUpperCase() + city.substring(1), arrayPostsfromCity);
 		//System.out.println(arrayPostsfromCity);
 		return  objectPostsFromCity;
 	}
@@ -156,7 +157,7 @@ public class ServiceImpl implements Service {
 				provincePosts.add(me.getKey());
 			}
         }
-		obj.put("Posts in: "+province,ToJSON.ArrayListToJSONArray(provincePosts));
+		obj.put("Posts in: "+province.toUpperCase(),ToJSON.ArrayListToJSONArray(provincePosts));
 		return obj;
 	}
 	
@@ -173,6 +174,7 @@ public class ServiceImpl implements Service {
 	public JSONObject getPostsFromRegion(String region) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingLocationException{
 		FilterRegion filter = new FilterRegion();
 		if(!filter.isRegion(region)) throw new NonExistingLocationException("Errore! "+region+ " non è una regione valida.\nInserisci una regione italiana esistente!");
+		
 		HashMap<Post,Location> map = new HashMap<Post,Location>();
 		ArrayList<Post> regionPosts = new ArrayList<Post>();
 		JSONObject obj = new JSONObject();
@@ -182,7 +184,7 @@ public class ServiceImpl implements Service {
 				regionPosts.add(me.getKey());
 			}
     	}
-		obj.put("Posts in: "+region,ToJSON.ArrayListToJSONArray(regionPosts));
+		obj.put("Posts in: "+region.substring(0, 1).toUpperCase() + region.substring(1),ToJSON.ArrayListToJSONArray(regionPosts));
 		return obj;
 	}
 
@@ -225,7 +227,7 @@ public class ServiceImpl implements Service {
 	 * @throws ParseException
 	 */
 	@Override
-	public JSONObject ranking(String type, String initialDate, String finalDate) throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, WrongFieldException {
+	public JSONObject ranking(String type, String initialDate, String finalDate) throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, WrongFieldException, EmptyListException {
 		HashMap<String,Integer> hm = new HashMap<String,Integer>();
 		JSONArray array = new JSONArray();
 		hm = stats.ranking(type, initialDate, finalDate);
@@ -235,26 +237,38 @@ public class ServiceImpl implements Service {
 		return obj;
 	}
 	
-	
+	/**
+	 * Metodo che restituisce tutti i post relativi a qualsiasi tipo (city, province, region), con possibilità di scelte multiple per ogni tipo.
+	 * @param type Tipo di location. Sono ammessi solo "city", "province" e "region"
+	 * @param locations Lista di location da filtrare
+	 * @return JSONObject contenente tutti i post relativi al filtro in parametro
+	 * @throws Exception
+	 */
 	public JSONObject getPostsFromParameters(String type, List<String> locations ) throws Exception {
 		JSONArray arr = new JSONArray();
+		boolean isEmpty = true;
 		switch(type.toLowerCase()) {
 		case "city" : 
 			for(String city : locations) {
-				arr.put(getPostsFromCity(city));  
+				arr.put(getPostsFromCity(city));
+				isEmpty = false;
 			}
 			break;
 		case "province" : 
 			for(String province : locations) {
 				arr.put(getPostsFromProvince(province));
+				isEmpty = false;
 			}
 			break;
 		case "region" : 
 			for(String region : locations) {
 				arr.put(getPostsFromRegion(region));
+				isEmpty = false;
 			}
 			break;
+			default: throw new WrongFieldException("ERRORE! Inserisci un tipo valido: solo city, province o region sono ammessi");
 		}
+		if (isEmpty) throw new EmptyListException("ERR");
 		JSONObject obj = new JSONObject();
 		obj.put(type,arr);
 		return obj;

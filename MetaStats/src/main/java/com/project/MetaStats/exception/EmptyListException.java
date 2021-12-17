@@ -7,7 +7,7 @@ package com.project.MetaStats.exception;
  * @author Cheikh Cisse
  *
  */
-public class EmptyElementException extends Exception {
+public class EmptyListException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -17,7 +17,7 @@ public class EmptyElementException extends Exception {
 		return error;
 	}
 
-	public EmptyElementException(String error) {
+	public EmptyListException(String error) {
 		super();
 		this.error = error;
 	}
