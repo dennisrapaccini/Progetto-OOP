@@ -131,9 +131,21 @@ public class Controller {
 		catch(WrongParameterException e) {
 			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
 		}
-		
-
-		
-		//FilterCity,Region,Province NON USATI!!!!!! FARE ROTTE!!!!!
 	}
+	
+	
+	@GetMapping(value = "posts/location")
+	public ResponseEntity<Object> prova(@RequestParam(required = true) String type) throws FileNotFoundException, NonExistingLocationException, IOException, ParseException, JSONException{
+		return new ResponseEntity<>(service.getPostsFromCity(type).toString(), HttpStatus.OK);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

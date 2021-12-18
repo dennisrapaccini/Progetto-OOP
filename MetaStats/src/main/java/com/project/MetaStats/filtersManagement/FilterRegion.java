@@ -16,7 +16,7 @@ import com.project.MetaStats.service.ServiceImpl;
 public class FilterRegion extends Filter{
 	
 	FileManagement database = new FileManagement();
-	private String region;
+	private String region = "";
 	
 	public String getRegion() {
 		return region;
@@ -59,9 +59,9 @@ public class FilterRegion extends Filter{
 		hm = service.PostLocationMapping();
 		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
 		for(int i = 0; i < loc.size(); i++) {
-			region += loc.get(i).getProvince() + " ";
+			region += loc.get(i).getRegion() + " ";
 		}
-		System.out.println(region);
+		//System.out.println(region);
 		return region;
 	}
 

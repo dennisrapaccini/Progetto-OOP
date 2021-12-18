@@ -185,6 +185,36 @@ public class ServiceImpl implements Service {
 		obj.put("Posts in: "+region,ToJSON.ArrayListToJSONArray(regionPosts));
 		return obj;
 	}
+	
+	/**
+	 * Metodo che restituisce i post dell'utente a seconda del parametro immesso
+	 * @param type stringa che indica il tipo di filtro che si vuole eseguire
+	 * @param locations lista di stringa che mi permette di filtrare anche con parametri variabili
+	 * @return JSONObject oggetto rappresentativo di ciò che è stato filtrato 
+	 */
+	public JSONObject getPostsFromParameters(String type, List<String> locations ) throws Exception {
+		JSONArray arr = new JSONArray();
+		switch(type.toLowerCase()) {
+		case "city" : 
+			for(String city : locations) {
+				arr.put(getPostsFromCity(city));  
+			}
+			break;
+		case "province" : 
+			for(String province : locations) {
+				arr.put(getPostsFromProvince(province));
+			}
+			break;
+		case "region" : 
+			for(String region : locations) {
+				arr.put(getPostsFromRegion(region));
+			}
+			break;
+		}
+		JSONObject obj = new JSONObject();
+		obj.put(type,arr);
+		return obj;
+	}
 
 	/** 
 	 * Metodo che mappa ogni post ad ogni location
@@ -234,37 +264,31 @@ public class ServiceImpl implements Service {
 		obj.put("Ranking " +type, array);
 		return obj;
 	}
-	
-	
-	public JSONObject getPostsFromParameters(String type, List<String> locations ) throws Exception {
+
+	@Override
+	public JSONObject getCityFromPosts(String type) throws FileNotFoundException, JSONException, IOException, ParseException {
 		JSONArray arr = new JSONArray();
 		switch(type.toLowerCase()) {
-		case "city" : 
-			for(String city : locations) {
-				arr.put(getPostsFromCity(city));  
-			}
+		case "city" :
+			FilterCity filter = new FilterCity();
+			filter.filter();
+			arr.put(filter.filter());
 			break;
 		case "province" : 
-			for(String province : locations) {
-				arr.put(getPostsFromProvince(province));
-			}
+			FilterProvince filter2= new FilterProvince();
+			filter2.filter();
+			arr.put(filter2.filter());
 			break;
-		case "region" : 
-			for(String region : locations) {
-				arr.put(getPostsFromRegion(region));
-			}
+		case "region" :
+			FilterRegion filter3= new FilterRegion();
+			filter3.filter();
+			arr.put(filter3.filter());
 			break;
 		}
 		JSONObject obj = new JSONObject();
 		obj.put(type,arr);
+		System.out.println(obj);
 		return obj;
-	}
-
-
-		
-		
-		
-		
-		
+	}	
 }
 

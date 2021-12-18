@@ -16,7 +16,7 @@ import com.project.MetaStats.service.ServiceImpl;
 public class FilterProvince extends Filter{
 	
 	FileManagement database = new FileManagement();
-	private String province;
+	private String province = "";
 	
 	public String getProvince() {
 		return province;
@@ -61,7 +61,7 @@ public class FilterProvince extends Filter{
 		for(int i = 0; i < loc.size(); i++) {
 			province += loc.get(i).getProvince() + " ";
 		}
-		System.out.println(province);
+		//System.out.println(province);
 		return province;
 	}
 

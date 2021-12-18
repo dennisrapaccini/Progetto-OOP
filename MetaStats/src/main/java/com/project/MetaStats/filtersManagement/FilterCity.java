@@ -16,7 +16,7 @@ public class FilterCity extends Filter {
 	
 	/**Attributi relativi alla classe FilterCity
 	 */
-	private String city;
+	private String city = "";
 	FileManagement database = new FileManagement();
 	
 	/**Costruttore della sottoclasse FilterCity estensione della superclasse Filter
@@ -76,7 +76,7 @@ public class FilterCity extends Filter {
 		for(int i = 1; i < loc.size(); i++) {
 			city += loc.get(i).getCity() + " ";
 		}
-		System.out.println(city);
+		//System.out.println(city);
 		return city;
 	}
 	

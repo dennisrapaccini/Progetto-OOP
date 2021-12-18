@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.project.MetaStats.filtersManagement.FileManagement;
 import com.project.MetaStats.filtersManagement.FilterCity;
+import com.project.MetaStats.filtersManagement.FilterProvince;
+import com.project.MetaStats.filtersManagement.FilterRegion;
 import com.project.MetaStats.model.Location;
 import com.project.MetaStats.model.Post;
 import com.project.MetaStats.service.ServiceImpl;
@@ -24,11 +26,16 @@ public class MetaStatsApplication {
 		//ArrayList<Location> p = new ArrayList<Location>();
 		SpringApplication.run(MetaStatsApplication.class, args);
 		ServiceImpl service = new ServiceImpl();
+		service.getCityFromPosts("Region");
 		//service.getPostFromParameters("Province","MC","mt","mi");
 		//service.getPost_User();
 		//service.getMessage_Post();
 		FilterCity filtercity= new FilterCity();
+		FilterProvince filter= new FilterProvince();
+		FilterRegion filter2= new FilterRegion();
 		//filtercity.filter();
+		//filter.filter();
+		//filter2.filter();
 		//FileManagement file= new FileManagement();
 		//JSONArray ciao = filtercity.getPostsfromCity("Treia"); //Test 
 		//file.getFile();
