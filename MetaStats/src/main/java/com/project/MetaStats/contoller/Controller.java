@@ -139,7 +139,7 @@ public class Controller {
 	
 	@GetMapping(value = "posts/location")
 	public ResponseEntity<Object> prova(@RequestParam(required = true) String type) throws FileNotFoundException, NonExistingLocationException, IOException, ParseException, JSONException{
-		return new ResponseEntity<>(service.getPostsFromCity(type).toString(), HttpStatus.OK);
+		return new ResponseEntity<>(service.getCityFromPosts(type).toString(), HttpStatus.OK);
 	}
 	
 	

@@ -59,7 +59,7 @@ public class FilterProvince extends Filter{
 		hm = service.PostLocationMapping();
 		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
 		for(int i = 0; i < loc.size(); i++) {
-			province += loc.get(i).getProvince() + " ";
+			province += loc.get(i).getProvince() + ",";
 		}
 		//System.out.println(province);
 		return province;

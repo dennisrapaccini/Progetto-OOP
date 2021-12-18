@@ -59,7 +59,7 @@ public class FilterRegion extends Filter{
 		hm = service.PostLocationMapping();
 		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
 		for(int i = 0; i < loc.size(); i++) {
-			region += loc.get(i).getRegion() + " ";
+			region += loc.get(i).getRegion() + ",";
 		}
 		//System.out.println(region);
 		return region;
