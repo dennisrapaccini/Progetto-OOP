@@ -14,6 +14,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import com.project.MetaStats.exception.EmptyListException;
 import com.project.MetaStats.exception.NonExistingLocationException;
 import com.project.MetaStats.exception.WrongFieldException;
 import com.project.MetaStats.exception.WrongParameterException;
@@ -253,9 +254,10 @@ public class ServiceImpl implements Service {
 	 * @throws JSONException
 	 * @throws IOException
 	 * @throws ParseException
+	 * @throws EmptyListException 
 	 */
 	@Override
-	public JSONObject ranking(String type, String initialDate, String finalDate) throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, WrongFieldException {
+	public JSONObject ranking(String type, String initialDate, String finalDate) throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, WrongFieldException, EmptyListException {
 		HashMap<String,Integer> hm = new HashMap<String,Integer>();
 		JSONArray array = new JSONArray();
 		hm = stats.ranking(type, initialDate, finalDate);

@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.project.MetaStats.exception.EmptyListException;
 import com.project.MetaStats.exception.NonExistingLocationException;
 import com.project.MetaStats.exception.WrongFieldException;
 import com.project.MetaStats.exception.WrongParameterException;
@@ -117,11 +119,12 @@ public class Controller {
 	 * @throws IOException
 	 * @throws ParseException
 	 * @throws WrongParameterException
+	 * @throws EmptyListException 
 	 */
 	@GetMapping(value = "posts/stats/ranking")
 	public ResponseEntity<Object> ranking(@RequestParam (required = true) String type,
 										  @RequestParam (required = false) String initialDate,
-										  @RequestParam (required = false) String finalDate) throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException {
+										  @RequestParam (required = false) String finalDate) throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, EmptyListException {
 		try {
 			return new ResponseEntity<>(service.ranking(type,initialDate,finalDate).toString(), HttpStatus.OK);
 		}
