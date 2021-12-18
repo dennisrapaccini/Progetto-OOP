@@ -32,5 +32,5 @@ public interface Service {
 	public abstract JSONObject getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingLocationException;
 	public abstract JSONObject getPostsFromRegion(String region) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingLocationException;
 	public abstract JSONObject getPostsFromParameters(String type, List<String> locations) throws Exception ;
-	public abstract JSONObject getCityFromPosts(String type) throws FileNotFoundException, JSONException, IOException, ParseException;
+	public abstract JSONObject getLocationFromPosts(String type) throws FileNotFoundException, JSONException, IOException, ParseException;
 }

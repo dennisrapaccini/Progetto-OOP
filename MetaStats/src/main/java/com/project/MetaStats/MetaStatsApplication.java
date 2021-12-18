@@ -26,14 +26,14 @@ public class MetaStatsApplication {
 		//ArrayList<Location> p = new ArrayList<Location>();
 		SpringApplication.run(MetaStatsApplication.class, args);
 		ServiceImpl service = new ServiceImpl();
-		service.getCityFromPosts("Region");
+		service.getLocationFromPosts("Region");
 		//service.getPostFromParameters("Province","MC","mt","mi");
 		//service.getPost_User();
 		//service.getMessage_Post();
 		FilterCity filtercity= new FilterCity();
 		FilterProvince filter= new FilterProvince();
 		FilterRegion filter2= new FilterRegion();
-		//filtercity.filter();
+		filtercity.filter();
 		//filter.filter();
 		//filter2.filter();
 		//FileManagement file= new FileManagement();

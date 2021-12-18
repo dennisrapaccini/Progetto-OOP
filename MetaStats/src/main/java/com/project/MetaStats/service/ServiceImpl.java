@@ -268,7 +268,7 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public JSONObject getCityFromPosts(String type) throws FileNotFoundException, JSONException, IOException, ParseException {
+	public JSONObject getLocationFromPosts(String type) throws FileNotFoundException, JSONException, IOException, ParseException {
 		JSONArray arr = new JSONArray();
 		switch(type.toLowerCase()) {
 		case "city" :

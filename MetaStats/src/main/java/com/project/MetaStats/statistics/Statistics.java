@@ -46,7 +46,6 @@ public class Statistics {
 	 * @throws WrongFieldException 
 	 * @throws EmptyListException 
 	 */
-
 	public HashMap<String, Integer> ranking(String type, @Nullable String initialDate, @Nullable String finalDate)
 			throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, WrongFieldException, EmptyListException {
 		HashMap<String, Integer> occurences = new HashMap<String, Integer>();
