@@ -3,8 +3,9 @@ package com.project.MetaStats.filtersManagement;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
+
 
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
@@ -48,21 +49,29 @@ public class FilterRegion extends Filter{
 		return isRegion;
 	}
 	
-	/**Metodo che fa l'override del metodo astratto filter
+	/**Metodo che fa l'override del metodo astratto filter e restituisce tette le regioni in cui l' utente è stato
 	 * 
 	 * @return region regioni filtrate
 	 */
 	@Override
-	public String filter() throws FileNotFoundException, JSONException, IOException, ParseException {
+	public ArrayList<String> filter() throws FileNotFoundException, JSONException, IOException, ParseException {
 		HashMap<Post, Location> hm;
 		ServiceImpl service = new ServiceImpl();
 		hm = service.PostLocationMapping();
 		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
-		for(int i = 0; i < loc.size(); i++) {
+		ArrayList<String> aL = new ArrayList<String>();
+		ArrayList<String> regionList = new ArrayList<String>();
+		for(int i = 1; i < loc.size(); i++) {
 			region += loc.get(i).getRegion() + ",";
+			aL = new ArrayList<String>(Arrays.asList(region.split(",")));
+		}
+		for(String str : aL) {
+			if(!regionList.contains(str)) {
+				regionList.add(str);
+			}
 		}
 		//System.out.println(region);
-		return region;
+		return regionList;
 	}
 
 }

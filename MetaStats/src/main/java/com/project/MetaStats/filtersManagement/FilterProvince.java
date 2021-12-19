@@ -3,8 +3,8 @@ package com.project.MetaStats.filtersManagement;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
@@ -48,21 +48,28 @@ public class FilterProvince extends Filter{
 		return isProvince;
 	}
 	
-	/**Metodo che fa l'override della classe astratta filter
+	/**Metodo che fa l'override della classe astratta filter e restituisce tutte le province in cui l' utente è stato
 	 * 
 	 * @return province province filtrate
 	 */
 	@Override
-	public String filter() throws FileNotFoundException, JSONException, IOException, ParseException {
+	public ArrayList<String> filter() throws FileNotFoundException, JSONException, IOException, ParseException {
 		HashMap<Post, Location> hm;
 		ServiceImpl service = new ServiceImpl();
 		hm = service.PostLocationMapping();
 		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
-		for(int i = 0; i < loc.size(); i++) {
+		ArrayList<String> aL = new ArrayList<String>();
+		ArrayList<String> provinceList = new ArrayList<String>();
+		for(int i = 1; i < loc.size(); i++) {
 			province += loc.get(i).getProvince() + ",";
+			aL = new ArrayList<String>(Arrays.asList(province.split(",")));
+		}
+		for(String str : aL) {
+			if(!provinceList.contains(str)) {
+				provinceList.add(str);
+			}
 		}
 		//System.out.println(province);
-		return province;
+		return provinceList;
 	}
-
 }

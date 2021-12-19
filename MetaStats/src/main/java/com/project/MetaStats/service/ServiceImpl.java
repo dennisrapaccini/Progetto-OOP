@@ -266,7 +266,13 @@ public class ServiceImpl implements Service {
 		obj.put("Ranking " +type, array);
 		return obj;
 	}
-
+	
+	/**
+	 * Metodo che restituisce le città, province e regioni in cui l'utente è stato a seconda del parametro immesso dall' utente
+	 * 
+	 * @param type tipo di filtro che si vuole eseguire
+	 * @return JSONObject che mostra il filtraggio
+	 */
 	@Override
 	public JSONObject getLocationFromPosts(String type) throws FileNotFoundException, JSONException, IOException, ParseException {
 		JSONArray arr = new JSONArray();

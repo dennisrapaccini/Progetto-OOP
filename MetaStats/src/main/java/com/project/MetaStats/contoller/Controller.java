@@ -30,7 +30,7 @@ import com.project.MetaStats.service.ServiceImpl;
  */
 @RestController
 public class Controller {
-
+	
 	ServiceImpl service = new ServiceImpl();
 	FilterCity filter = new FilterCity();
 	FilterProvince filter2 = new FilterProvince();
@@ -107,7 +107,6 @@ public class Controller {
 		}
 	}
 
-	
 	/**
 	 * Rotta di tipo GET che mostra il ranking delle città, province o regioni più
 	 * visitate dall'utente a seconda del parametro immesso dall'utente
@@ -136,19 +135,19 @@ public class Controller {
 		}
 	}
 	
-	
+	/**
+	 * Rotta di tipo GET che mostra le location in cui l' utente è stato filtrate dai post.
+	 * 
+	 * @param type tipo di filtro che viene fatto
+	 * @return ResponseEntity
+	 * @throws FileNotFoundException
+	 * @throws NonExistingLocationException
+	 * @throws IOException
+	 * @throws ParseException
+	 * @throws JSONException
+	 */
 	@GetMapping(value = "posts/location")
 	public ResponseEntity<Object> prova(@RequestParam(required = true) String type) throws FileNotFoundException, NonExistingLocationException, IOException, ParseException, JSONException{
 		return new ResponseEntity<>(service.getLocationFromPosts(type).toString(), HttpStatus.OK);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

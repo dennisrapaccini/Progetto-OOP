@@ -2,7 +2,7 @@ package com.project.MetaStats.filtersManagement;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
+import java.util.ArrayList;
 
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
@@ -24,6 +24,6 @@ public abstract class Filter {
 	 * @throws IOException
 	 * @throws ParseException
 	 */
-	public abstract String filter() throws FileNotFoundException, JSONException, IOException, ParseException;
+	public abstract ArrayList<String> filter() throws FileNotFoundException, JSONException, IOException, ParseException;
 	
 }

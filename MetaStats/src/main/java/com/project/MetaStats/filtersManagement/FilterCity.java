@@ -3,6 +3,7 @@ package com.project.MetaStats.filtersManagement;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import org.json.JSONException;
@@ -68,18 +69,23 @@ public class FilterCity extends Filter {
 	 * @return city stringa con le città filtrate
 	 */
 	@Override
-	public String filter() throws FileNotFoundException, JSONException, IOException, ParseException {
+	public ArrayList<String> filter() throws FileNotFoundException, JSONException, IOException, ParseException {
 		HashMap<Post, Location> hm;
 		ServiceImpl service = new ServiceImpl();
 		hm = service.PostLocationMapping();
 		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
+        ArrayList<String> aL = new ArrayList<String>();
+        ArrayList<String> cityList = new ArrayList<String>();
 		for(int i = 1; i < loc.size(); i++) {
 			city += loc.get(i).getCity() + ",";
+			aL = new ArrayList<String>(Arrays.asList(city.split(",")));
 		}
-		//System.out.println(city);
-		return city;
+		for(String str : aL) {
+			if(!cityList.contains(str)) {
+				cityList.add(str);
+			}
+		}
+		System.out.println(cityList);
+		return cityList;
 	}
-	
-	
-
 }
