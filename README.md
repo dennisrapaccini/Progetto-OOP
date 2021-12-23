@@ -61,11 +61,19 @@ se si va al link si vedrà: server.port=${port:8081}.
 Visualizzando il progetto (su eclipse) è possibile modificare il token di accesso, fornito da facebook per accedere alle API, che abbiamo utilizzato per testare le funzionalità della nostra applicazione; inserendo, quindi, il token dell' account di cui si vogliono fare le statistiche relative ai post.
 
 
+<a name="rotte"></a>
+## Rotte
 
+Abbiamo definito le seguenti rotte:
 
-
-
-
+N° | Tipo | Rotta | Descrizione
+----- | ------------ | -------------------- | ----------------------
+[1](#1) |` GET `|`/posts`| *restituisce un JSONObject in cui vengono mostrati tutti i post dell'utente*
+[2](#2) |` GET `|`/posts/city`| *restituisce un JSONObject in cui vengono mostrati tutti i post dell'utente filtrati per una o più città*
+[3](#3) |` GET `|`/posts/province`| *restituisce un JSONObject in cui vengono mostrati tutti i post dell'utente filtrati per una o più province*
+[4](#4) |` GET `|`/posts/region`| *restituisce un JSONObject in cui vengono mostrati tutti i post dell'utente filtrati per una o più regioni*
+[5](#5) |` GET `|`/posts/stats/ranking`| *restituisce un JSONObject in cui vengono fatte statistiche riguardo le città, province o regioni in cui l' utente è stato, in particolare il ranking per occorrenze delle tre categorie*
+[6](#6) |` GET `|`/posts/location`| *restituisce un JSONObject in cui vengono mostrate tute le città, province o regioni in cui l'utente è stato*
 
 
 
