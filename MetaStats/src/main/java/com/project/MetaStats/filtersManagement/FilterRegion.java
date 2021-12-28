@@ -10,6 +10,7 @@ import java.util.HashMap;
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
 
+import com.project.MetaStats.exception.FileManagementException;
 import com.project.MetaStats.model.Location;
 import com.project.MetaStats.model.Post;
 import com.project.MetaStats.service.ServiceImpl;
@@ -37,8 +38,9 @@ public class FilterRegion extends Filter{
 	 * @throws ParseException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws FileManagementException 
 	 */
-	public boolean isRegion(String region) throws FileNotFoundException, IOException, ParseException, JSONException {
+	public boolean isRegion(String region) throws FileNotFoundException, IOException, ParseException, JSONException, FileManagementException {
 		boolean isRegion = false;
 		database.getFile();
 		for (int i = 0; i < database.getCityList().size(); i++) {
@@ -52,9 +54,10 @@ public class FilterRegion extends Filter{
 	/**Metodo che fa l'override del metodo astratto filter e restituisce tette le regioni in cui l' utente è stato
 	 * 
 	 * @return region regioni filtrate
+	 * @throws FileManagementException 
 	 */
 	@Override
-	public ArrayList<String> filter() throws FileNotFoundException, JSONException, IOException, ParseException {
+	public ArrayList<String> filter() throws FileNotFoundException, JSONException, IOException, ParseException, FileManagementException {
 		HashMap<Post, Location> hm;
 		ServiceImpl service = new ServiceImpl();
 		hm = service.PostLocationMapping();

@@ -9,6 +9,7 @@ import java.util.HashMap;
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
 
+import com.project.MetaStats.exception.FileManagementException;
 import com.project.MetaStats.model.Location;
 import com.project.MetaStats.model.Post;
 import com.project.MetaStats.service.ServiceImpl;
@@ -36,8 +37,9 @@ public class FilterProvince extends Filter{
 	 * @throws ParseException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws FileManagementException 
 	 */
-	public boolean isProvince(String province) throws FileNotFoundException, IOException, ParseException, JSONException {
+	public boolean isProvince(String province) throws FileNotFoundException, IOException, ParseException, JSONException, FileManagementException {
 		boolean isProvince = false;
 		database.getFile();
 		for (int i = 0; i < database.getCityList().size(); i++) {
@@ -51,9 +53,10 @@ public class FilterProvince extends Filter{
 	/**Metodo che fa l'override della classe astratta filter e restituisce tutte le province in cui l' utente è stato
 	 * 
 	 * @return province province filtrate
+	 * @throws FileManagementException 
 	 */
 	@Override
-	public ArrayList<String> filter() throws FileNotFoundException, JSONException, IOException, ParseException {
+	public ArrayList<String> filter() throws FileNotFoundException, JSONException, IOException, ParseException, FileManagementException {
 		HashMap<Post, Location> hm;
 		ServiceImpl service = new ServiceImpl();
 		hm = service.PostLocationMapping();

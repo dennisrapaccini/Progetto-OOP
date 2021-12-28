@@ -16,6 +16,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.lang.Nullable;
 
 import com.project.MetaStats.exception.EmptyListException;
+import com.project.MetaStats.exception.FileManagementException;
 import com.project.MetaStats.exception.WrongFieldException;
 import com.project.MetaStats.exception.WrongParameterException;
 import com.project.MetaStats.model.*;
@@ -45,9 +46,10 @@ public class Statistics {
 	 * @throws ParseException
 	 * @throws WrongFieldException 
 	 * @throws EmptyListException 
+	 * @throws FileManagementException
 	 */
 	public HashMap<String, Integer> ranking(String type, @Nullable String initialDate, @Nullable String finalDate)
-			throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, WrongFieldException, EmptyListException {
+			throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, WrongFieldException, EmptyListException, FileManagementException {
 		HashMap<String, Integer> occurences = new HashMap<String, Integer>();
 		HashMap<Post, Location> hm = new HashMap<Post, Location>();
 		ServiceImpl service = new ServiceImpl();

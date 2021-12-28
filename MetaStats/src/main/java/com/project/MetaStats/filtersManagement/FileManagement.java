@@ -11,6 +11,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.project.MetaStats.exception.FileManagementException;
 import com.project.MetaStats.model.Location;
 
 public class FileManagement {
@@ -19,32 +20,6 @@ public class FileManagement {
 	
 	public FileManagement(){}
 	
-	/** Metodo che converte il contenuto del file JSON in ArrayList di Location
-	 * 
-	 * @return ArrayList<Location> 
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws ParseException
-	 * @throws JSONException
-	 *///NON CONVIENE FARLO DIVENTARE NON UN METODO? O PERLOMENO VOID
-	public void getFile() throws FileNotFoundException, IOException, ParseException, JSONException{ 
-		JSONParser parser = new JSONParser();
-		Object object = parser.parse(new FileReader("listaComuni.json"));
-		JSONObject jsonObject = (JSONObject) object;
-		JSONArray JSONcityList =  (JSONArray)jsonObject.get("Location"); //Problemi di casting tra JSON simple JSON normale
-		if (JSONcityList != null) { 
-			   for (int i=0;i<JSONcityList.size();i++){ 
-				   JSONObject obj = (JSONObject) JSONcityList.get(i);
-				   String city = obj.get("City").toString();;
-				   String province = obj.get("Province").toString();
-				   String region = obj.get("Region").toString();
-				   getCityList().add(new Location(city,province,region));
-			   } 
-			} 
-		
-		System.out.println(getCityList());
-		}
-
 	public ArrayList<Location> getCityList() {
 		return cityList;
 	}
@@ -52,7 +27,36 @@ public class FileManagement {
 	public void setCityList(ArrayList<Location> cityList) {
 		this.cityList = cityList;
 	}
-		
+	
+	/** Metodo che converte il contenuto del file JSON in ArrayList di Location
+	 * 
+	 * @return ArrayList<Location> 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 * @throws FileManagementException 
+	 * @throws JSONException
+	 *///aggiungere le altre eccezioni
+	public void getFile() throws FileNotFoundException, IOException, ParseException, FileManagementException{ 
+		JSONParser parser = new JSONParser();
+		try {
+			Object object = parser.parse(new FileReader("listaComuni.json"));
+			JSONObject jsonObject = (JSONObject) object;
+			JSONArray JSONcityList =  (JSONArray)jsonObject.get("Location");
+			if (JSONcityList != null) { 
+				   for (int i=0;i<JSONcityList.size();i++){ 
+					   JSONObject obj = (JSONObject) JSONcityList.get(i);
+					   String city = obj.get("City").toString();;
+					   String province = obj.get("Province").toString();
+					   String region = obj.get("Region").toString();
+					   getCityList().add(new Location(city,province,region));
+				   } 
+			} 
+		}
+		catch(ParseException e) {
+			throw new FileManagementException("ERRORE! Parsing errato! Controlla il contenuto del file");
+		}
 	}
+}
 	
 

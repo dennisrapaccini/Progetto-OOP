@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
 
+import com.project.MetaStats.exception.FileManagementException;
+
 public abstract class Filter {
 	
 	/**Costruttore della superclasse filtro
@@ -23,7 +25,8 @@ public abstract class Filter {
 	 * @throws JSONException
 	 * @throws IOException
 	 * @throws ParseException
+	 * @throws FileManagementException 
 	 */
-	public abstract ArrayList<String> filter() throws FileNotFoundException, JSONException, IOException, ParseException;
+	public abstract ArrayList<String> filter() throws FileNotFoundException, JSONException, IOException, ParseException, FileManagementException;
 	
 }

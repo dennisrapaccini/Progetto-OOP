@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.MetaStats.exception.EmptyListException;
+import com.project.MetaStats.exception.FileManagementException;
 import com.project.MetaStats.exception.NonExistingLocationException;
 import com.project.MetaStats.exception.WrongFieldException;
 import com.project.MetaStats.exception.WrongParameterException;
@@ -119,11 +120,12 @@ public class Controller {
 	 * @throws ParseException
 	 * @throws WrongParameterException
 	 * @throws EmptyListException 
+	 * @throws FileManagementException
 	 */
 	@GetMapping(value = "posts/stats/ranking")
 	public ResponseEntity<Object> ranking(@RequestParam (required = true) String type,
 										  @RequestParam (required = false) String initialDate,
-										  @RequestParam (required = false) String finalDate) throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, EmptyListException {
+										  @RequestParam (required = false) String finalDate) throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, EmptyListException, FileManagementException {
 		try {
 			return new ResponseEntity<>(service.ranking(type,initialDate,finalDate).toString(), HttpStatus.OK);
 		}
@@ -145,9 +147,10 @@ public class Controller {
 	 * @throws IOException
 	 * @throws ParseException
 	 * @throws JSONException
+	 * @throws FileManagementException 
 	 */
 	@GetMapping(value = "posts/location")
-	public ResponseEntity<Object> prova(@RequestParam(required = true) String type) throws FileNotFoundException, NonExistingLocationException, IOException, ParseException, JSONException{
+	public ResponseEntity<Object> prova(@RequestParam(required = true) String type) throws FileNotFoundException, NonExistingLocationException, IOException, ParseException, JSONException, FileManagementException{
 		return new ResponseEntity<>(service.getLocationFromPosts(type).toString(), HttpStatus.OK);
 	}
 }

@@ -15,6 +15,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.project.MetaStats.exception.EmptyListException;
+import com.project.MetaStats.exception.FileManagementException;
 import com.project.MetaStats.exception.NonExistingLocationException;
 import com.project.MetaStats.exception.WrongFieldException;
 import com.project.MetaStats.exception.WrongParameterException;
@@ -74,7 +75,6 @@ public class ServiceImpl implements Service {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//System.out.println(object);
 		return object;
 	}
 
@@ -97,8 +97,6 @@ public class ServiceImpl implements Service {
 			String id = data.getJSONObject(i).getString("id");
 			posts.add(new Post(null,null,Id, message, createdTime, id));
 		}
-
-		//System.out.println(posts);
 		return posts;
 	}
 	
@@ -112,9 +110,10 @@ public class ServiceImpl implements Service {
 	 * @throws IOException 
 	 * @throws FileNotFoundException 
 	 * @throws NonExistingLocationException
+	 * @throws FileManagementException 
 	 */
 	@Override
-	public JSONObject getPostsFromCity(String city) throws NonExistingLocationException, FileNotFoundException, IOException, ParseException, JSONException {
+	public JSONObject getPostsFromCity(String city) throws NonExistingLocationException, FileNotFoundException, IOException, ParseException, JSONException, FileManagementException {
 		FilterCity filter = new FilterCity();
 		if(!filter.isCity(city)) throw new NonExistingLocationException("Errore! "+city+ " non è una città valida.\nInserisci una città italiana esistente!");
 		JSONObject objectPostsFromCity = new JSONObject();
@@ -130,7 +129,6 @@ public class ServiceImpl implements Service {
 			} 
 		}
 		objectPostsFromCity.put("Posts in "+city, arrayPostsfromCity);
-		//System.out.println(arrayPostsfromCity);
 		return  objectPostsFromCity;
 	}
 	
@@ -143,9 +141,10 @@ public class ServiceImpl implements Service {
 	 * @throws IOException
 	 * @throws ParseException
 	 * @throws NonExistingLocationException
+	 * @throws FileManagementException 
 	 */
 	@Override
-	public JSONObject getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingLocationException{
+	public JSONObject getPostsFromProvince(String province) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingLocationException, FileManagementException{
 		FilterProvince filter = new FilterProvince();
 		if(!filter.isProvince(province)) throw new NonExistingLocationException("Errore! "+province+ " non è una provincia valida.\nInserisci una provincia italiana esistente!");
 		HashMap<Post,Location> map = new HashMap<Post,Location>();
@@ -169,9 +168,10 @@ public class ServiceImpl implements Service {
 	 * @throws JSONException
 	 * @throws IOException
 	 * @throws ParseException
+	 * @throws FileManagementException
 	 */
 	@Override
-	public JSONObject getPostsFromRegion(String region) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingLocationException{
+	public JSONObject getPostsFromRegion(String region) throws FileNotFoundException, JSONException, IOException, ParseException, NonExistingLocationException, FileManagementException{
 		FilterRegion filter = new FilterRegion();
 		if(!filter.isRegion(region)) throw new NonExistingLocationException("Errore! "+region+ " non è una regione valida.\nInserisci una regione italiana esistente!");
 		HashMap<Post,Location> map = new HashMap<Post,Location>();
@@ -225,9 +225,10 @@ public class ServiceImpl implements Service {
 	 * @throws ParseException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws FileManagementException 
 	 */
 	@Override
-	public HashMap<Post, Location> PostLocationMapping() throws JSONException, FileNotFoundException, IOException, ParseException {
+	public HashMap<Post, Location> PostLocationMapping() throws JSONException, FileNotFoundException, IOException, ParseException, FileManagementException {
 		HashMap<Post, Location> map = new HashMap<Post, Location>();
 		ArrayList<Post> posts = new ArrayList<Post>();
 		posts = allPosts();
@@ -255,9 +256,10 @@ public class ServiceImpl implements Service {
 	 * @throws IOException
 	 * @throws ParseException
 	 * @throws EmptyListException 
+	 * @throws FileManagementException 
 	 */
 	@Override
-	public JSONObject ranking(String type, String initialDate, String finalDate) throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, WrongFieldException, EmptyListException {
+	public JSONObject ranking(String type, String initialDate, String finalDate) throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, WrongFieldException, EmptyListException, FileManagementException {
 		HashMap<String,Integer> hm = new HashMap<String,Integer>();
 		JSONArray array = new JSONArray();
 		hm = stats.ranking(type, initialDate, finalDate);
@@ -272,9 +274,10 @@ public class ServiceImpl implements Service {
 	 * 
 	 * @param type tipo di filtro che si vuole eseguire
 	 * @return JSONObject che mostra il filtraggio
+	 * @throws FileManagementException 
 	 */
 	@Override
-	public JSONObject getLocationFromPosts(String type) throws FileNotFoundException, JSONException, IOException, ParseException {
+	public JSONObject getLocationFromPosts(String type) throws FileNotFoundException, JSONException, IOException, ParseException, FileManagementException {
 		JSONArray arr = new JSONArray();
 		switch(type.toLowerCase()) {
 		case "city" :
