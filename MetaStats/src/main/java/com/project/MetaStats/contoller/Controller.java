@@ -24,10 +24,10 @@ import com.project.MetaStats.filtersManagement.FilterRegion;
 import com.project.MetaStats.service.ServiceImpl;
 
 /**
- * Classe che gestisce le rotte che si possono fare
+ * Classe che gestisce le rotte
  * 
- * @author Cheikh
- * @author Dennis
+ * @author Cheikh Cisse
+ * @author Dennis Rapaccini
  */
 @RestController
 public class Controller {
@@ -52,49 +52,55 @@ public class Controller {
 	}
 
 	/**
-	 * Rotta di tipo GET che mostra i post che sono filtrati tramite location
+	 * Rotta di tipo GET che mostra i post filtrati per location
 	 * 
-	 * @param city città di cui si vogliono visualizzare i post
+	 * @param city città da filtrare
 	 * @return ResponseEntity
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws ParseException
-	 * @throws JSONException
-	 * @throws Exception
+	 * @throws NonExistingLocationException
+	 * @throws FileManagementException
 	 */
 	@GetMapping(value = "/posts/city")
 	public ResponseEntity<Object> getPostsFromLocation(@RequestParam(required = true) List<String> city)
-			throws FileNotFoundException, IOException, ParseException, JSONException, Exception {
+			throws Exception{
 		try {
 			return new ResponseEntity<>(service.getPostsFromParameters("city", city).toString(), HttpStatus.OK);
-		} catch (NonExistingLocationException e) {
+		} 
+		catch (NonExistingLocationException e) {
 			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
-		}
+		} 
+		catch (FileManagementException e) {
+			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
+		} 
+		
 	}
 
 	/**
-	 * Rotta di tipo GET che mostra i post filtrati dalle province visitate
-	 * dall'utente
+	 * Rotta di tipo GET che mostra i post filtrati dalle province relative alle città postate dall'utente
 	 * 
-	 * @param province
+	 * @param province provincia da filtrare
 	 * @return ResponseEntity
-	 * @throws Exception
+	 * @throws NonExistingLocationException
+	 * @throws FileManagementException
 	 */
 	@GetMapping(value = "/posts/province")
 	public ResponseEntity<Object> getPostsFromProvince(@RequestParam(required = true) List<String> province)
-			throws Exception, FileNotFoundException, JSONException, IOException, ParseException {
+			throws Exception{
 		try {
 			return new ResponseEntity<>(service.getPostsFromParameters("province", province).toString(), HttpStatus.OK);
-		} catch (NonExistingLocationException e) {
+		} 
+		catch (NonExistingLocationException e) {
 			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
 		}
+		catch (FileManagementException e) {
+			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
+		} 
+		
 	}
 
 	/**
-	 * Rotta di tipo GET che mostra i post filtrati secondo le regioni visitate
-	 * dall'utente
+	 * Rotta di tipo GET che mostra i post filtrati dalle regioni relative alle città postate dall'utente
 	 * 
-	 * @param region
+	 * @param region regione da filtrare
 	 * @return ResponseEntity
 	 * @throws Exception
 	 */
@@ -103,9 +109,14 @@ public class Controller {
 			throws Exception {
 		try {
 			return new ResponseEntity<>(service.getPostsFromParameters("region", region).toString(), HttpStatus.OK);
-		} catch (NonExistingLocationException e) {
+		} 
+		catch (NonExistingLocationException e) {
 			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
 		}
+		catch (FileManagementException e) {
+			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
+		} 
+		
 	}
 
 	/**
@@ -125,7 +136,7 @@ public class Controller {
 	@GetMapping(value = "posts/stats/ranking")
 	public ResponseEntity<Object> ranking(@RequestParam (required = true) String type,
 										  @RequestParam (required = false) String initialDate,
-										  @RequestParam (required = false) String finalDate) throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, EmptyListException, FileManagementException {
+										  @RequestParam (required = false) String finalDate) throws Exception {
 		try {
 			return new ResponseEntity<>(service.ranking(type,initialDate,finalDate).toString(), HttpStatus.OK);
 		}
@@ -135,12 +146,18 @@ public class Controller {
 		catch(WrongParameterException e) {
 			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
 		}
+		catch(FileManagementException e) {
+			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
+		}
+		catch(EmptyListException e) {
+			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	/**
-	 * Rotta di tipo GET che mostra le location in cui l' utente è stato filtrate dai post.
+	 * Rotta di tipo GET che mostra tutte le location in cui l'utente ha postato.
 	 * 
-	 * @param type tipo di filtro che viene fatto
+	 * @param type tipo di location: city, province o region
 	 * @return ResponseEntity
 	 * @throws FileNotFoundException
 	 * @throws NonExistingLocationException
@@ -148,9 +165,18 @@ public class Controller {
 	 * @throws ParseException
 	 * @throws JSONException
 	 * @throws FileManagementException 
+	 * @throws WrongFieldException
 	 */
 	@GetMapping(value = "posts/location")
-	public ResponseEntity<Object> prova(@RequestParam(required = true) String type) throws FileNotFoundException, NonExistingLocationException, IOException, ParseException, JSONException, FileManagementException{
-		return new ResponseEntity<>(service.getLocationFromPosts(type).toString(), HttpStatus.OK);
+	public ResponseEntity<Object> prova(@RequestParam(required = true) String type) throws Exception{
+		try {
+			return new ResponseEntity<>(service.getLocationFromPosts(type).toString(), HttpStatus.OK);
+		}
+		catch(FileManagementException e) {
+			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
+		}
+		catch(WrongFieldException e) {
+			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
+		}
 	}
 }

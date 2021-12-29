@@ -1,7 +1,7 @@
 package com.project.MetaStats.exception;
 
 /**
- * Classe contenente il metodo che genera un'eccezione avviene un errore nella lettura del file di database
+ * Classe contenente il metodo che genera un'eccezione quando occorre un errore nella lettura del file di database
  * 
  * @author Dennis Rapaccini
  * @author Cheikh Cisse

@@ -2,33 +2,34 @@ package com.project;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import org.json.JSONException;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Objects;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import com.project.MetaStats.exception.FileManagementException;
-import com.project.MetaStats.exception.NonExistingLocationException;
+import com.project.MetaStats.model.Location;
+import com.project.MetaStats.model.Post;
 import com.project.MetaStats.service.ServiceImpl;
 
 class ServiceImplTests {
 	
 	ServiceImpl service;
-	JSONObject obj;
-	JSONParser parser;
+	JSONObject obj1;
+	JSONObject obj2;
+	JSONArray arr;
+	HashMap<Post,Location> map;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		service = new ServiceImpl();
-		obj = new JSONObject();
-		parser = new JSONParser();
+		obj1 = new JSONObject();
+		arr = new JSONArray();
+		obj2 = new JSONObject();
+		map = service.PostLocationMapping(); 
 	}
 
 	@AfterEach
@@ -36,9 +37,19 @@ class ServiceImplTests {
 	}
 
 	@Test
-	@DisplayName("Test getPostsFromCity")
-	void getPostsFromCitytest() throws FileNotFoundException, NonExistingLocationException, IOException, ParseException, JSONException, FileManagementException {
-		obj = (JSONObject) parser.parse("{\"Posts in firenze\":[{\"created_time\":\"2021-12-25T12:46:40+0000\",\"id\":\"107864155075941_119047300624293\",\"message\":\"Buon Natale a tutti i miei amici di Facebook, oggi pranzo con i lontani parenti di Firenze\"}]}");
-		assertEquals(service.getPostsFromCity("firenze").toString(), obj.toString());
+	@DisplayName("Test getPostsFromRegion")
+	void getPostsFromRegionTest() throws Exception {
+		Location loc = new Location("Firenze","FI","Toscana");
+		Post post = null;
+		for (Entry<Post, Location> entry : map.entrySet()) {
+			if (Objects.equals(loc.toString(), entry.getValue().toString())) {
+				post=entry.getKey();
+			}
+		}
+		obj1.put("Message", post.getMessage());
+		obj1.put("Created Time", post.getCreatedTime());
+		obj2.put("Posts in: toscana", arr.put(obj1));
+		
+		assertEquals(service.getPostsFromRegion("toscana").toString(), obj2.toString());
 	}
 }

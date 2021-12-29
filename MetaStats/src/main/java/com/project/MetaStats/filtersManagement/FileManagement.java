@@ -36,7 +36,7 @@ public class FileManagement {
 	 * @throws ParseException
 	 * @throws FileManagementException 
 	 * @throws JSONException
-	 *///aggiungere le altre eccezioni
+	 */
 	public void getFile() throws FileNotFoundException, IOException, ParseException, FileManagementException{ 
 		JSONParser parser = new JSONParser();
 		try {
@@ -54,7 +54,13 @@ public class FileManagement {
 			} 
 		}
 		catch(ParseException e) {
-			throw new FileManagementException("ERRORE! Parsing errato! Controlla il contenuto del file");
+			throw new FileManagementException("ERRORE! Parsing del database errato! Controlla il contenuto del file.");
+		}
+		catch(FileNotFoundException e) {
+			throw new FileManagementException("ERRORE! File di databse non trovato!");
+		}
+		catch(IOException e) {
+			throw new FileManagementException("ERRORE! Controlla la correttezza e la presenza del file di database.");
 		}
 	}
 }

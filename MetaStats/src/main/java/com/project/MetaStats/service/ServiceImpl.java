@@ -69,10 +69,8 @@ public class ServiceImpl implements Service {
 		try {
 			object = new JSONObject(rt.getForObject(url, String.class));
 		} catch (RestClientException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return object;
@@ -275,9 +273,10 @@ public class ServiceImpl implements Service {
 	 * @param type tipo di filtro che si vuole eseguire
 	 * @return JSONObject che mostra il filtraggio
 	 * @throws FileManagementException 
+	 * @throws WrongFieldException 
 	 */
 	@Override
-	public JSONObject getLocationFromPosts(String type) throws FileNotFoundException, JSONException, IOException, ParseException, FileManagementException {
+	public JSONObject getLocationFromPosts(String type) throws FileNotFoundException, JSONException, IOException, ParseException, FileManagementException, WrongFieldException {
 		JSONArray arr = new JSONArray();
 		switch(type.toLowerCase()) {
 		case "city" :
@@ -295,6 +294,9 @@ public class ServiceImpl implements Service {
 			filter3.filter();
 			arr.put(filter3.filter());
 			break;
+			
+		default : throw new WrongFieldException("ERRORE! Inserisci un tipo valido: solo city, province o region sono ammessi");
+		
 		}
 		JSONObject obj = new JSONObject();
 		obj.put(type,arr);
