@@ -1,16 +1,15 @@
 package com.project.MetaStats.exception;
 
+/**
+ * Classe contenente il metodo che genera un'eccezione quando un campo (es. type) non è valido
+ * 
+ * @author Dennis Rapaccini
+ * @author Cheikh Cisse
+ *
+ */
 public class WrongFieldException extends Exception {
-	/**
-	 * Classe contenente il metodo che genera un'eccezione quando un campo (es. type) non è valido
-	 * 
-	 * @author Dennis Rapaccini
-	 * @author Cheikh Cisse
-	 *
-	 */
-
+	
 		private static final long serialVersionUID = 1L;
-		
 		String error;
 
 		public String getError() {
@@ -21,11 +20,7 @@ public class WrongFieldException extends Exception {
 			super();
 			this.error = error;
 		}
-
 		
-		
-		
-
-	}
+}
 
 

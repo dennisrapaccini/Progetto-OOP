@@ -1,10 +1,11 @@
 package com.project.MetaStats.filtersManagement;
 
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+
 import java.util.ArrayList;
+
 import org.json.simple.JSONArray;
 import org.json.JSONException;
 import org.json.simple.JSONObject;
@@ -18,12 +19,25 @@ public class FileManagement {
 	
 	private ArrayList<Location> cityList = new ArrayList<Location>();
 	
+	/**
+	 * Costruttore vuoto della classe FileManagement
+	 */
 	public FileManagement(){}
 	
+	/**
+	 * Metodo che restituisce un arrayList delle città(getter)
+	 * 
+	 * @return cityList arrayList di Location 
+	 */
 	public ArrayList<Location> getCityList() {
 		return cityList;
 	}
-
+	
+	/**
+	 * Metodo che setta l'arrayList delle città(setter)
+	 * 
+	 * @param cityList arrayList di Location
+	 */
 	public void setCityList(ArrayList<Location> cityList) {
 		this.cityList = cityList;
 	}
@@ -63,6 +77,5 @@ public class FileManagement {
 			throw new FileManagementException("ERRORE! Controlla la correttezza e la presenza del file di database.");
 		}
 	}
-}
 	
-
+}

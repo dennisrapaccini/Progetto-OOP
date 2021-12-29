@@ -10,15 +10,18 @@ import org.json.JSONObject;
 
 import com.project.MetaStats.model.Post;
 
-/**Classe che converte un ArrayList in JSONArray
- * @author Cheikh
- * @author Dennis
+/**
+ * Classe che converte un ArrayList in JSONArray
+ * 
+ * @author Cheikh Cisse
+ * @author Dennis Rapaccini
  *
  */
 public class ToJSON {
 	
-	/**Metodo che converte l'ArrayList in JSONArray
-	 * @param p
+	/**
+	 * Metodo che converte un ArrayList in un JSONArray
+	 * @param ArrayList<Post> p
 	 * @return JSONArray
 	 * @throws JSONException
 	 */
@@ -28,13 +31,13 @@ public class ToJSON {
 			JSONObject obj = new JSONObject();
 			obj.put("Created Time", p.get(i).getCreatedTime());
 			obj.put("Message", p.get(i).getMessage());
-			System.out.println();
 			arr.put(obj);
 		}
 		return arr;
 	}
 	
-	/**Metodo che converte un HashMap in JSONObject o JSONArray
+	/**
+	 * Metodo che converte un HashMap in JSONObject o JSONArray
 	 * 
 	 * @param HashMap<String, Integer> hm
 	 * @param String type
@@ -42,7 +45,6 @@ public class ToJSON {
 	 * @return JSONArray
 	 */
 	public static JSONArray HashMapToJSONArray(HashMap<String, Integer> hm, String type) throws JSONException {
-		//poi passare a JSONObject su serviceImpl
 		JSONArray arr = new JSONArray();
 		for(Entry<String, Integer> set : hm.entrySet()) {
 			JSONObject object = new JSONObject();
@@ -52,4 +54,5 @@ public class ToJSON {
 		}
 		return arr;
 	}
+	
 }

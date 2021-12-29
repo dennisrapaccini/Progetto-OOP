@@ -2,10 +2,10 @@ package com.project.MetaStats.filtersManagement;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-
 
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
@@ -20,14 +20,23 @@ public class FilterRegion extends Filter{
 	FileManagement database = new FileManagement();
 	private String region = "";
 	
+	/**
+	 * Metodo che restituisce l'attributo region(getter)
+	 * 
+	 * @return region
+	 */
 	public String getRegion() {
 		return region;
 	}
-
+	
+	/**
+	 * Metodo che setta l'attributo province(setter)
+	 * 
+	 * @param region
+	 */
 	public void setRegion(String region) {
 		this.region = region;
 	}
-
 
 	/**
 	 * Metodo che controlla se la regione da parametro è presente nel database (ignorando il letter case)
@@ -73,7 +82,6 @@ public class FilterRegion extends Filter{
 				regionList.add(str);
 			}
 		}
-		//System.out.println(region);
 		return regionList;
 	}
 

@@ -10,7 +10,6 @@ package com.project.MetaStats.exception;
 public class EmptyListException extends Exception {
 
 	private static final long serialVersionUID = 1L;
-	
 	String error;
 
 	public String getError() {
@@ -21,9 +20,5 @@ public class EmptyListException extends Exception {
 		super();
 		this.error = error;
 	}
-
-	
-	
-	
 
 }

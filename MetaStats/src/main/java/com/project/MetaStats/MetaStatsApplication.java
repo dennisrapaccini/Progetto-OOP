@@ -21,18 +21,17 @@ import com.project.MetaStats.statistics.Statistics;
 public class MetaStatsApplication {
 
 	public static void main(String[] args) throws Exception {
-		
 		//ArrayList<Post> p = new ArrayList<Post>();
 		//ArrayList<Location> p = new ArrayList<Location>();
-		SpringApplication.run(MetaStatsApplication.class, args);
-		ServiceImpl service = new ServiceImpl();
+		//SpringApplication.run(MetaStatsApplication.class, args);
+		//ServiceImpl service = new ServiceImpl();
 		//service.getLocationFromPosts("Region");
 		//service.getPostFromParameters("Province","MC","mt","mi");
 		//service.getPost_User();
 		//service.getMessage_Post();
-		FilterCity filtercity= new FilterCity();
-		FilterProvince filter= new FilterProvince();
-		FilterRegion filter2= new FilterRegion();
+		//FilterCity filtercity= new FilterCity();
+		// filter= new FilterProvince();
+		//FilterRegion filter2= new FilterRegion();
 		//filtercity.filter();
 		//filter.filter();
 		//filter2.filter();
@@ -43,12 +42,10 @@ public class MetaStatsApplication {
 		//service.allPosts();
 		//ToJSON tj = new ToJSON();//test
 		//tj.toJSONArray(p);//test
-		Statistics stats = new Statistics();
+		//Statistics stats = new Statistics();
 		//stats.rankingCity("region");
 		//stats.rankingByPeriod("city", null, null);
 		//service.getPostsFromRegion("marche");
 		//System.out.println(service.allPosts());
-		
 	}
-		
 }

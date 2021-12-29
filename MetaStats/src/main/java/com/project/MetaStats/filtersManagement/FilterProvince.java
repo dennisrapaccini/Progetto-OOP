@@ -2,6 +2,7 @@ package com.project.MetaStats.filtersManagement;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -19,17 +20,26 @@ public class FilterProvince extends Filter{
 	FileManagement database = new FileManagement();
 	private String province = "";
 	
+	/**
+	 * Metodo che restituisce l'attributo province(getter)
+	 * 
+	 * @return province
+	 */
 	public String getProvince() {
 		return province;
 	}
-
+	
+	/**
+	 * Metodo che setta l'attributo province(setter)
+	 * 
+	 * @param province
+	 */
 	public void setProvince(String province) {
 		this.province = province;
 	}
 
 	/**
 	 * Metodo che controlla se la provincia (in sigla) da parametro è presente nel database (ignorando il letter case)
-	 * 
 	 * 
 	 * @param city La provincia da controllare
 	 * @return true se la provincia è presente, false altrimenti
@@ -50,7 +60,8 @@ public class FilterProvince extends Filter{
 		return isProvince;
 	}
 	
-	/**Metodo che fa l'override della classe astratta filter e restituisce tutte le province in cui l' utente è stato
+	/**
+	 * Metodo che fa l'override della classe astratta filter e restituisce tutte le province in cui l' utente è stato
 	 * 
 	 * @return province province filtrate
 	 * @throws FileManagementException 
@@ -72,7 +83,7 @@ public class FilterProvince extends Filter{
 				provinceList.add(str);
 			}
 		}
-		//System.out.println(province);
 		return provinceList;
 	}
+	
 }

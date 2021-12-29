@@ -1,19 +1,20 @@
 package com.project.MetaStats.model;
 
-/**Questa classe rappresenta i post dell'utente facebbok
- * @author Cheikh
- * @author Dennis
+/**
+ * Questa classe rappresenta i post dell'utente facebbok
+ * 
+ * @author Cheikh Cisse
+ * @author Dennis Rapaccini
  */
 public class Post extends UserFacebook {
-
-	/** Attributi relativi ai post dell'utente
-	 */
+	
 	private String message;
 	private String CreatedTime;
 	private String idPost;
 	private String ID = getId()+"_"+idPost;
 	
-	/**Costruttore della classe post ereditato dalla superclasse UserFacebook
+	/**
+	 * Costruttore della classe post ereditato dalla superclasse UserFacebook
 	 * 
 	 * @param name
 	 * @param surname
@@ -29,7 +30,8 @@ public class Post extends UserFacebook {
 		this.ID = ID;
 	}
 	
-	/**Metodo che restituisce la descrizione del post(getter)
+	/**
+	 * Metodo che restituisce la descrizione del post(getter)
 	 * 
 	 * @return message
 	 */
@@ -37,7 +39,8 @@ public class Post extends UserFacebook {
 		return message;
 	}
 
-	/**Metodo che setta la descrizione del post(setter)
+	/**
+	 * Metodo che setta la descrizione del post(setter)
 	 * 
 	 * @param message
 	 */
@@ -45,7 +48,8 @@ public class Post extends UserFacebook {
 		this.message = message;
 	}
 	
-	/**Metodo che restituisce la data di creazione del post(getter)
+	/**
+	 * Metodo che restituisce la data di creazione del post(getter)
 	 * 
 	 * @return createdTime
 	 */
@@ -53,7 +57,8 @@ public class Post extends UserFacebook {
 		return CreatedTime;
 	}
 	
-	/**Metodo che setta la data di creazione del post(setter)
+	/**
+	 * Metodo che setta la data di creazione del post(setter)
 	 * 
 	 * @param createdTime
 	 */
@@ -61,7 +66,8 @@ public class Post extends UserFacebook {
 		CreatedTime = createdTime;
 	}
 	
-	/**Metodo che restituisce l'id del post(getter)
+	/**
+	 * Metodo che restituisce l'id del post(getter)
 	 * 
 	 * @return idPost
 	 */
@@ -69,7 +75,8 @@ public class Post extends UserFacebook {
 		return idPost;
 	}
 	
-	/**Metodo che setta l'id del post(setter)
+	/**
+	 * Metodo che setta l'id del post(setter)
 	 * 
 	 * @param idPost
 	 */
@@ -77,8 +84,8 @@ public class Post extends UserFacebook {
 		this.idPost = idPost;
 	}
 
-
-	/**Override del metodo toString che restituisce l'oggetto Post in stringa
+	/**
+	 * Override del metodo toString che restituisce l'oggetto Post in stringa
 	 */
 	@Override
 	public String toString() {

@@ -2,6 +2,7 @@ package com.project.MetaStats.service;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +28,8 @@ import com.project.MetaStats.model.Location;
 import com.project.MetaStats.model.Post;
 import com.project.MetaStats.statistics.Statistics;
 
-/**Classe che esegue l'override dei metodi definiti in Service
+/**
+ * Classe che esegue l'override dei metodi definiti in Service
  * 
  * @author Cheikh Cisse
  * @author Dennis Rapaccini
@@ -36,7 +38,8 @@ public class ServiceImpl implements Service {
 
 	ArrayList<Location> postLocations = new ArrayList<Location>();
 
-	/**Token di accesso (a lungo termine) alla API di Facebook fornito all'utente dallo stesso.
+	/**
+	 * Token di accesso (a lungo termine) alla API di Facebook fornito all'utente dallo stesso.
 	 * 
 	 * L'access token è stato diviso per evitare invalidazioni da parte del
 	 * controllo di Facebook su GitHub.
@@ -49,16 +52,28 @@ public class ServiceImpl implements Service {
 	private String Id="107864155075941";
 	private String message;
 	private Statistics stats = new Statistics();
+	
+	/**
+	 * Metodo che restituisce la descrizione del post(getter)
+	 * 
+	 * @return message
+	 */
 	public String getMessage() {
 		return message;
 	}
-
+	
+	/**
+	 * Metodo che setta la descrizione dei post(setter)
+	 * 
+	 * @param message
+	 */
 	public void setMessage(String message) {
 		this.message = message;
 	}
 
 	/**
 	 * Metodo che ritorna tutti i post dell'utente in JSONObject
+	 * 
 	 * @return JSONObject contenente tutti i post dell'utente Facebook
 	 */
 	@Override
@@ -76,11 +91,10 @@ public class ServiceImpl implements Service {
 		return object;
 	}
 
-
 	/**
-	 * Metodo che salva su ArrayList tutti i post
-	 * @return Arraylist che contiene la lista di tutti i post dell'utente
+	 * Metodo che salva su ArrayList tutti i post dell'utente
 	 * 
+	 * @return Arraylist che contiene la lista di tutti i post dell'utente
 	 * @throws JSONException
 	 */
 	@Override
@@ -132,7 +146,7 @@ public class ServiceImpl implements Service {
 	
 	/**
 	 * Metodo che restituisce un JSONObject contenente i post relativi alla provincia in argomento (ignorando il letter case)
-	 * @param province Province da filtrare 
+	 * @param province Provincia da filtrare 
 	 * @return JSONObject contenente tutti i post in cui è contenuta la provincia
 	 * @throws FileNotFoundExceptio
 	 * @throws JSONException
@@ -160,6 +174,7 @@ public class ServiceImpl implements Service {
 	
 	/**
 	 * Metodo che restituisce un JSONObject contenente i post relativi alla regione in argomento (ignorando il letter case)
+	 * 
 	 * @param region Regione da filtrare
 	 * @return JSONObject contenente tutti i post in cui è contenuta la regione
 	 * @throws NonExistingLocationException 
@@ -187,6 +202,7 @@ public class ServiceImpl implements Service {
 	
 	/**
 	 * Metodo che restituisce i post dell'utente a seconda del parametro immesso
+	 * 
 	 * @param type stringa che indica il tipo di filtro che si vuole eseguire
 	 * @param locations lista di stringa che mi permette di filtrare anche con parametri variabili
 	 * @return JSONObject oggetto rappresentativo di ciò che è stato filtrato 
@@ -245,6 +261,7 @@ public class ServiceImpl implements Service {
 	
 	/**
 	 * Override del metodo ranking()
+	 * 
 	 * @param type Parametro che indica il tipo di ranking che si vuole visualizzare (city, province o region)
 	 * @return JSONObject che mostra il ranking
 	 * @throws WrongParameterException 
@@ -300,8 +317,7 @@ public class ServiceImpl implements Service {
 		}
 		JSONObject obj = new JSONObject();
 		obj.put(type,arr);
-		System.out.println(obj);
 		return obj;
-	}	
+	}
+	
 }
-

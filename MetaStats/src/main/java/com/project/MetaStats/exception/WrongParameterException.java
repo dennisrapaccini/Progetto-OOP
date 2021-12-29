@@ -21,5 +21,4 @@ public class WrongParameterException extends Exception {
 		return error;
 	}
 	
-
 }

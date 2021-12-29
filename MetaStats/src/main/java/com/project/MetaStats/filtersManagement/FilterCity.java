@@ -2,6 +2,7 @@ package com.project.MetaStats.filtersManagement;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -16,26 +17,28 @@ import com.project.MetaStats.service.ServiceImpl;
 
 public class FilterCity extends Filter {
 	
-	/**Attributi relativi alla classe FilterCity
-	 */
 	private String city = "";
 	FileManagement database = new FileManagement();
 	
-	/**Costruttore della sottoclasse FilterCity estensione della superclasse Filter
-	 * @param city
+	/**
+	 * Costruttore della sottoclasse FilterCity estensione della superclasse Filter
 	 */
 	public FilterCity() {
 		super();
 	}
 
-	/**Metodo che restituisce l'attributo city(getter)
+	/**
+	 * Metodo che restituisce l'attributo city(getter)
+	 * 
 	 * @return city
 	 */
 	public String getCity() {
 		return city;
 	}
 	
-	/**Metodo che setta l'attributo city(setter)
+	/**
+	 * Metodo che setta l'attributo city(setter)
+	 * 
 	 * @param city
 	 */
 	public void setCity(String city) {
@@ -43,8 +46,7 @@ public class FilterCity extends Filter {
 	}
 
 	/**
-	 * Metodo che controlla se la città da parametro è presente nel database (ignorando il letter case)
-	 * 
+	 * Metodo che controlla se la città da parametro è presente nel database (ignorando il letter case).
 	 * Se il nome della città contiene più di una parola, queste vanno inserite tutte
 	 * 
 	 * @param city La città da controllare
@@ -66,7 +68,8 @@ public class FilterCity extends Filter {
 		return isCity;
 	}
 	
-	/**Metodo che fa l'override del metodo astratto filter
+	/**
+	 * Metodo che fa l'override del metodo astratto filter, tirando fuori tutte le città in cui l' utente è stato
 	 * 
 	 * @return city stringa con le città filtrate
 	 * @throws FileManagementException 
@@ -88,7 +91,7 @@ public class FilterCity extends Filter {
 				cityList.add(str);
 			}
 		}
-		System.out.println(cityList);
 		return cityList;
 	}
+	
 }

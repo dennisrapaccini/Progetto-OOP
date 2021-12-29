@@ -1,8 +1,8 @@
 package com.project.MetaStats.contoller;
 
 import java.io.FileNotFoundException;
-
 import java.io.IOException;
+
 import java.util.List;
 
 import org.json.JSONException;
@@ -71,7 +71,6 @@ public class Controller {
 		catch (FileManagementException e) {
 			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
 		} 
-		
 	}
 
 	/**
@@ -94,7 +93,6 @@ public class Controller {
 		catch (FileManagementException e) {
 			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
 		} 
-		
 	}
 
 	/**
@@ -115,8 +113,7 @@ public class Controller {
 		}
 		catch (FileManagementException e) {
 			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
-		} 
-		
+		} 	
 	}
 
 	/**
@@ -179,4 +176,5 @@ public class Controller {
 			return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
 		}
 	}
+	
 }

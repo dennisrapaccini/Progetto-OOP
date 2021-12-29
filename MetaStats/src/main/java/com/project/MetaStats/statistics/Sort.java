@@ -8,17 +8,19 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-/**Classe che implementa il metodo sort
+/**
+ * Classe che implementa il metodo sort per mettere in ordine un HashMap
  * 
- * @author Cheikh
- * @author Dennis
+ * @author Cheikh Cisse
+ * @author Dennis Rapaccini
  */
 public class Sort {
 	
-	/**Metodo che ordina un HashMap<String, Integer> in ordine di value decrescenti
+	/**
+	 * Metodo che ordina un HashMap<String, Integer> in ordine di value decrescenti
 	 * 
-	 * @param hm
-	 * @return HashMap
+	 * @param HashMap<String, Integer> hm
+	 * @return HashMap ordinato
 	 */
 	public static HashMap<String, Integer> hmSort(HashMap<String, Integer> hm){
 		List<Map.Entry<String, Integer>> list = 
@@ -34,4 +36,5 @@ public class Sort {
 		}
 		return temp;
     }
+	
 }

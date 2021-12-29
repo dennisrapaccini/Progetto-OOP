@@ -25,8 +25,8 @@ import com.project.MetaStats.service.*;
 /**
  * Classe che implementa i metodi per effettuare statistiche sui post
  * 
- * @author Cheikh
- * @author Dennis
+ * @author Cheikh Cisse
+ * @author Dennis Rapaccini
  *
  */
 public class Statistics {
@@ -61,8 +61,6 @@ public class Statistics {
 		LocalDate date1;
 		LocalDate date2;
 		ArrayList<Location> loc = new ArrayList<Location>(hm.values());
-		
-
 		try {
 			date1 = LocalDate.parse(initialDate, userFormatter).minusDays(1); //-1 per via del isAfter()
 			date2 = LocalDate.parse(finalDate, userFormatter).plusDays(1); // +1 per via del isBefore()
@@ -70,7 +68,6 @@ public class Statistics {
 			throw new WrongParameterException("ERRORE! Inserisci data in formato dd-MM-yyyy", e);
 		}
 		boolean isEmpty= true;
-		
 		switch (type.toLowerCase()) {
 		case "city":
 			for (int i = 0; i < loc.size(); i++) { // scorre l'ArrayList di Location
@@ -87,9 +84,9 @@ public class Statistics {
 				}
 				occurences.put(loc.get(i).getCity(), counter);
 			}
-
+			
 			break;
-
+			
 		case "province":
 			for (int i = 0; i < loc.size(); i++) {
 				int counter = 0;
@@ -128,12 +125,8 @@ public class Statistics {
 		
 		default : throw new WrongFieldException("ERRORE! Inserisci un tipo valido: solo city, province o region sono ammessi");
 		}
-		
 		if (isEmpty) throw new EmptyListException("Non è presente alcun post per questo periodo, prova a cambiarlo o ad aumentarne l'intervallo temporale");
-		
-		System.out.println(Sort.hmSort(occurences));
 		return Sort.hmSort(occurences);
 	}
-
 	
 }

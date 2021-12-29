@@ -2,6 +2,7 @@ package com.project.MetaStats.filtersManagement;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import java.util.ArrayList;
 
 import org.json.JSONException;
@@ -11,14 +12,15 @@ import com.project.MetaStats.exception.FileManagementException;
 
 public abstract class Filter {
 	
-	/**Costruttore della superclasse filtro
-	 * @param cityList è la lista delle città che vogliamo filtrare
-	 * @param filtered è la lista della cosa che abbiamo filtrato
+	/**
+	 * Costruttore vuoto della superclasse filtro
 	 */
 	public Filter() {
 		super();
 	}
-	/**Metodo astratto che verrà implementato  dalle sottoclassi
+	
+	/**
+	 * Metodo astratto che verrà implementato  dalle sottoclassi
 	 * 
 	 * @return
 	 * @throws FileNotFoundException

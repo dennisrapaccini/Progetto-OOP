@@ -1,19 +1,19 @@
 package com.project.MetaStats.model;
 
-/**Questa classe rappresenta i luoghi in cui si trova l'utente nei suoi post
- * @author Cheikh
- * @author Dennis
+/**
+ * Questa classe rappresenta i luoghi in cui si trova l'utente nei suoi post
+ * 
+ * @author Cheikh Cisse
+ * @author Dennis Rapaccini
  */
 public class Location {
 	
-	/**Attributi relativi alle location
-	 * 
-	 */
 	private String city;
 	private String province;
 	private String region;
 	
-	/**Costruttore dell'oggetto location
+	/**
+	 * Costruttore dell'oggetto location
 	 * 
 	 * @param city
 	 * @param province
@@ -26,7 +26,8 @@ public class Location {
 		this.region = region;
 	}
 	
-	/**Metodo che restituisce il nome della città in cui si trova(getter)
+	/**
+	 * Metodo che restituisce il nome della città in cui si trova(getter)
 	 * 
 	 * @return city
 	 */
@@ -34,7 +35,8 @@ public class Location {
 		return city;
 	}
 	
-	/**Metodo che setta il nome della città(setter)
+	/**
+	 * Metodo che setta il nome della città(setter)
 	 * 
 	 * @param city
 	 */
@@ -42,7 +44,8 @@ public class Location {
 		this.city = city;
 	}
 	
-	/**Metodo che restituisce la provincia della città(getter)
+	/**
+	 * Metodo che restituisce la provincia della città(getter)
 	 * 
 	 * @return province
 	 */
@@ -50,7 +53,8 @@ public class Location {
 		return province;
 	}
 	
-	/**Metodo che setta la provincia della città
+	/**
+	 * Metodo che setta la provincia della città(setter)
 	 * 
 	 * @param province
 	 */
@@ -58,7 +62,8 @@ public class Location {
 		this.province = province;
 	}
 	
-	/**Metodo che restituisce la regione della città
+	/**
+	 * Metodo che restituisce la regione della città(getter)
 	 * 
 	 * @return region
 	 */
@@ -66,7 +71,8 @@ public class Location {
 		return region;
 	}
 	
-	/**Metodo che setta la regione della città
+	/**
+	 * Metodo che setta la regione della città(setter)
 	 * 
 	 * @param region
 	 */
@@ -74,7 +80,8 @@ public class Location {
 		this.region = region;
 	}
 	
-	/**Override del metodo toString che restituisce l'oggetto Location in stringa
+	/**
+	 * Override del metodo toString che restituisce l'oggetto Location in stringa
 	 */
 	@Override
 	public String toString() {
