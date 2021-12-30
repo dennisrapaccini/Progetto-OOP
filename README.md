@@ -93,6 +93,8 @@ N° | Parametri | Tipo | Richiesto
 <a name="output"></a>
 ## Output richieste
     
+Gli esempi delle risposte sono stati presi dal client postman inserendo alcuni parametri manualmente quando richiesti.
+    
 In risposta alla prima richiesta si avrà:
 ```json
     {
@@ -312,3 +314,40 @@ La risposta data alla prima richiesta è stata tagliata per una questione di spa
     
 <a name="eccezioni"></a>
 ## Eccezioni
+    
+Le eccezioni che sono state aggiunte e gestite sono le seguenti:
+    
+* **EmptyListException:** lanciata quando un elemento (ad esempio Array) è vuoto.
+* **FileManagementException:** lanciata quando occorre un errore nella lettura del file di database delle città.
+* **NonExistingLocationException:** lanciata quando una città inserita dall' utente (es. Paris) non è presente nel database.
+* **WrongFieldException:** lanciata quando un campo (es. type) non è valido.
+* **WrongParameterException:** lanciata quando un parametro non è ammesso.
+    
+*Il messaggio mostrato dalle eccezioni dipende dal metodo in cui sono applicati.*
+    
+<a name="test"></a>
+## Test
+ 
+I test sono stati eseguiti grazie l'ausilio del framework JUnit già presente nell' ambiente di sviluppo Eclipse. Sono stati implementati tre classi di test unitari:
+    
+* **Test 1:** controllo correttezza lancio eccezione FileManagementException.
+* **Test 2:** controllo correttezza output del metodo getPostsFromRegion.
+* **Test 3:** controllo correttezza output del metodo ranking.
+ 
+<a name="documentazione"></a>
+## Documentazione
+    
+Il progetto è interamente documentato in [javadoc](aggiungere il link una volta fatto le ultime modifiche sul codice)
+    
+<a name="autori"></a>
+## Autori
+    
+Il progetto è stato realizzato da: 
+
+* **[Dennis Rapaccini](https://github.com/dennisrapaccini)** (50%)
+* **[Cheikh Cisse](https://github.com/Huncho07)** (50%)
+    
+    
+    
+    
+    
