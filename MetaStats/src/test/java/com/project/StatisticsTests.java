@@ -2,11 +2,21 @@ package com.project;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.HashMap;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.json.JSONException;
+import org.json.simple.parser.ParseException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import com.project.MetaStats.exception.EmptyListException;
+import com.project.MetaStats.exception.FileManagementException;
+import com.project.MetaStats.exception.WrongFieldException;
+import com.project.MetaStats.exception.WrongParameterException;
+import com.project.MetaStats.statistics.Statistics;
 
 /**
  * Classe che testa un metodo di Statistics
@@ -16,7 +26,7 @@ import org.junit.jupiter.api.Test;
  */
 class StatisticsTests {
 	
-	HashMap<String, Integer> hm;
+	Statistics stats;
 	
 	/**
 	 * Ininizializza gli oggetti necessari al test
@@ -25,7 +35,7 @@ class StatisticsTests {
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
-		hm = new HashMap<String, Integer>();
+		stats = new Statistics();
 	}
 	
 	/**
@@ -39,8 +49,9 @@ class StatisticsTests {
 	
 	
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void test() throws FileNotFoundException, JSONException, IOException, ParseException, WrongParameterException, WrongFieldException, EmptyListException, FileManagementException {
+		String rank = "{Marche=11, Umbria=3, Sardegna=3, Basilicata=2, Piemonte=1, Lazio=1, Molise=1, Lombardia=1, Toscana=1}";
+		assertEquals(stats.ranking("region", null, null).toString(), rank);
 	}
 
 }
