@@ -42,7 +42,8 @@ public class FileManagement {
 		this.cityList = cityList;
 	}
 	
-	/** Metodo che converte il contenuto del file JSON in ArrayList di Location
+	/**
+	 *  Metodo che converte il contenuto del file JSON in ArrayList di Location
 	 * 
 	 * @return ArrayList<Location> 
 	 * @throws FileNotFoundException

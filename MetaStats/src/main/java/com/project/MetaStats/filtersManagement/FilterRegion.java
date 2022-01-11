@@ -60,7 +60,8 @@ public class FilterRegion extends Filter{
 		return isRegion;
 	}
 	
-	/**Metodo che fa l'override del metodo astratto filter e restituisce tette le regioni in cui l' utente è stato
+	/**
+	 * Metodo che fa l'override del metodo astratto filter e restituisce tette le regioni in cui l' utente è stato
 	 * 
 	 * @return region regioni filtrate
 	 * @throws FileManagementException 

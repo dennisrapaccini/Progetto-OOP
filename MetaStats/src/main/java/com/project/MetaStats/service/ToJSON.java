@@ -21,6 +21,7 @@ public class ToJSON {
 	
 	/**
 	 * Metodo che converte un ArrayList in un JSONArray
+	 * 
 	 * @param ArrayList<Post> p
 	 * @return JSONArray
 	 * @throws JSONException
