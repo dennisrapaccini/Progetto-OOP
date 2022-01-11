@@ -15,6 +15,13 @@ import com.project.MetaStats.model.Location;
 import com.project.MetaStats.model.Post;
 import com.project.MetaStats.service.ServiceImpl;
 
+/**
+ * Sottoclasse della classe Filter che implementa il metodo astratto della Superclasse
+ * 
+ * @author Cheikh Cisse
+ * @author Dennis Rapaccini
+ *
+ */
 public class FilterCity extends Filter {
 	
 	private String city = "";

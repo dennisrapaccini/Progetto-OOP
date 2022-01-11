@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Classe che avvia l'applicazione Spring boot
  * 
  * @author Cheikh Cisse
- * @Dennis Dennis Rapaccini
+ * @author Dennis Rapaccini
  */
 @SpringBootApplication
 public class MetaStatsApplication {

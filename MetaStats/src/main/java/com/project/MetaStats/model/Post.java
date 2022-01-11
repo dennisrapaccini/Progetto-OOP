@@ -19,7 +19,7 @@ public class Post extends UserFacebook {
 	 * @param name
 	 * @param surname
 	 * @param id
-	 * @param createdTime
+	 * @param CreatedTime
 	 * @param message
 	 * @param ID
 	 */

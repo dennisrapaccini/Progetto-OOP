@@ -10,6 +10,13 @@ import org.json.simple.parser.ParseException;
 
 import com.project.MetaStats.exception.FileManagementException;
 
+/**
+ * Classe astratta che definisce i filtri utilizzati
+ * 
+ * @author Cheikh Cisse
+ * @author Dennis Rapaccini
+ *
+ */
 public abstract class Filter {
 	
 	/**

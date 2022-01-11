@@ -1,1 +1,7 @@
+com.project.MetaStats
+com.project.MetaStats.contoller
 com.project.MetaStats.exception
+com.project.MetaStats.filtersManagement
+com.project.MetaStats.model
+com.project.MetaStats.service
+com.project.MetaStats.statistics

@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.project.MetaStats.exception"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.project.MetaStats"},{"l":"com.project.MetaStats.contoller"},{"l":"com.project.MetaStats.exception"},{"l":"com.project.MetaStats.filtersManagement"},{"l":"com.project.MetaStats.model"},{"l":"com.project.MetaStats.service"},{"l":"com.project.MetaStats.statistics"}];updateSearchResults();

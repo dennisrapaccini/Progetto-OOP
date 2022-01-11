@@ -20,9 +20,9 @@ import com.project.MetaStats.model.Post;
 public class ToJSON {
 	
 	/**
-	 * Metodo che converte un ArrayList in un JSONArray
+	 * Metodo che converte un ArrayList di Post in un JSONArray
 	 * 
-	 * @param ArrayList<Post> p
+	 * @param p ArrayList di Post
 	 * @return JSONArray
 	 * @throws JSONException
 	 */
@@ -38,10 +38,10 @@ public class ToJSON {
 	}
 	
 	/**
-	 * Metodo che converte un HashMap in JSONObject o JSONArray
+	 * Metodo che converte un HashMap con key String e value Integer in JSONObject o JSONArray
 	 * 
-	 * @param HashMap<String, Integer> hm
-	 * @param String type
+	 * @param hm HashMap con key String e value Integer
+	 * @param type stringa
 	 * @throws JSONException
 	 * @return JSONArray
 	 */

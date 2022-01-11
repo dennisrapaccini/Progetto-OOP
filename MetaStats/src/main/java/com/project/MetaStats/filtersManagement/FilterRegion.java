@@ -15,6 +15,13 @@ import com.project.MetaStats.model.Location;
 import com.project.MetaStats.model.Post;
 import com.project.MetaStats.service.ServiceImpl;
 
+/**
+ * Sottoclasse della classe Filter che implementa il metodo astratto della Superclasse
+ * 
+ * @author Cheikh Cisse
+ * @author Dennis Rapaccini
+ *
+ */
 public class FilterRegion extends Filter{
 	
 	FileManagement database = new FileManagement();
@@ -41,7 +48,7 @@ public class FilterRegion extends Filter{
 	/**
 	 * Metodo che controlla se la regione da parametro è presente nel database (ignorando il letter case)
 	 * 
-	 * @param city La regione da controllare
+	 * @param region La regione da controllare
 	 * @return true se la regione è presente, false altrimenti
 	 * @throws JSONException
 	 * @throws ParseException

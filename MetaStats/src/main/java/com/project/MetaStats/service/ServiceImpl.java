@@ -148,7 +148,7 @@ public class ServiceImpl implements Service {
 	 * Metodo che restituisce un JSONObject contenente i post relativi alla provincia in argomento (ignorando il letter case)
 	 * @param province Provincia da filtrare 
 	 * @return JSONObject contenente tutti i post in cui è contenuta la provincia
-	 * @throws FileNotFoundExceptio
+	 * @throws FileNotFoundException
 	 * @throws JSONException
 	 * @throws IOException
 	 * @throws ParseException

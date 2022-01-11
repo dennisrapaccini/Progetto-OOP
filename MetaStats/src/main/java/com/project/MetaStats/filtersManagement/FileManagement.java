@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
-import org.json.JSONException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -45,12 +44,10 @@ public class FileManagement {
 	/**
 	 *  Metodo che converte il contenuto del file JSON in ArrayList di Location
 	 * 
-	 * @return ArrayList<Location> 
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ParseException
 	 * @throws FileManagementException 
-	 * @throws JSONException
 	 */
 	public void getFile() throws FileNotFoundException, IOException, ParseException, FileManagementException{ 
 		JSONParser parser = new JSONParser();

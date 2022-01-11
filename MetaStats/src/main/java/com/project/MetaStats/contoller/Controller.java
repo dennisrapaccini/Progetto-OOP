@@ -38,13 +38,9 @@ public class Controller {
 	FilterRegion filter3 = new FilterRegion();
 
 	/**
-	 * Rotta di tipo GET che mostra tutti i post relativi alla città richiesta se
-	 * presente
+	 * Rotta di tipo GET che mostra tutti i post relativi all' utente
 	 * 
-	 * @param city La città da cercare tra i post
-	 * @return Tutti i post se il parametro non è presente, i post relativi al
-	 *         parametro city altrimenti
-	 * @throws Exception
+	 * @return ResponseEntity
 	 */
 	@GetMapping(value = "/posts")
 	public ResponseEntity<Object> getPost() {
