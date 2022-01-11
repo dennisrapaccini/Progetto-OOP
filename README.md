@@ -26,7 +26,7 @@
 <a name="introduzione"></a>
 ## Introduzione
 
-**MetaStats** ha lo scopo di effettuare statistiche e filtri, di un utente **Facebook**, relative ai post. Le statistiche riguardano le location in cui l'utente è stato (come riferimento si prendono i post dell'utente); tali informazioni riguardo il luogo sono estrapolate dalle API fornite da facebook che ci permettono di conoscere l' ora in cui è stato pubblicato un determinato post, la descrizione relativa al post e l'id associato al post. I post dell' utente sono disponibili in formato JSON attraverso una rotta GET definita nel nostro controller, a seconda del tipo di statistica o di filtro che si vuole eseguire ci saranno diverse rotte.
+**MetaStats** ha lo scopo di effettuare statistiche e filtri, di un utente **Facebook**, relative ai post. Le statistiche riguardano le location italiane in cui l'utente è stato (come riferimento si prendono i post dell'utente); tali informazioni riguardo il luogo sono estrapolate dalle API fornite da Facebook che ci permettono di conoscere la data e ora in cui è stato pubblicato un determinato post, la descrizione relativa e l'id associato. Tramite la descrizione viene effettuato uno scan del testo per ricercare una città italiana presente in un database locale. I post dell' utente sono disponibili in formato JSON attraverso una rotta GET definita nel nostro controller, a seconda del tipo di statistica o di filtro che si vuole eseguire ci saranno diverse rotte.
 
 * **Filtri**
    * Città: Restituisce tutti i post che l' utente ha fatto in una o più città.
@@ -59,8 +59,10 @@ https://github.com/dennisrapaccini/Progetto-OOP/blob/main/MetaStats/src/main/res
 ```
 se si va al link si vedrà: server.port=${port:8081}.
 
-Visualizzando il progetto (su eclipse) è possibile modificare il token di accesso, fornito da facebook per accedere alle API, che abbiamo utilizzato per testare le funzionalità della nostra applicazione; inserendo, quindi, il token dell' account di cui si vogliono fare le statistiche relative ai post.
+Visualizzando il progetto (su Eclipse) è possibile modificare il token di accesso, fornito da Facebook per accedere alle API, che abbiamo utilizzato per testare le funzionalità della nostra applicazione; inserendo, quindi, il token dell' account di cui si vogliono fare le statistiche relative ai post.
 
+
+Come token di default è inserito quello relativo all'utente Peppino Parlaforte, il quale è stato creato appositamente per lo sviluppo di questa applicazione. Tale utente ha pubblicato diversi post in diversi periodi con diverse località per permettere un testing efficace.
 
 <a name="rotte"></a>
 ## Rotte
@@ -73,7 +75,7 @@ N° | Tipo | Rotta | Descrizione
 [2](#2) |` GET `|`/posts/city`| *restituisce un JSONObject in cui vengono mostrati tutti i post dell'utente filtrati per una o più città*
 [3](#3) |` GET `|`/posts/province`| *restituisce un JSONObject in cui vengono mostrati tutti i post dell'utente filtrati per una o più province*
 [4](#4) |` GET `|`/posts/region`| *restituisce un JSONObject in cui vengono mostrati tutti i post dell'utente filtrati per una o più regioni*
-[5](#5) |` GET `|`/posts/stats/ranking`| *restituisce un JSONObject in cui vengono fatte statistiche riguardo le città, province o regioni in cui l' utente è stato, in particolare il ranking per occorrenze delle tre categorie*
+[5](#5) |` GET `|`/posts/stats/ranking`| *restituisce un JSONObject in cui vengono fatte statistiche riguardo le città, province o regioni in cui l' utente è stato, in particolare il ranking per occorrenze delle tre categorie. E' possibile inoltre filtrare il ranking ulteriormente, limitando la classifica ad uno specifico periodo temporale.*
 [6](#6) |` GET `|`/posts/location`| *restituisce un JSONObject in cui vengono mostrate tute le città, province o regioni in cui l'utente è stato*
 
 
@@ -93,7 +95,7 @@ N° | Parametri | Tipo | Richiesto
 <a name="output"></a>
 ## Output richieste
     
-Gli esempi delle risposte sono stati presi dal client postman inserendo alcuni parametri manualmente quando richiesti.
+Gli esempi delle risposte sono stati presi dal client Postman inserendo alcuni parametri manualmente quando richiesti.
     
 In risposta alla prima richiesta si avrà:
 ```json
@@ -112,7 +114,9 @@ In risposta alla prima richiesta si avrà:
                 "message": "Un bel bombardino a Bolognola ci sta tutto"
             }
 ```
- 
+*L'esempio precedente è stato troncato data la quantità non indifferente di post presenti.*
+
+    
 In risposta alla seconda richiesta si avrà:
 ```json
     {
@@ -310,8 +314,7 @@ In risposta alla sesta richiesta si avrà:
 }
 ```
     
-La risposta data alla prima richiesta è stata tagliata per una questione di spazio.
-    
+
 <a name="eccezioni"></a>
 ## Eccezioni
     
@@ -320,7 +323,7 @@ Le eccezioni che sono state aggiunte e gestite sono le seguenti:
 * **EmptyListException:** lanciata quando un elemento (ad esempio Array) è vuoto.
 * **FileManagementException:** lanciata quando occorre un errore nella lettura del file di database delle città.
 * **NonExistingLocationException:** lanciata quando una città inserita dall' utente (es. Paris) non è presente nel database.
-* **WrongFieldException:** lanciata quando un campo (es. type) non è valido.
+* **WrongFieldException:** lanciata quando un campo (es. type = ccityy) non è valido.
 * **WrongParameterException:** lanciata quando un parametro non è ammesso.
     
 *Il messaggio mostrato dalle eccezioni dipende dal metodo in cui sono applicati.*
@@ -337,7 +340,7 @@ I test sono stati eseguiti grazie l'ausilio del framework JUnit già presente ne
 <a name="documentazione"></a>
 ## Documentazione
     
-Il progetto è interamente documentato in [javadoc](aggiungere il link una volta fatto le ultime modifiche sul codice)
+Il progetto è interamente documentato in [javadoc](https://github.com/dennisrapaccini/Progetto-OOP/tree/main/MetaStats/doc)
     
 <a name="autori"></a>
 ## Autori
@@ -346,8 +349,6 @@ Il progetto è stato realizzato da:
 
 * **[Dennis Rapaccini](https://github.com/dennisrapaccini)** (50%)
 * **[Cheikh Cisse](https://github.com/Huncho07)** (50%)
-    
-    
     
     
     
