@@ -88,8 +88,8 @@ N° | Parametri | Tipo | Richiesto
 [2](#2) | `city` | *List<String>* | *SI*
 [3](#3) | `province` | *List<String>* | *SI*
 [4](#4) | `region` | *List<String>* | *SI*
-[5](#5) | `tipo, data iniziale, data finale` | *String, String, String* | *SI, NO, NO*
-[6](#6) | `tipo` | *String* | *SI*
+[5](#5) | `type, initialDate, finalDate` | *String, String, String* | *SI, NO, NO*
+[6](#6) | `type` | *String* | *SI*
 
     
 <a name="output"></a>
